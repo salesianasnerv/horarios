@@ -1212,6 +1212,12 @@ function primerArranque() {
   try { await D.conectar(); } catch (e) {
     document.body.classList.add('sin-sesion'); $('#login').hidden = false; $('#login-msg').textContent = 'No se ha podido conectar: ' + (e.message || e); return;
   }
+  // Etiqueta de la tarjeta de acceso: el curso activo (se lee de la base de datos, no hay que cambiarlo cada año).
+  D.listarCursos().then(cs => {
+    const c = cs.find(x => x.activo) || cs[cs.length - 1];
+    const e = $('#login-eyebrow');
+    if (c) { e.textContent = `Curso ${c.nombre}`; e.hidden = false; }
+  }).catch(() => {});
   const s = await D.sesion();
   if (!s) {
     document.body.classList.add('sin-sesion'); $('#login').hidden = false;
