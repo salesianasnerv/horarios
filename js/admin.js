@@ -1194,13 +1194,14 @@ function primerArranque() {
   </div>`;
   const cargarDatos = async datos => {
     const curso = { id: datos.curso.id, nombre: datos.curso.nombre, inicio: datos.curso.inicio || null, fin: datos.curso.fin || null, centro: datos.centro || datos.curso.centro || null, activo: true };
-    await seguro(async () => {
+    const ok = await seguro(async () => {
       await D.guardarCurso(curso);
       for (const t of D.TABLAS) await D.guardar(t, datos[t] || [], curso.id);
       for (const [k, v] of Object.entries(datos.config || {})) await D.guardarConfig(k, v, curso.id);
       for (const [id, m] of Object.entries(datos.motivos || {})) await D.guardarMotivo(id, m, curso.id);
+      return true;
     }, 'Datos cargados');
-    location.reload();
+    if (ok) location.reload(); // si algo falla, se queda en esta pantalla mostrando el error
   };
   $('#i-seed').onclick = async () => cargarDatos(await (await fetch('data/seed.json', { cache: 'no-store' })).json());
   $('#i-json').onchange = async e => { const f = e.target.files[0]; if (f) cargarDatos(JSON.parse(await f.text())); };
