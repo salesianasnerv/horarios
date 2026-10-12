@@ -1,0 +1,8711 @@
+{
+ "version": 5,
+ "centro": "Escuelas Salesianas María Auxiliadora",
+ "curso": {
+  "id": "c-2026-2027",
+  "nombre": "2026-2027",
+  "activo": true,
+  "inicio": "2026-09-15",
+  "fin": "2027-06-22",
+  "centro": "Escuelas Salesianas María Auxiliadora"
+ },
+ "docentes": [
+  {
+   "id": "d-amalia-campos",
+   "nombre": "Amalia Campos",
+   "corto": "Amalia",
+   "abrev": "AC",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 1,
+   "notas": ""
+  },
+  {
+   "id": "d-ana-felipe",
+   "nombre": "Ana Felipe",
+   "corto": "Ana F.",
+   "abrev": "AF",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 2,
+   "notas": ""
+  },
+  {
+   "id": "d-angela-rodriguez",
+   "nombre": "Ángela Rodríguez",
+   "corto": "Ángela",
+   "abrev": "ÁR",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 3,
+   "notas": ""
+  },
+  {
+   "id": "d-laura-garcia",
+   "nombre": "Laura García",
+   "corto": "Laura G.",
+   "abrev": "LG",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 4,
+   "notas": ""
+  },
+  {
+   "id": "d-carmen-maria",
+   "nombre": "Carmen María",
+   "corto": "Carmen Mª",
+   "abrev": "CM",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 5,
+   "notas": ""
+  },
+  {
+   "id": "d-margarita-luque",
+   "nombre": "Margarita Luque",
+   "corto": "Margarita",
+   "abrev": "ML",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 6,
+   "notas": ""
+  },
+  {
+   "id": "d-jose-antonio-franco",
+   "nombre": "José Antonio Franco",
+   "corto": "José Antonio",
+   "abrev": "JA",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 7,
+   "notas": ""
+  },
+  {
+   "id": "d-isabel-cortes",
+   "nombre": "Isabel Cortés",
+   "corto": "Isa",
+   "abrev": "IC",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 8,
+   "notas": ""
+  },
+  {
+   "id": "d-paco-morales",
+   "nombre": "Paco Morales",
+   "corto": "Paco",
+   "abrev": "PM",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 9,
+   "notas": ""
+  },
+  {
+   "id": "d-marian-chavez",
+   "nombre": "Marián Chávez",
+   "corto": "Marián",
+   "abrev": "MC",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 10,
+   "notas": ""
+  },
+  {
+   "id": "d-elena-martinez",
+   "nombre": "Elena Martínez",
+   "corto": "Elena",
+   "abrev": "E",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 11,
+   "notas": ""
+  },
+  {
+   "id": "d-ana-gallardo",
+   "nombre": "Ana Gallardo",
+   "corto": "Ana G.",
+   "abrev": "AG",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 12,
+   "notas": ""
+  },
+  {
+   "id": "d-rocio-cano",
+   "nombre": "Rocío Cano",
+   "corto": "Rocío",
+   "abrev": "RC",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 13,
+   "notas": ""
+  },
+  {
+   "id": "d-mariola-gutierrez",
+   "nombre": "Mariola Gutiérrez",
+   "corto": "Mariola",
+   "abrev": "M",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 14,
+   "notas": ""
+  },
+  {
+   "id": "d-graziella-rodriguez",
+   "nombre": "Graziella Rodríguez",
+   "corto": "Graziella",
+   "abrev": "G",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 15,
+   "notas": ""
+  },
+  {
+   "id": "d-mario-espejo",
+   "nombre": "Mario Espejo",
+   "corto": "Mario",
+   "abrev": "ME",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 16,
+   "notas": ""
+  },
+  {
+   "id": "d-miguel-angel-arcos",
+   "nombre": "Miguel Ángel Arcos",
+   "corto": "Miguel Ángel",
+   "abrev": "MÁ",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 17,
+   "notas": ""
+  },
+  {
+   "id": "d-julian-jimenez",
+   "nombre": "Julián Jiménez",
+   "corto": "Julián",
+   "abrev": "J",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 18,
+   "notas": ""
+  },
+  {
+   "id": "d-pablo-puro",
+   "nombre": "Pablo Puro",
+   "corto": "Pablo P.",
+   "abrev": "PP",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 19,
+   "notas": ""
+  },
+  {
+   "id": "d-laura-ramos",
+   "nombre": "Laura Ramos",
+   "corto": "Laura R.",
+   "abrev": "LR",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 20,
+   "notas": ""
+  },
+  {
+   "id": "d-carlos-sanchez",
+   "nombre": "Carlos Sánchez",
+   "corto": "Carlos",
+   "abrev": "CS",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 21,
+   "notas": ""
+  },
+  {
+   "id": "d-pablo-molina",
+   "nombre": "Pablo Molina",
+   "corto": "Pablo M.",
+   "abrev": "PMOL",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 22,
+   "notas": ""
+  },
+  {
+   "id": "d-nuria-gonzalez",
+   "nombre": "Nuria González",
+   "corto": "Nuria",
+   "abrev": "N",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 23,
+   "notas": ""
+  },
+  {
+   "id": "d-pablo-bermejo",
+   "nombre": "Pablo Bermejo",
+   "corto": "Pablo B.",
+   "abrev": "PBG",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 24,
+   "notas": ""
+  },
+  {
+   "id": "d-pepa-laguna",
+   "nombre": "Pepa Laguna",
+   "corto": "Pepa",
+   "abrev": "PL",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 25,
+   "notas": ""
+  },
+  {
+   "id": "d-beatriz-alejandre",
+   "nombre": "Beatriz Alejandre",
+   "corto": "Beatriz",
+   "abrev": "TECN",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 26,
+   "notas": ""
+  },
+  {
+   "id": "d-maria-rodriguez",
+   "nombre": "María Rodríguez",
+   "corto": "María",
+   "abrev": "",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 27,
+   "notas": "Sustituta de Pablo Puro"
+  },
+  {
+   "id": "d-charo",
+   "nombre": "Charo",
+   "corto": "Charo",
+   "abrev": "",
+   "activo": true,
+   "en_bolsa": true,
+   "orden": 28,
+   "notas": "Aparece en recreos y coordinaciones (no está en el PDF de horarios)"
+  },
+  {
+   "id": "d-ana-garcia-pt",
+   "nombre": "Ana García (PT)",
+   "corto": "Ana García (PT)",
+   "abrev": "",
+   "activo": true,
+   "en_bolsa": false,
+   "orden": 29,
+   "notas": "Apoyos de PT (no está en el PDF de horarios)"
+  },
+  {
+   "id": "d-sara-r",
+   "nombre": "Sara R.",
+   "corto": "Sara",
+   "abrev": "",
+   "activo": true,
+   "en_bolsa": false,
+   "orden": 30,
+   "notas": "Aparece como (PP) en el documento de no lectivas"
+  }
+ ],
+ "grupos": [
+  {
+   "id": "g-1-eso-a",
+   "nombre": "1º ESO A",
+   "etapa": "ESO",
+   "orden": 1,
+   "tutor_id": "d-marian-chavez",
+   "aula": ""
+  },
+  {
+   "id": "g-1-eso-b",
+   "nombre": "1º ESO B",
+   "etapa": "ESO",
+   "orden": 2,
+   "tutor_id": "d-angela-rodriguez",
+   "aula": ""
+  },
+  {
+   "id": "g-2-eso-a",
+   "nombre": "2º ESO A",
+   "etapa": "ESO",
+   "orden": 3,
+   "tutor_id": "d-ana-felipe",
+   "aula": ""
+  },
+  {
+   "id": "g-2-eso-b",
+   "nombre": "2º ESO B",
+   "etapa": "ESO",
+   "orden": 4,
+   "tutor_id": "d-laura-garcia",
+   "aula": ""
+  },
+  {
+   "id": "g-3-eso-a",
+   "nombre": "3º ESO A",
+   "etapa": "ESO",
+   "orden": 5,
+   "tutor_id": "d-mariola-gutierrez",
+   "aula": ""
+  },
+  {
+   "id": "g-3-eso-b",
+   "nombre": "3º ESO B",
+   "etapa": "ESO",
+   "orden": 6,
+   "tutor_id": "d-miguel-angel-arcos",
+   "aula": ""
+  },
+  {
+   "id": "g-4-eso-a",
+   "nombre": "4º ESO A",
+   "etapa": "ESO",
+   "orden": 7,
+   "tutor_id": "d-mario-espejo",
+   "aula": ""
+  },
+  {
+   "id": "g-4-eso-b",
+   "nombre": "4º ESO B",
+   "etapa": "ESO",
+   "orden": 8,
+   "tutor_id": "d-elena-martinez",
+   "aula": ""
+  },
+  {
+   "id": "g-1-bach-a",
+   "nombre": "1º Bach. A",
+   "etapa": "Bachillerato",
+   "orden": 9,
+   "tutor_id": null,
+   "aula": ""
+  },
+  {
+   "id": "g-1-bach-b",
+   "nombre": "1º Bach. B",
+   "etapa": "Bachillerato",
+   "orden": 10,
+   "tutor_id": null,
+   "aula": ""
+  },
+  {
+   "id": "g-2-bach-a",
+   "nombre": "2º Bach. A",
+   "etapa": "Bachillerato",
+   "orden": 11,
+   "tutor_id": null,
+   "aula": ""
+  },
+  {
+   "id": "g-2-bach-b",
+   "nombre": "2º Bach. B",
+   "etapa": "Bachillerato",
+   "orden": 12,
+   "tutor_id": null,
+   "aula": ""
+  }
+ ],
+ "tramos": [
+  {
+   "id": "t1",
+   "orden": 1,
+   "etiqueta": "1ª",
+   "inicio": "08:00",
+   "fin": "09:00",
+   "lectivo": true
+  },
+  {
+   "id": "t2",
+   "orden": 2,
+   "etiqueta": "2ª",
+   "inicio": "09:00",
+   "fin": "10:00",
+   "lectivo": true
+  },
+  {
+   "id": "t3",
+   "orden": 3,
+   "etiqueta": "3ª",
+   "inicio": "10:00",
+   "fin": "11:00",
+   "lectivo": true
+  },
+  {
+   "id": "tr",
+   "orden": 4,
+   "etiqueta": "Recreo",
+   "inicio": "11:00",
+   "fin": "11:30",
+   "lectivo": false
+  },
+  {
+   "id": "t4",
+   "orden": 5,
+   "etiqueta": "4ª",
+   "inicio": "11:30",
+   "fin": "12:30",
+   "lectivo": true
+  },
+  {
+   "id": "t5",
+   "orden": 6,
+   "etiqueta": "5ª",
+   "inicio": "12:30",
+   "fin": "13:30",
+   "lectivo": true
+  },
+  {
+   "id": "t6",
+   "orden": 7,
+   "etiqueta": "6ª",
+   "inicio": "13:30",
+   "fin": "14:30",
+   "lectivo": true
+  }
+ ],
+ "materias": [
+  {
+   "id": "m-a",
+   "abrev": "A",
+   "nombre": "Anatomía Aplicada",
+   "niveles": []
+  },
+  {
+   "id": "m-afsys",
+   "abrev": "AFSyS",
+   "nombre": "Actividad Física, Salud y Sociedad",
+   "niveles": []
+  },
+  {
+   "id": "m-adf",
+   "abrev": "AdF",
+   "nombre": "Ampliación de Física",
+   "niveles": []
+  },
+  {
+   "id": "m-adl",
+   "abrev": "AdL",
+   "nombre": "Ampliación de Lengua Castellana y Literatura",
+   "niveles": []
+  },
+  {
+   "id": "m-bio",
+   "abrev": "BIO",
+   "nombre": "Biología y Geología",
+   "niveles": []
+  },
+  {
+   "id": "m-bio-1-bach",
+   "abrev": "BIO",
+   "nombre": "Biología, Geología y Ciencias Ambientales",
+   "niveles": [
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-bio-2-bach",
+   "abrev": "BIO",
+   "nombre": "Biología",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-ceye",
+   "abrev": "CEyE",
+   "nombre": "Cultura Emprendedora y Empresarial",
+   "niveles": []
+  },
+  {
+   "id": "m-cdltydma",
+   "abrev": "CdlTydMA",
+   "nombre": "Ciencias de la Tierra y del Medio Ambiente",
+   "niveles": []
+  },
+  {
+   "id": "m-cyr",
+   "abrev": "CyR",
+   "nombre": "Computación y Robótica",
+   "niveles": []
+  },
+  {
+   "id": "m-dt-1-bach",
+   "abrev": "DT",
+   "nombre": "Dibujo Técnico I",
+   "niveles": [
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-dt-2-bach",
+   "abrev": "DT",
+   "nombre": "Dibujo Técnico II",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-dt-4-eso",
+   "abrev": "DT",
+   "nombre": "Dibujo Técnico",
+   "niveles": [
+    "4º ESO"
+   ]
+  },
+  {
+   "id": "m-e-1-bach",
+   "abrev": "E",
+   "nombre": "Economía",
+   "niveles": [
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-e-2-bach",
+   "abrev": "E",
+   "nombre": "Empresa y Diseño de Modelos de Negocio",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-e-4-eso",
+   "abrev": "E",
+   "nombre": "Economía y Emprendimiento",
+   "niveles": [
+    "4º ESO"
+   ]
+  },
+  {
+   "id": "m-ef",
+   "abrev": "EF",
+   "nombre": "Educación Física",
+   "niveles": []
+  },
+  {
+   "id": "m-epya",
+   "abrev": "EPyA",
+   "nombre": "Educación Plástica, Visual y Audiovisual",
+   "niveles": []
+  },
+  {
+   "id": "m-epya-4-eso",
+   "abrev": "EPyA",
+   "nombre": "Expresión Artística",
+   "niveles": [
+    "4º ESO"
+   ]
+  },
+  {
+   "id": "m-eev",
+   "abrev": "EeV",
+   "nombre": "Educación en Valores Cívicos y Éticos",
+   "niveles": []
+  },
+  {
+   "id": "m-f-2-bach",
+   "abrev": "F",
+   "nombre": "Física",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-f-4-eso-1-bach",
+   "abrev": "F",
+   "nombre": "Filosofía",
+   "niveles": [
+    "4º ESO",
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-fr",
+   "abrev": "FR",
+   "nombre": "Segunda Lengua Extranjera (Francés)",
+   "niveles": []
+  },
+  {
+   "id": "m-fyq",
+   "abrev": "FyQ",
+   "nombre": "Física y Química",
+   "niveles": []
+  },
+  {
+   "id": "m-g",
+   "abrev": "G",
+   "nombre": "Geografía",
+   "niveles": []
+  },
+  {
+   "id": "m-geh",
+   "abrev": "GeH",
+   "nombre": "Geografía e Historia",
+   "niveles": []
+  },
+  {
+   "id": "m-hde",
+   "abrev": "HdE",
+   "nombre": "Historia de España",
+   "niveles": []
+  },
+  {
+   "id": "m-hdmc",
+   "abrev": "HdMC",
+   "nombre": "Historia del Mundo Contemporáneo",
+   "niveles": []
+  },
+  {
+   "id": "m-hdlf",
+   "abrev": "HdlF",
+   "nombre": "Historia de la Filosofía",
+   "niveles": []
+  },
+  {
+   "id": "m-i",
+   "abrev": "I",
+   "nombre": "Primera Lengua Extranjera (Inglés)",
+   "niveles": []
+  },
+  {
+   "id": "m-i-1-bach",
+   "abrev": "I",
+   "nombre": "Primera Lengua Extranjera I (Inglés)",
+   "niveles": [
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-i-2-bach",
+   "abrev": "I",
+   "nombre": "Primera Lengua Extranjera II (Inglés)",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-ialaeye",
+   "abrev": "IalAEyE",
+   "nombre": "Iniciación a la Actividad Emprendedora y Empresarial",
+   "niveles": []
+  },
+  {
+   "id": "m-lyl",
+   "abrev": "LyL",
+   "nombre": "Lengua Castellana y Literatura",
+   "niveles": []
+  },
+  {
+   "id": "m-lyl-1-bach",
+   "abrev": "LyL",
+   "nombre": "Lengua Castellana y Literatura I",
+   "niveles": [
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-lyl-2-bach",
+   "abrev": "LyL",
+   "nombre": "Lengua Castellana y Literatura II",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-mat",
+   "abrev": "MAT",
+   "nombre": "Matemáticas",
+   "niveles": []
+  },
+  {
+   "id": "m-mat-a",
+   "abrev": "MAT A",
+   "nombre": "Matemáticas A",
+   "niveles": []
+  },
+  {
+   "id": "m-mat-b",
+   "abrev": "MAT B",
+   "nombre": "Matemáticas B",
+   "niveles": []
+  },
+  {
+   "id": "m-maalc-1-bach",
+   "abrev": "MAalC",
+   "nombre": "Matemáticas Aplicadas a las Ciencias Sociales I",
+   "niveles": [
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-maalc-2-bach",
+   "abrev": "MAalC",
+   "nombre": "Matemáticas Aplicadas a las Ciencias Sociales II",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-mi-1-bach",
+   "abrev": "MI",
+   "nombre": "Matemáticas I",
+   "niveles": [
+    "1º Bach."
+   ]
+  },
+  {
+   "id": "m-mi-2-bach",
+   "abrev": "MI",
+   "nombre": "Matemáticas II",
+   "niveles": [
+    "2º Bach."
+   ]
+  },
+  {
+   "id": "m-mu",
+   "abrev": "Mu",
+   "nombre": "Música",
+   "niveles": []
+  },
+  {
+   "id": "m-pdi",
+   "abrev": "PdI",
+   "nombre": "Proyecto Interdisciplinar",
+   "niveles": []
+  },
+  {
+   "id": "m-q",
+   "abrev": "Q",
+   "nombre": "Química",
+   "niveles": []
+  },
+  {
+   "id": "m-r",
+   "abrev": "R",
+   "nombre": "Religión",
+   "niveles": []
+  },
+  {
+   "id": "m-tec",
+   "abrev": "TEC",
+   "nombre": "Tecnología y Digitalización",
+   "niveles": []
+  },
+  {
+   "id": "m-tut",
+   "abrev": "TUT",
+   "nombre": "Tutoría",
+   "niveles": []
+  },
+  {
+   "id": "m-alt",
+   "abrev": "ÁLT",
+   "nombre": "Inglés Aplicado",
+   "niveles": []
+  }
+ ],
+ "ocupaciones": [
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0001",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0002",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0003",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0004",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0005",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "ÁLT",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0006",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0007",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "ÁLT",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0008",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0009",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0010",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0011",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0012",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0013",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0014",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0015",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0016",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0017",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0018",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0019",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0020",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0021",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0022",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0023",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0024",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0025",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0026",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0027",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0028",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0029",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0030",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "PdI",
+   "grupos": [
+    "g-1-eso-a",
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0031",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "CyR",
+   "grupos": [
+    "g-1-eso-a",
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0032",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "PdI",
+   "grupos": [
+    "g-1-eso-a",
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0033",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "CyR",
+   "grupos": [
+    "g-1-eso-a",
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0034",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0035",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0036",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0037",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0038",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0039",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0040",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0041",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0042",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0043",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0044",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0045",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0046",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0047",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "ÁLT",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0048",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0049",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "ÁLT",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0050",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0051",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0052",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0053",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0054",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0055",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0056",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0057",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0058",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0059",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0060",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0061",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0062",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0063",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0064",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0065",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0066",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0067",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0068",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0069",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0070",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0071",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-2-eso-a",
+    "g-2-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0072",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "CyR",
+   "grupos": [
+    "g-2-eso-a",
+    "g-2-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0073",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-2-eso-a",
+    "g-2-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0074",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "CyR",
+   "grupos": [
+    "g-2-eso-a",
+    "g-2-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0075",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0076",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0077",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0078",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0079",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0080",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0081",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0082",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0083",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0084",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0085",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0086",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0087",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0088",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0089",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0090",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0091",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0092",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0093",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0094",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0095",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "EeV",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0096",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0097",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0098",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0099",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0100",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0101",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0102",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0103",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0104",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0105",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0106",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0107",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0108",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0109",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0110",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-julian-jimenez",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "Mu",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0111",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0112",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0113",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0114",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0115",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0116",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0117",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0118",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0119",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0120",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0121",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0122",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0123",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "EeV",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0124",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0125",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0126",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0127",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0128",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0129",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0130",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0131",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0132",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0133",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0134",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0135",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0136",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0137",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "IalAEyE",
+   "grupos": [
+    "g-3-eso-a",
+    "g-3-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0138",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-3-eso-a",
+    "g-3-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0139",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "IalAEyE",
+   "grupos": [
+    "g-3-eso-a",
+    "g-3-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0140",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-3-eso-a",
+    "g-3-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0141",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0142",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0143",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0144",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0145",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0146",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0147",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0148",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0149",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0150",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0151",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0152",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0153",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0154",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0155",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0156",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0157",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0158",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0159",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0160",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "TEC",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0161",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0162",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0163",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0164",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0165",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0166",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0167",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0168",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0169",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MAT",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0170",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0171",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0172",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0173",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0174",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0175",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0176",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0177",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0178",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0179",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0180",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0181",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0182",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0183",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0184",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0185",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0186",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0187",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0188",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0189",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0190",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0191",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0192",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 3",
+   "detalle": "",
+   "id": "o0193",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0194",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0195",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 3",
+   "detalle": "",
+   "id": "o0196",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0197",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0198",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EPyA",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 3",
+   "detalle": "",
+   "id": "o0199",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0200",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0201",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0202",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0203",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0204",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0205",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0206",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0207",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0208",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0209",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0210",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0211",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0212",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0213",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0214",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0215",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0216",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0217",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0218",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0219",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT A",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0220",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0221",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT A",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0222",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0223",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAT A",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0224",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0225",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MAT A",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0226",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0227",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0228",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0229",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0230",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0231",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0232",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0233",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0234",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0235",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0236",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0237",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0238",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0239",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "tutoria",
+   "materia": "TUT",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0240",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0241",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0242",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "GeH",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0243",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0244",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0245",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0246",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0247",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0248",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0249",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0250",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MAT B",
+   "grupos": [
+    "g-4-eso-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0251",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0252",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0253",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0254",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0255",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0256",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0257",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0258",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0259",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0260",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0261",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0262",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0263",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0264",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0265",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0266",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0267",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0268",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0269",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0270",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0271",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0272",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0273",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0274",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0275",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "HdMC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0276",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "HdMC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0277",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "HdMC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0278",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "HdMC",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0279",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "CEyE",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0280",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "CEyE",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0281",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0282",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0283",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0284",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0285",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0286",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0287",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0288",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-a",
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0289",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0290",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0291",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0292",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "FyQ",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0293",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0294",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0295",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0296",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0297",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0298",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0299",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0300",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0301",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0302",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0303",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0304",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0305",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0306",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "AdF",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0307",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "A",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0308",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "AdF",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0309",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "A",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0310",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-molina",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0311",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-molina",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "EF",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0312",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0313",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0314",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0315",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0316",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0317",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0318",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0319",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-bermejo",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "CEyE",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0320",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-bermejo",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "CEyE",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0321",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0322",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0323",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0324",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-1-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0325",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0326",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0327",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0328",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "E",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0329",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0330",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0331",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0332",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0333",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0334",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0335",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0336",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0337",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0338",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0339",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0340",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0341",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0342",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0343",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0344",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0345",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0346",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0347",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carlos-sanchez",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0348",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0349",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carlos-sanchez",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0350",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0351",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carlos-sanchez",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0352",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0353",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carlos-sanchez",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MAalC",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0354",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "HdlF",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0355",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "HdlF",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0356",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "HdlF",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0357",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "G",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0358",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "G",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0359",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "G",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0360",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "G",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0361",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "AdL",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0362",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "AdL",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0363",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0364",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-molina",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "AFSyS",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0365",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "FR",
+   "grupos": [
+    "g-2-bach-a"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0366",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-molina",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "AFSyS",
+   "grupos": [
+    "g-2-bach-a",
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0367",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0368",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "Q",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0369",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0370",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "Q",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0371",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0372",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "Q",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0373",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "F",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0374",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "Q",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0375",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0376",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0377",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0378",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0379",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0380",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0381",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "DT",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0382",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "BIO",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0383",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pablo-puro",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "R",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0384",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0385",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0386",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0387",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "MI",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 2",
+   "detalle": "",
+   "id": "o0388",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0389",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0390",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0391",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "HdE",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0392",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0393",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0394",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0395",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0396",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "I",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0397",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "clase",
+   "materia": "HdlF",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0398",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "HdlF",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0399",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "clase",
+   "materia": "HdlF",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0400",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "clase",
+   "materia": "CdlTydMA",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0401",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "CdlTydMA",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0402",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "clase",
+   "materia": "AdL",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0403",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "AdL",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0404",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-amalia-campos",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "clase",
+   "materia": "LyL",
+   "grupos": [
+    "g-2-bach-b"
+   ],
+   "subgrupo": "Grupo 1",
+   "detalle": "",
+   "id": "o0405",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0406",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 1,
+   "tramo_id": "t1",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0407",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 2,
+   "tramo_id": "t1",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "2ºESO B Mat",
+   "id": "o0408",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-4-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "4º ESO A Lengua",
+   "id": "o0409",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0410",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 3,
+   "tramo_id": "t1",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO B MAT",
+   "id": "o0411",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B Lengua",
+   "id": "o0412",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 4,
+   "tramo_id": "t1",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0413",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0414",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "4º ESO A/B MAT A",
+   "id": "o0415",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 5,
+   "tramo_id": "t1",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0416",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A Inglés",
+   "id": "o0417",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación P",
+   "id": "o0418",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación P",
+   "id": "o0419",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación P",
+   "id": "o0420",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0421",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0422",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0423",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0424",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-garcia-pt",
+   "dia": 1,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "PT 2ºESO A/Lengua",
+   "id": "o0425",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0426",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0427",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0428",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A MAT",
+   "id": "o0429",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0430",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0431",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 2,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0432",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A",
+   "id": "o0433",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0434",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0435",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo BACH",
+   "id": "o0436",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0437",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 3,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO A MAT",
+   "id": "o0438",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B MAT",
+   "id": "o0439",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0440",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0441",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0442",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B Mat",
+   "id": "o0443",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-garcia-pt",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "PT 2ºESO B/Lengua",
+   "id": "o0444",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO A Gª e Hª",
+   "id": "o0445",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO B Inglés",
+   "id": "o0446",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0447",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A FyQ",
+   "id": "o0448",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 5,
+   "tramo_id": "t2",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0449",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0450",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0451",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0452",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0453",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 1,
+   "tramo_id": "t3",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B Inglés",
+   "id": "o0454",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0455",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0456",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0457",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO B Inglés",
+   "id": "o0458",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0459",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo BACH",
+   "id": "o0460",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-garcia-pt",
+   "dia": 2,
+   "tramo_id": "t3",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "PT 1ºESO A/Lengua",
+   "id": "o0461",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0462",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0463",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo BACH",
+   "id": "o0464",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0465",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0466",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0467",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0468",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-garcia-pt",
+   "dia": 3,
+   "tramo_id": "t3",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "PT 1ºESO B/Lengua",
+   "id": "o0469",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO A MAT",
+   "id": "o0470",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0471",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0472",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0473",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-pepa-laguna",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0474",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 4,
+   "tramo_id": "t3",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A MAT",
+   "id": "o0475",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0476",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0477",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0478",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 5,
+   "tramo_id": "t3",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo BACH",
+   "id": "o0479",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0480",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0481",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0482",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0483",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0484",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 1,
+   "tramo_id": "t4",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0485",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO A. Lengua",
+   "id": "o0486",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-margarita-luque",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO A Inglés",
+   "id": "o0487",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0488",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-4-eso-a",
+    "g-4-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "4ºESO A/B MAT. A",
+   "id": "o0489",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B/Lengua",
+   "id": "o0490",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3ºESO A FyQ",
+   "id": "o0491",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0492",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mario-espejo",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0493",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0494",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B FyQ",
+   "id": "o0495",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0496",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-sara-r",
+   "dia": 3,
+   "tramo_id": "t4",
+   "tipo": "otro",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "PP",
+   "id": "o0497",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-felipe",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0498",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A Lengua",
+   "id": "o0499",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0500",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0501",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B FyQ",
+   "id": "o0502",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3ºESO A Gª e Hª",
+   "id": "o0503",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-rocio-cano",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0504",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0505",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO B MAT",
+   "id": "o0506",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 5,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0507",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0508",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-marian-chavez",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0509",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-graziella-rodriguez",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0510",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0511",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A Lengua",
+   "id": "o0512",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 1,
+   "tramo_id": "t5",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0513",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0514",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-paco-morales",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0515",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 2,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0516",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-angela-rodriguez",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO B Inglés",
+   "id": "o0517",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO A Lengua",
+   "id": "o0518",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO A MAT",
+   "id": "o0519",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0520",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0521",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 3,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A TEC.",
+   "id": "o0522",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO A Lengua",
+   "id": "o0523",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0524",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0525",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO B MAT",
+   "id": "o0526",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-sara-r",
+   "dia": 4,
+   "tramo_id": "t5",
+   "tipo": "otro",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "PP",
+   "id": "o0527",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-mariola-gutierrez",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0528",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0529",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO B Lengua",
+   "id": "o0530",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-3-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "3º ESO A MAT",
+   "id": "o0531",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0532",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-carmen-maria",
+   "dia": 5,
+   "tramo_id": "t5",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0533",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0534",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0535",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 2,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO B MAT",
+   "id": "o0536",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0537",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "3º ESO MAT",
+   "id": "o0538",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 3,
+   "tramo_id": "t6",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0539",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-garcia",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-a"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO A Lengua",
+   "id": "o0540",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-isabel-cortes",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-1-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "1º ESO B MAT",
+   "id": "o0541",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-beatriz-alejandre",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [
+    "g-2-eso-b"
+   ],
+   "subgrupo": "",
+   "detalle": "2º ESO B FYQ",
+   "id": "o0542",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-jose-antonio-franco",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Pasillo ESO",
+   "id": "o0543",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-laura-ramos",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0544",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-charo",
+   "dia": 5,
+   "tramo_id": "t6",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "Coordinación",
+   "id": "o0545",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 4,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0546",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-elena-martinez",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0547",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 2,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0548",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-ana-gallardo",
+   "dia": 4,
+   "tramo_id": "t4",
+   "tipo": "coordinacion",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0549",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-miguel-angel-arcos",
+   "dia": 4,
+   "tramo_id": "t2",
+   "tipo": "no_lectiva",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0550",
+   "aula": ""
+  },
+  {
+   "docente_id": "d-nuria-gonzalez",
+   "dia": 1,
+   "tramo_id": "t6",
+   "tipo": "apoyo",
+   "materia": "",
+   "grupos": [],
+   "subgrupo": "",
+   "detalle": "",
+   "id": "o0551",
+   "aula": ""
+  }
+ ],
+ "zonas_recreo": [
+  {
+   "id": "z1",
+   "patio": "Patio azul (ESO)",
+   "nombre": "WC / escaleras",
+   "descripcion": "Baja al patio el primero para que comience a bajar el alumnado. Subida: en puerta pasillo EPO.",
+   "orden": 1
+  },
+  {
+   "id": "z2",
+   "patio": "Patio azul (ESO)",
+   "nombre": "Acceso pórtico María Auxiliadora",
+   "descripcion": "Toca el timbre.",
+   "orden": 2
+  },
+  {
+   "id": "z3",
+   "patio": "Patio azul (ESO)",
+   "nombre": "Paseo patio",
+   "descripcion": "",
+   "orden": 3
+  },
+  {
+   "id": "z4",
+   "patio": "Patio azul (ESO)",
+   "nombre": "Puerta garaje y acompañamiento capilla",
+   "descripcion": "Espera al alumnado que quiere acudir a la capilla para acompañarlo. Se espera en el cuadro de la Virgen para vigilar el tránsito y velar porque todos regresen al patio.",
+   "orden": 4
+  },
+  {
+   "id": "z5",
+   "patio": "Patio gris (Bach.)",
+   "nombre": "Paseo patio",
+   "descripcion": "",
+   "orden": 5
+  },
+  {
+   "id": "z6",
+   "patio": "Patio gris (Bach.)",
+   "nombre": "Acceso pórtico gris",
+   "descripcion": "",
+   "orden": 6
+  },
+  {
+   "id": "z7",
+   "patio": "Patio gris (Bach.)",
+   "nombre": "Acceso pórtico entrada / baños",
+   "descripcion": "",
+   "orden": 7
+  }
+ ],
+ "turnos_recreo": [
+  {
+   "id": "r001",
+   "zona_id": "z1",
+   "dia": 1,
+   "docente_id": "d-marian-chavez",
+   "nota": ""
+  },
+  {
+   "id": "r002",
+   "zona_id": "z1",
+   "dia": 2,
+   "docente_id": "d-carmen-maria",
+   "nota": ""
+  },
+  {
+   "id": "r003",
+   "zona_id": "z1",
+   "dia": 3,
+   "docente_id": "d-jose-antonio-franco",
+   "nota": ""
+  },
+  {
+   "id": "r004",
+   "zona_id": "z1",
+   "dia": 4,
+   "docente_id": "d-mariola-gutierrez",
+   "nota": ""
+  },
+  {
+   "id": "r005",
+   "zona_id": "z1",
+   "dia": 5,
+   "docente_id": "d-nuria-gonzalez",
+   "nota": ""
+  },
+  {
+   "id": "r006",
+   "zona_id": "z2",
+   "dia": 1,
+   "docente_id": "d-pablo-puro",
+   "nota": "Grupos A"
+  },
+  {
+   "id": "r007",
+   "zona_id": "z2",
+   "dia": 2,
+   "docente_id": "d-margarita-luque",
+   "nota": "Grupos A"
+  },
+  {
+   "id": "r008",
+   "zona_id": "z2",
+   "dia": 3,
+   "docente_id": "d-mario-espejo",
+   "nota": "Grupos A"
+  },
+  {
+   "id": "r009",
+   "zona_id": "z2",
+   "dia": 4,
+   "docente_id": "d-ana-felipe",
+   "nota": "Grupos A · controla zona de baños y toca timbre"
+  },
+  {
+   "id": "r010",
+   "zona_id": "z2",
+   "dia": 5,
+   "docente_id": "d-mariola-gutierrez",
+   "nota": "Grupos A"
+  },
+  {
+   "id": "r011",
+   "zona_id": "z3",
+   "dia": 1,
+   "docente_id": "d-jose-antonio-franco",
+   "nota": "Grupos B"
+  },
+  {
+   "id": "r012",
+   "zona_id": "z3",
+   "dia": 2,
+   "docente_id": "d-marian-chavez",
+   "nota": "Grupos B"
+  },
+  {
+   "id": "r013",
+   "zona_id": "z3",
+   "dia": 3,
+   "docente_id": "d-pepa-laguna",
+   "nota": "Grupos B"
+  },
+  {
+   "id": "r014",
+   "zona_id": "z3",
+   "dia": 4,
+   "docente_id": "d-laura-garcia",
+   "nota": "Grupos B"
+  },
+  {
+   "id": "r015",
+   "zona_id": "z3",
+   "dia": 4,
+   "docente_id": "d-julian-jimenez",
+   "nota": "Grupos B"
+  },
+  {
+   "id": "r016",
+   "zona_id": "z3",
+   "dia": 4,
+   "docente_id": "d-miguel-angel-arcos",
+   "nota": "Convivencia"
+  },
+  {
+   "id": "r017",
+   "zona_id": "z3",
+   "dia": 5,
+   "docente_id": "d-carmen-maria",
+   "nota": "Grupos B"
+  },
+  {
+   "id": "r018",
+   "zona_id": "z4",
+   "dia": 1,
+   "docente_id": "d-angela-rodriguez",
+   "nota": ""
+  },
+  {
+   "id": "r019",
+   "zona_id": "z4",
+   "dia": 2,
+   "docente_id": "d-rocio-cano",
+   "nota": ""
+  },
+  {
+   "id": "r020",
+   "zona_id": "z4",
+   "dia": 3,
+   "docente_id": "d-charo",
+   "nota": ""
+  },
+  {
+   "id": "r021",
+   "zona_id": "z4",
+   "dia": 4,
+   "docente_id": "d-julian-jimenez",
+   "nota": "A partir de las 11:15"
+  },
+  {
+   "id": "r022",
+   "zona_id": "z4",
+   "dia": 5,
+   "docente_id": "d-isabel-cortes",
+   "nota": ""
+  },
+  {
+   "id": "r023",
+   "zona_id": "z5",
+   "dia": 1,
+   "docente_id": "d-amalia-campos",
+   "nota": ""
+  },
+  {
+   "id": "r024",
+   "zona_id": "z5",
+   "dia": 2,
+   "docente_id": "d-mario-espejo",
+   "nota": ""
+  },
+  {
+   "id": "r025",
+   "zona_id": "z5",
+   "dia": 3,
+   "docente_id": "d-elena-martinez",
+   "nota": ""
+  },
+  {
+   "id": "r026",
+   "zona_id": "z5",
+   "dia": 4,
+   "docente_id": "d-paco-morales",
+   "nota": ""
+  },
+  {
+   "id": "r027",
+   "zona_id": "z5",
+   "dia": 5,
+   "docente_id": "d-ana-gallardo",
+   "nota": ""
+  },
+  {
+   "id": "r028",
+   "zona_id": "z6",
+   "dia": 1,
+   "docente_id": "d-graziella-rodriguez",
+   "nota": ""
+  },
+  {
+   "id": "r029",
+   "zona_id": "z6",
+   "dia": 2,
+   "docente_id": "d-charo",
+   "nota": ""
+  },
+  {
+   "id": "r030",
+   "zona_id": "z6",
+   "dia": 3,
+   "docente_id": "d-ana-gallardo",
+   "nota": ""
+  },
+  {
+   "id": "r031",
+   "zona_id": "z6",
+   "dia": 4,
+   "docente_id": "d-rocio-cano",
+   "nota": ""
+  },
+  {
+   "id": "r032",
+   "zona_id": "z6",
+   "dia": 5,
+   "docente_id": "d-beatriz-alejandre",
+   "nota": ""
+  },
+  {
+   "id": "r033",
+   "zona_id": "z7",
+   "dia": 1,
+   "docente_id": "d-isabel-cortes",
+   "nota": ""
+  },
+  {
+   "id": "r034",
+   "zona_id": "z7",
+   "dia": 2,
+   "docente_id": "d-nuria-gonzalez",
+   "nota": ""
+  },
+  {
+   "id": "r035",
+   "zona_id": "z7",
+   "dia": 3,
+   "docente_id": "d-paco-morales",
+   "nota": ""
+  },
+  {
+   "id": "r036",
+   "zona_id": "z7",
+   "dia": 4,
+   "docente_id": "d-margarita-luque",
+   "nota": ""
+  },
+  {
+   "id": "r037",
+   "zona_id": "z7",
+   "dia": 5,
+   "docente_id": "d-pepa-laguna",
+   "nota": ""
+  }
+ ],
+ "ausencias": [
+  {
+   "id": "a-pablo-puro",
+   "docente_id": "d-pablo-puro",
+   "desde": "2026-10-01",
+   "hasta": null,
+   "tramos": [],
+   "larga": true,
+   "sustituto_id": "d-maria-rodriguez",
+   "sustituto_desde": "2026-10-01",
+   "nota": "Baja de larga duración"
+  }
+ ],
+ "coberturas": [],
+ "config": {
+  "prioridad": [
+   "no_lectiva",
+   "apoyo",
+   "coordinacion"
+  ],
+  "etapas": "ESO y Bachillerato"
+ },
+ "avisos": []
+}

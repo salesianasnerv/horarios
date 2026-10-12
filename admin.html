@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administración · Horarios | Escuelas Salesianas María Auxiliadora · Nervión (Sevilla)</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#009abb">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Horarios">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="config.js"></script>
+</head>
+<body>
+  <div id="demo" class="demo" hidden><strong>Modo prueba:</strong> no hay base de datos conectada; los cambios solo se guardan en este navegador.</div>
+  <header class="top" id="cabecera">
+    <a class="marca" href="./"><img class="logo" src="logo.svg" alt="Salesianas Nervión"><h1>Horarios · Administración</h1></a>
+    <div class="usuario"><span class="quien" id="curso"></span><span class="quien" id="usuario"></span><a href="./" id="publica-link">Ver horarios</a><button type="button" id="salir" hidden>Salir</button></div>
+  </header>
+  <nav class="menu" id="tabs" aria-label="Categorías" hidden></nav>
+
+  <main>
+    <section id="login" class="login" hidden>
+      <div class="tarjeta">
+        <img class="logo" src="logo.svg" alt="Salesianas Nervión">
+        <span class="eyebrow" id="login-eyebrow">Jefatura · Curso 2026-2027</span>
+        <h1>Horarios y sustituciones</h1>
+        <p>Pulsa el botón y entra con tu cuenta del colegio <strong>@salesianas.org</strong>. Solo pueden acceder las cuentas autorizadas.</p>
+        <button id="entrar" class="btn pri grande btn-ms" type="button">
+          <svg viewBox="0 0 21 21" aria-hidden="true"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>
+          Entrar con Microsoft 365
+        </button>
+        <p class="error" id="login-msg"></p>
+        <p class="small"><a href="./">Volver a los horarios</a></p>
+      </div>
+    </section>
+
+    <section id="app" hidden>
+      <p class="migas no-imprimir" id="migas"></p>
+      <div id="vista"></div>
+    </section>
+  </main>
+
+  <footer class="pie">Escuelas Salesianas María Auxiliadora · Nervión (Sevilla)</footer>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
