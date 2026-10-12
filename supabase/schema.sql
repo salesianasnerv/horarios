@@ -51,7 +51,7 @@ create table if not exists hor_materias (
   id text not null,
   abrev text not null,
   nombre text,
-  niveles text[] not null default '{}',   -- hor_cursos en los que se usa este nombre (vacío = todos)
+  niveles text[] not null default '{}',   -- cursos en los que se usa este nombre (vacío = todos)
   primary key (curso_id, id)
 );
 
@@ -64,7 +64,7 @@ create table if not exists hor_ocupaciones (
   tramo_id text not null,
   tipo text not null,          -- clase | tutoria | apoyo | coordinacion | no_lectiva | guardia | otro
   materia text,
-  hor_grupos text[] not null default '{}',
+  grupos text[] not null default '{}',
   subgrupo text,
   detalle text,
   aula text,                   -- si es distinta del aula del grupo
@@ -99,7 +99,7 @@ create table if not exists hor_ausencias (
   docente_id text not null,
   desde date not null,
   hasta date,                  -- null = sin fecha de fin
-  hor_tramos text[] not null default '{}',  -- vacío = todo el día
+  tramos text[] not null default '{}',  -- vacío = todo el día
   larga boolean not null default false,
   sustituto_id text,
   sustituto_desde date,
