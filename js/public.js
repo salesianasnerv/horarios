@@ -89,7 +89,7 @@ function vHoy() {
     nAus > 0,
     `<div class="barra no-imprimir" style="justify-content:flex-end;margin:0 0 6px"><button class="btn mini" data-imprimir data-titulo="Parte de sustituciones" data-sub="${esc(fechaLarga(fecha))}">${svg('imprimir')} Imprimir</button></div>${tablaSustituciones(fecha)}`);
 
-  html += plegable('s-ahora', 'Ahora', 'azul', `<span class="chip azul">${esc(tr.tramo?.etiqueta || '')}</span>`, true,
+  html += plegable('s-ahora', 'Ahora', 'azul', fueraDeJornada(fecha) ? '<span class="chip">Fuera del horario lectivo</span>' : `<span class="chip azul">${esc(tr.tramo?.etiqueta || '')}</span>`, true,
     `<div id="s-ahora-cuerpo">${seccionAhora(fecha, dia)}</div>`, 'sin-panel');
 
   html += plegable('s-recreos', `Recreo · ${esc(DIAS[dia - 1].toLowerCase())}`, 'verde', enRecreo ? '<span class="chip verde">Ahora</span>' : '', enRecreo,
@@ -103,12 +103,14 @@ function enlazarHoy() {
   const tic = () => { const h = $('#hora'); if (h) h.textContent = new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }); };
   tic();
   clearInterval(reloj);
-  let ultimo = tramoActual(ix.tramos).tramo?.id;
+  const clave = () => { const t = tramoActual(ix.tramos); return `${t.tramo?.id}|${t.estado}`; };
+  let ultimo = clave();
   reloj = setInterval(() => {
     if (estado.vista !== 'hoy') return clearInterval(reloj);
     tic();
-    const t = tramoActual(ix.tramos).tramo?.id;
-    if (t !== ultimo && !estado.tramo) { ultimo = t; refrescarAhora(); }
+    const k = clave();
+    // Al cambiar de tramo (o al empezar o acabar la jornada) se repinta «Hoy» sin mover la página.
+    if (k !== ultimo && !estado.tramo) { ultimo = k; const y = scrollY; vHoy(); scrollTo(0, y); }
   }, 20000);
   const ir = f => { estado.fecha = f; estado.tramo = ''; vHoy(); };
   $('#h-fecha').onchange = e => ir(e.target.value || hoyISO());
@@ -188,18 +190,33 @@ function tablaSustituciones(fecha) {
 }
 
 /* ---------- Ahora: clases, dónde está y profesorado fuera de aula ---------- */
+// ¿Estamos fuera de la jornada? (solo cuenta para hoy y si no se ha elegido un tramo a mano)
+function fueraDeJornada(fecha) {
+  if (fecha !== hoyISO()) return false;
+  const ta = tramoActual(ix.tramos);
+  return ta.estado === 'terminado' || (ta.estado === 'siguiente' && ta.tramo === ix.tramos[0]);
+}
+
 function seccionAhora(fecha, dia) {
   const auto = !estado.tramo && fecha === hoyISO();
   const ta = tramoActual(ix.tramos);
   const tramo = estado.tramo ? ix.tramo[estado.tramo] : ta.tramo;
-  const etiqueta = auto ? (ta.estado === 'en_curso' ? 'En curso' : ta.estado === 'siguiente' ? 'Siguiente' : 'Última de la jornada') : 'Seleccionado';
+  const etiqueta = auto ? (ta.estado === 'en_curso' ? 'En curso' : 'Siguiente') : 'Seleccionado';
   const cobs = db.coberturas.filter(c => c.fecha === fecha);
+  const selector = `<select id="a-tramo" aria-label="Tramo"><option value="">${fueraDeJornada(fecha) ? 'Elige un tramo…' : 'Tramo actual'}</option>${ix.tramos.map(t =>
+      `<option value="${t.id}" ${t.id === estado.tramo ? 'selected' : ''}>${esc(t.etiqueta)} (${esc(t.inicio)}–${esc(t.fin)})</option>`).join('')}</select>`;
+  // Fuera del horario lectivo (antes de la 1ª o después de la última) no se muestra ninguna hora.
+  if (!estado.tramo && fueraDeJornada(fecha)) {
+    const lista = ix.tramos;
+    return `<div class="panel"><div class="barra" style="margin-bottom:10px"><span class="tramo-act">Fuera del horario lectivo</span>
+      <span class="chip">${ta.estado === 'terminado' ? 'La jornada ha terminado' : `Empieza a las ${esc(lista[0]?.inicio || '')}`}</span>
+      <span class="sep"></span>${selector}</div>
+      <p class="muted small" style="margin:0">El horario lectivo es de ${esc(lista[0]?.inicio || '')} a ${esc(lista[lista.length - 1]?.fin || '')}. Elige un tramo para ver qué pasa a esa hora.</p></div>`;
+  }
 
   const cab = `<div class="barra" style="margin-bottom:10px">
     <span class="tramo-act">${esc(tramo.etiqueta)} · ${esc(tramo.inicio)}–${esc(tramo.fin)}</span><span class="chip azul">${etiqueta}</span>
-    <span class="sep"></span>
-    <select id="a-tramo" aria-label="Tramo"><option value="">Tramo actual</option>${ix.tramos.map(t =>
-      `<option value="${t.id}" ${t.id === estado.tramo ? 'selected' : ''}>${esc(t.etiqueta)} (${esc(t.inicio)}–${esc(t.fin)})</option>`).join('')}</select></div>`;
+    <span class="sep"></span>${selector}</div>`;
 
   let clases;
   if (!tramo.lectivo) {
