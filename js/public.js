@@ -71,7 +71,7 @@ function vHoy() {
     enlazarHoy(); return;
   }
 
-  // Cada apartado es plegable. Se abren solos si tienen algo; si se pliegan a mano, se respeta mientras se navega.
+  // Cada apartado es plegable y empieza cerrado; lo que se abra a mano se respeta mientras se navega.
   const cobs = db.coberturas.filter(c => c.fecha === fecha);
   const pendientes = nAus ? contarPendientes(fecha) : 0;
   const tr = tramoActual(ix.tramos);
@@ -126,9 +126,10 @@ function enlazarHoy() {
 
 // Estado abierto/cerrado elegido a mano (se mantiene mientras se navega por la página).
 const plegados = {};
-function plegable(id, titulo, color, chips, abrirPorDefecto, cuerpo, extra = '') {
-  const abierto = id in plegados ? plegados[id] : abrirPorDefecto;
-  return `<details class="panel plegable ${extra} ${abrirPorDefecto && id !== 's-ahora' ? 'resaltar r-' + color : ''}" id="${id}" ${abierto ? 'open' : ''}>
+// Todos empiezan plegados; los que tienen algo se resaltan con un borde de color.
+function plegable(id, titulo, color, chips, tieneAlgo, cuerpo, extra = '') {
+  const abierto = id in plegados ? plegados[id] : false;
+  return `<details class="panel plegable ${extra} ${tieneAlgo && id !== 's-ahora' ? 'resaltar r-' + color : ''}" id="${id}" ${abierto ? 'open' : ''}>
     <summary><h2 class="${color}">${titulo}</h2><span class="chips">${chips}</span><span class="flechita" aria-hidden="true"></span></summary>
     <div class="plegable-cuerpo">${cuerpo}</div></details>`;
 }
