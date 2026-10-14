@@ -28,10 +28,49 @@
 </head>
 <body>
   <div id="demo" class="demo" hidden><strong>Modo prueba:</strong> se muestran los horarios importados del PDF; los cambios del panel solo se guardan en este navegador.</div>
-  <header class="top">
-    <a class="marca" href="./"><img class="logo" src="logo.svg" alt="Salesianas Nervión"><h1>Horarios y sustituciones</h1></a>
-    <div class="usuario"><span class="quien" id="curso"></span><a href="admin.html" id="admin-link">Administración</a></div>
+  <header class="top solo-logo">
+    <a class="marca" href="./"><img class="logo" src="logo.svg" alt="Salesianas Nervión"></a>
   </header>
+  <div class="franja">
+    <span class="quien" id="curso"></span>
+    <div class="franja-acc">
+      <button type="button" class="franja-btn" id="instalar" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Instalar como app</button>
+      <a class="franja-btn" href="admin.html" id="admin-link"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Administración</a>
+    </div>
+  </div>
+  <section class="presenta">
+    <div class="presenta-sup">
+      <span class="cartel">Utilidades | Por etapas</span>
+      <div class="etqs"><span class="etq">ESO</span><span class="etq">Bachillerato</span></div>
+    </div>
+    <div class="presenta-cab">
+      <span class="presenta-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+      <div>
+        <h1>Horarios y sustituciones</h1>
+        <p>Sustituciones y avisos del día, dónde está cada compañero/a, horarios de profesorado y grupos, y recreos.</p>
+      </div>
+    </div>
+    <div class="presenta-info">
+      <details class="info-bloque">
+        <summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.9.7 3.1 2.4 3.5 5.2"/></svg><span>Cualquier usuario <small>Acceso: sin inicio de sesión</small></span></summary>
+        <ul>
+          <li><b>Hoy:</b> avisos de jefatura, sustituciones del día, quién está en cada aula ahora y el recreo.</li>
+          <li><b>Sustituciones:</b> el parte de cualquier día.</li>
+          <li><b>Horarios:</b> de profesorado, grupos, recreos y apoyos, coordinación y NL.</li>
+          <li><b>Sábana:</b> todo el profesorado o todos los grupos de un día, tramo a tramo.</li>
+        </ul>
+      </details>
+      <details class="info-bloque">
+        <summary><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Administración <small>Acceso: inicio de sesión con Microsoft 365 (@salesianas.org)</small></span></summary>
+        <ul>
+          <li><b>Ausencias:</b> sustituciones del día, ausencias y bajas, contador y prioridad para sustituir.</li>
+          <li><b>Avisos:</b> para una sustitución concreta (con archivos) y avisos generales.</li>
+          <li><b>Horarios y datos:</b> editar horarios, profesorado, grupos, materias, tramos y personas con acceso.</li>
+          <li><b>Cursos:</b> preparar y activar cursos, exportar e importar (CSV, PDF, aSc, Séneca).</li>
+        </ul>
+      </details>
+    </div>
+  </section>
   <nav class="menu" id="tabs" aria-label="Secciones">
     <button data-v="hoy">Hoy</button>
     <button data-v="sustituciones">Sustituciones</button>
@@ -51,5 +90,23 @@
 
   <footer class="pie">Escuelas Salesianas María Auxiliadora · Nervión (Sevilla)</footer>
   <script type="module" src="js/public.js"></script>
+  <script>
+    // Botón "Instalar como app": Chrome/Edge/Android usan el aviso nativo; en iPhone/iPad se explica cómo hacerlo.
+    (function () {
+      const b = document.getElementById('instalar');
+      const instalada = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+      if (instalada) return;
+      b.hidden = false;
+      let aviso = null;
+      addEventListener('beforeinstallprompt', e => { e.preventDefault(); aviso = e; });
+      const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      b.addEventListener('click', async () => {
+        if (aviso) { aviso.prompt(); await aviso.userChoice; aviso = null; b.hidden = true; }
+        else alert(ios ? 'Para instalarla: pulsa el botón Compartir y elige «Añadir a pantalla de inicio».'
+                       : 'Para instalarla: abre el menú del navegador (⋮) y elige «Instalar aplicación» o «Añadir a pantalla de inicio».');
+      });
+      addEventListener('appinstalled', () => { b.hidden = true; });
+    })();
+  </script>
 </body>
 </html>
