@@ -352,7 +352,7 @@ details.plegable.sin-panel .cols { gap: 12px; }
 .opcion-io.peligro:hover { border-color: var(--rojo); }
 .adjunto { font-size: .8rem; font-weight: 600; color: var(--azul); text-decoration: none; background: var(--panel); border-radius: 7px; padding: 2px 7px; overflow-wrap: anywhere; }
 .adjunto:hover { text-decoration: underline; }
-.sin-sesion .top, .sin-sesion nav.menu { display: none; }
+.sin-sesion nav.menu, .sin-sesion .sesion { display: none; }
 #impresion .oc { overflow-wrap: anywhere; hyphens: auto; } #impresion .celda { min-height: 0; }
 
 /* ─── Portada de la web (como en el portal de utilidades): cabecera solo con el logo, franja verde
@@ -402,3 +402,39 @@ details.plegable.sin-panel .cols { gap: 12px; }
   .presenta-cab { align-items: flex-start; } .presenta h1 { font-size: 1.3rem; } .presenta-ico { width: 46px; height: 46px; }
   .presenta-info { grid-template-columns: 1fr; }
 }
+
+/* Etiqueta de aviso junto al título de una caja */
+.aviso-etq { display: inline-block; margin-left: 6px; vertical-align: 3px; line-height: 1.5; font-style: normal; font-size: .7rem; font-weight: 700;
+  color: #b94a0c; background: var(--naranja-bg); padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+:root[data-theme="dark"] .aviso-etq { color: #fb923c; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aviso-etq { color: #fb923c; } }
+
+/* Nombre de quien ha entrado y «Salir», debajo de la franja y a la derecha (administración) */
+.sesion { display: flex; justify-content: flex-end; align-items: center; gap: 10px; flex-wrap: wrap; padding: 8px 16px; font-size: 13px; }
+.sesion-nombre { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--texto); }
+.sesion-nombre svg, .sesion-salir svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sesion-nombre svg { color: #8a9400; }
+.sesion-salir { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(180, 190, 0, .7); background: var(--panel); color: #6b7200; font: inherit; font-size: 13px; font-weight: 600; }
+.sesion-salir:hover { background: #b4be00; border-color: #b4be00; color: #fff; }
+.sesion + nav.menu, .franja + nav.menu { border-top: 2px solid rgba(180, 190, 0, .55); }
+:root[data-theme="dark"] .sesion-salir, :root[data-theme="dark"] .sesion-nombre svg { color: #cdd640; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sesion-salir, :root:not([data-theme="light"]) .sesion-nombre svg { color: #cdd640; } }
+/* Tarjeta de acceso a la administración, en verde como el resto de la portada */
+.tarjeta h1 { color: #8a9400; }
+#entrar { background: #b4be00; border-color: #b4be00; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.2); box-shadow: 0 6px 16px -6px rgba(140, 150, 0, .6); }
+#entrar:hover { background: #939b00; border-color: #939b00; }
+:root[data-theme="dark"] .tarjeta h1 { color: #cdd640; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tarjeta h1 { color: #cdd640; } }
+@media print { .franja, .sesion, .presenta { display: none !important; } }
+.franja #curso:not(:empty)::before { content: "· "; }
+.sin-sesion .login { min-height: 0; padding: 28px 0; }
+.tarjeta h1 { font-size: 1.5rem; }
+
+/* El cartel es también el camino de vuelta: Utilidades (portal) | apartado */
+.cartel { display: inline-flex; align-items: center; gap: .45rem; }
+.cartel a { display: inline-flex; align-items: center; gap: .3rem; color: inherit; text-decoration: none; border-radius: 4px; }
+.cartel a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.cartel a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.cartel svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.cartel .sep { opacity: .6; }
