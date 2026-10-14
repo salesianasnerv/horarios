@@ -8,7 +8,8 @@ import { $, $$, esc, svg, activarImpresion, horarioSemanal, bloqueOcupacion, nom
 
 let db, ix;
 const estado = { vista: 'hoy', fecha: hoyISO(), tramo: '', tipo: 'docente', id: '', sabDia: 0, sabModo: 'docentes', susFecha: hoyISO() };
-const VISTAS = ['hoy', 'horarios', 'sabana', 'sustituciones', 'recreos'];
+const VISTAS = ['hoy', 'sustituciones', 'profesorado', 'grupos', 'recreos', 'apoyos', 'sabana'];
+const DE_HORARIOS = ['profesorado', 'grupos', 'recreos', 'apoyos'];
 
 async function cargar() {
   db = await D.cargarCurso();
@@ -20,18 +21,30 @@ async function cargar() {
 function leerHash() {
   let [v, a, b] = location.hash.replace(/^#\/?/, '').split('/').map(decodeURIComponent);
   if (v === 'ahora') v = 'hoy';
+  if (v === 'horarios') { v = a === 'grupo' ? 'grupos' : 'profesorado'; a = b; } // direcciones antiguas
   if (VISTAS.includes(v)) estado.vista = v;
-  if (v === 'horarios' && a) { estado.tipo = a === 'grupo' ? 'grupo' : 'docente'; estado.id = b || ''; }
+  if (v === 'profesorado' || v === 'grupos') {
+    const tipo = v === 'grupos' ? 'grupo' : 'docente';
+    if (estado.tipo !== tipo) estado.id = '';
+    estado.tipo = tipo;
+    if (a) estado.id = a;
+  }
 }
 function irA(v, extra = '') {
+  if (v === 'profesorado' || v === 'grupos') {
+    const tipo = v === 'grupos' ? 'grupo' : 'docente';
+    if (estado.tipo !== tipo) { estado.tipo = tipo; estado.id = ''; }
+  }
   const h = '#/' + v + (extra ? '/' + extra : '');
   if (location.hash !== h) history.replaceState(null, '', h);
   estado.vista = v; pintar();
 }
 function pintar() {
-  $$('#tabs button').forEach(b => b.classList.toggle('activa', b.dataset.v === estado.vista));
+  $$('#tabs [data-v]').forEach(b => b.classList.toggle(b.closest('.desplegable') ? 'activo' : 'activa', b.dataset.v === estado.vista));
+  $('#tabs [data-menu]').classList.toggle('activa', DE_HORARIOS.includes(estado.vista));
+  $$('#tabs .menu-g').forEach(m => m.classList.remove('abierto'));
   if (!db.curso || !ix.tramos.length) { $('#vista').innerHTML = '<p class="vacio">Todavía no se han publicado los horarios de este curso.</p>'; return; }
-  ({ hoy: vHoy, horarios: vHorarios, sabana: vSabana, sustituciones: vSustituciones, recreos: vRecreos })[estado.vista]();
+  ({ hoy: vHoy, profesorado: vHorarios, grupos: vHorarios, sabana: vSabana, sustituciones: vSustituciones, recreos: vRecreos, apoyos: vApoyos })[estado.vista]();
 }
 
 const hue = m => { let h = 0; for (const ch of m || '') h = (h * 31 + ch.charCodeAt(0)) % 360; return h; };
@@ -312,12 +325,12 @@ function dondeEsta(id) {
   }
   const aqui = ocupacionesDe(db, id, fecha, dia).filter(o => o.tramo_id === tramo.id);
   if (aqui.length) return aqui.map(o => bloqueOcupacion(ix, o, { vista: 'docente', extra: aulaDe(o) ? `<div class="g">Aula ${esc(aulaDe(o))}</div>` : '' })).join('') +
-    `<p class="small" style="margin:8px 0 0"><a href="#/horarios/docente/${id}">Ver su horario completo</a></p>`;
+    `<p class="small" style="margin:8px 0 0"><a href="#/profesorado/${id}">Ver su horario completo</a></p>`;
   if (!tramo.lectivo) {
     const r = db.turnos_recreo.filter(t => t.dia === dia && t.docente_id === id);
     if (r.length) return r.map(t => `<div class="oc t-otro"><span class="m">Recreo</span><div class="g">${esc(ix.zona[t.zona_id]?.patio)} · ${esc(ix.zona[t.zona_id]?.nombre)}</div></div>`).join('');
   }
-  return `<p class="muted small">Sin ocupación en este tramo. <a href="#/horarios/docente/${id}">Ver horario</a></p>`;
+  return `<p class="muted small">Sin ocupación en este tramo. <a href="#/profesorado/${id}">Ver horario</a></p>`;
 }
 
 /* ---------- Recreos: ESO y Bachillerato por separado ---------- */
@@ -361,9 +374,9 @@ document.addEventListener('click', e => {
 /* ---------- HORARIOS ---------- */
 function vHorarios() {
   const v = $('#vista');
-  if (!estado.id) estado.id = estado.tipo === 'docente' ? (ix.docentes[0]?.id || '') : (ix.grupos[0]?.id || '');
+  if (!estado.id) estado.id = estado.tipo === 'docente' ? (ix.alfabetico.find(d => d.activo !== false)?.id || '') : (ix.grupos[0]?.id || '');
   const opciones = estado.tipo === 'docente'
-    ? ix.docentes.filter(d => d.activo !== false).map(d => `<option value="${d.id}" ${d.id === estado.id ? 'selected' : ''}>${esc(d.nombre)}</option>`).join('')
+    ? ix.alfabetico.filter(d => d.activo !== false).map(d => `<option value="${d.id}" ${d.id === estado.id ? 'selected' : ''}>${esc(d.nombre)}</option>`).join('')
     : opcionesGrupos(ix, estado.id);
   const hoy = hoyISO();
   let nota = '';
@@ -379,7 +392,6 @@ function vHorarios() {
   const titulo = estado.tipo === 'docente' ? nombre(ix, estado.id) : ix.grp[estado.id]?.nombre;
   v.innerHTML = `<div class="panel">
     <div class="barra">
-      <div class="seg"><button data-t="docente" class="${estado.tipo === 'docente' ? 'activa' : ''}">Profesorado</button><button data-t="grupo" class="${estado.tipo === 'grupo' ? 'activa' : ''}">Grupos</button></div>
       <select id="h-sel" aria-label="Elegir">${opciones}</select>
       <span class="sep"></span>
       <button class="btn" data-imprimir data-sub="${estado.tipo === 'docente' ? 'Horario del profesor/a' : 'Horario del grupo'}">${svg('imprimir')} Imprimir</button>
@@ -387,8 +399,7 @@ function vHorarios() {
     <h2>${esc(titulo || '')}</h2>${nota}
     ${horarioSemanal(db, ix, { tipo: estado.tipo, id: estado.id, fecha: hoy })}
   </div>`;
-  $$('.seg button', v).forEach(b => b.onclick = () => { estado.tipo = b.dataset.t; estado.id = ''; vHorarios(); irA('horarios', `${estado.tipo}/${estado.id}`); });
-  $('#h-sel').onchange = e => { estado.id = e.target.value; irA('horarios', `${estado.tipo}/${estado.id}`); };
+  $('#h-sel').onchange = e => { estado.id = e.target.value; irA(estado.vista, estado.id); };
 }
 
 /* ---------- SÁBANA ---------- */
@@ -442,6 +453,33 @@ function vSabana() {
   $$('#s-modo button').forEach(b => b.onclick = () => { estado.sabModo = b.dataset.m; vSabana(); });
 }
 
+/* ---------- APOYOS, COORDINACIONES Y NO LECTIVAS (consulta) ---------- */
+const OTRAS = ['apoyo', 'coordinacion', 'no_lectiva', 'guardia', 'otro'];
+function vApoyos() {
+  const v = $('#vista');
+  estado.filtroOtras = estado.filtroOtras || 'todas';
+  const vale = o => OTRAS.includes(o.tipo) && (estado.filtroOtras === 'todas' || o.tipo === estado.filtroOtras);
+  const cuenta = k => db.ocupaciones.filter(o => k === 'todas' ? OTRAS.includes(o.tipo) : o.tipo === k).length;
+  const dHoy = diaSemana(hoyISO());
+  const filas = ix.lectivos.map(t => `<tr><th class="tramo"><b>${esc(t.etiqueta)}</b>${esc(t.inicio)}–${esc(t.fin)}</th>${[1, 2, 3, 4, 5].map(d => {
+    const ocs = db.ocupaciones.filter(o => o.dia === d && o.tramo_id === t.id && vale(o))
+      .sort((a, b) => OTRAS.indexOf(a.tipo) - OTRAS.indexOf(b.tipo) || corto(ix, a.docente_id).localeCompare(corto(ix, b.docente_id)));
+    return `<td><div class="celda" style="min-height:40px">${ocs.map(o => `<div class="oc t-${o.tipo}"><span class="m">${esc(corto(ix, o.docente_id))}</span>
+      <div class="g">${esc(TIPOS[o.tipo])}${(o.grupos || []).length ? ' · ' + esc(nombreGrupos(ix, o.grupos)) : ''}${o.detalle && o.detalle !== TIPOS[o.tipo] && !(o.grupos || []).length ? ' · ' + esc(o.detalle) : ''}</div></div>`).join('')}</div></td>`;
+  }).join('')}</tr>`).join('');
+  v.innerHTML = `<div class="panel">
+    <div class="barra">
+      <div class="seg" id="o-f">${[['todas', 'Todas'], ['apoyo', 'Apoyos'], ['coordinacion', 'Coordinación'], ['no_lectiva', 'No lectivas']].map(([k, tx]) =>
+        `<button data-f="${k}" class="${estado.filtroOtras === k ? 'activa' : ''}">${tx} (${cuenta(k)})</button>`).join('')}</div>
+      <span class="sep"></span><button class="btn" data-imprimir data-titulo="Apoyos, coordinaciones y horas no lectivas">${svg('imprimir')} Imprimir</button>
+    </div>
+    <h2>Apoyos, coordinaciones y horas no lectivas</h2>
+    <div class="scroll"><table class="horario"><thead><tr><th class="tramo"></th>${DIAS.map((d, i) => `<th class="${i + 1 === dHoy ? 'hoy' : ''}">${d}</th>`).join('')}</tr></thead><tbody>${filas}</tbody></table></div>
+    <div class="leyenda">${['apoyo', 'coordinacion', 'no_lectiva'].map(k => `<span class="t-${k}"><i></i>${TIPOS[k]}</span>`).join('')}</div>
+  </div>`;
+  $$('#o-f button').forEach(b => b.onclick = () => { estado.filtroOtras = b.dataset.f; vApoyos(); });
+}
+
 /* ---------- SUSTITUCIONES (cualquier día) ---------- */
 function vSustituciones() {
   const v = $('#vista');
@@ -484,7 +522,10 @@ function vRecreos() {
 
 /* ---------- Arranque ---------- */
 (async function () {
-  $$('#tabs button').forEach(b => b.onclick = () => irA(b.dataset.v));
+  $$('#tabs [data-v]').forEach(b => b.onclick = () => irA(b.dataset.v));
+  const g = $('#tabs .menu-g');
+  $('[data-menu]', g).onclick = e => { e.stopPropagation(); g.classList.toggle('abierto'); };
+  document.addEventListener('click', e => { if (!e.target.closest('#tabs .menu-g')) g.classList.remove('abierto'); });
   activarImpresion(() => db?.curso ? `Curso ${db.curso.nombre}` : '');
   try {
     await D.conectar();

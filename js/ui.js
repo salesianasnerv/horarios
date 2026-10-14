@@ -165,7 +165,7 @@ export function horarioSemanal(db, ix, { tipo, id, fecha = null, editable = fals
 }
 
 export function opcionesDocentes(ix, sel = '', { vacio = 'Elige…', soloActivos = false } = {}) {
-  return `<option value="">${esc(vacio)}</option>` + ix.docentes.filter(d => !soloActivos || d.activo !== false)
+  return `<option value="">${esc(vacio)}</option>` + ix.alfabetico.filter(d => !soloActivos || d.activo !== false)
     .map(d => `<option value="${d.id}" ${d.id === sel ? 'selected' : ''}>${esc(d.nombre)}</option>`).join('');
 }
 export function opcionesGrupos(ix, sel = '') {

@@ -9,32 +9,30 @@ Es una web estática (HTML + JavaScript, sin compilación) que se publica en **V
 
 ## Qué tiene
 
-**Parte pública** (`/`): para todo el claustro, sin contraseña.
+**Parte pública** (`/`): para todo el claustro, sin contraseña. Menú: **Hoy · Sustituciones · Horarios ▾ · Sábana**.
 
-- **Hoy**: en una sola página, con accesos rápidos arriba:
+- **Hoy**: apartados plegables (empiezan cerrados y se resaltan si tienen algo):
   - **Avisos** que publica jefatura.
-  - **Sustituciones**: una columna por cada profesor/a ausente y una fila por tramo, con materia (nombre oficial), grupo,
-    aula, quién sustituye y el aviso que haya dejado para esa hora.
-  - **Ahora**: qué tiene cada grupo (por parejas A/B, con las sustituciones aplicadas y quién da apoyo en él),
-    «¿Dónde está…?» y profesorado fuera de aula (los apoyos indican en qué clase están).
-  - **Recreos** del día, ESO y Bachillerato por separado. La «i» de cada zona muestra sus indicaciones.
-  Se actualiza sola: sirve para la pantalla de la sala de profesorado.
-- **Horarios** de cada docente y de cada grupo (en los grupos, con el nombre oficial de cada materia), **Sábana** del día,
-  **Sustituciones** de cualquier fecha y **Recreos** de la semana.
+  - **Sustituciones**: una columna por cada ausente y una fila por tramo, con materia (nombre oficial), grupo, aula,
+    quién sustituye y el aviso/adjuntos de esa hora. Debajo, las ausencias con profesor/a sustituto.
+  - **Ahora**: clases por parejas A/B, «¿Dónde está…?» y profesorado fuera de aula (los apoyos indican en qué clase están).
+    Fuera del horario lectivo no muestra ninguna hora.
+  - **Recreo** del día, ESO y Bachillerato por separado.
+- **Sustituciones**: el parte de cualquier día.
+- **Horarios ▾**: *Profesorado* · *Grupos* (con el nombre oficial de cada materia) · *Recreos* · *Apoyos, coordinación y NL*.
+- **Sábana**: todo el profesorado (o todos los grupos) de un día, tramo a tramo.
 
-**Administración** (`/admin.html`, botón «Administración» arriba a la derecha):
+**Administración** (`/admin.html`): menús desplegables.
 
-- **Ausencias**: *Sustituciones del día* (candidatos por prioridad y por quien menos lleva, autoasignar, imprimir parte)
-  · *Ausencias y bajas* (puntuales o largas con periodo y sustituto/a que hereda el horario; motivo privado)
-  · *Contador* (horas cubiertas y horas sustituidas por persona, CSV) · *Prioridad para sustituir*.
-  Quien tiene un hueco libre no se propone ni se autoasigna (es su tiempo personal).
-- **Avisos**: *Para una sustitución* (lo que mande el profesor/a ausente para una hora concreta, con archivos adjuntos:
-  fichas, imágenes, PDF… hasta 10 MB) · *Avisos generales* (con fechas y opción «importante»). Todo sale en «Hoy».
-- **Horarios**: *Horario* editable por profesorado o por grupos (con avisos de solapamientos) · *Recreos* · *Apoyos,
-  coordinación y NL* (rejilla editable como el documento de jefatura).
-- **Datos**: *Profesorado* · *Grupos, materias y tramos* (aulas, tutorías, nombres oficiales por curso) · *Cursos*
-  (preparar el curso siguiente, activarlo, copias de seguridad, importar XML de aSc, administradores).
-- **Nuevo horario**: reservado para la futura herramienta de creación de horarios.
+- **Ausencias**: Sustituciones del día · Ausencias y bajas · Contador · Prioridad para sustituir.
+- **Avisos**: Para una sustitución (texto y archivos para una hora concreta) · Avisos generales.
+- **Horarios**: Profesorado · Grupos · Recreos · Apoyos, coordinación y NL (todo editable).
+- **Datos**: Profesorado · Grupos (tutoría y aula) · Materias (nombre oficial por curso y quién la da en cada grupo, sacado
+  de los horarios) · Tramos horarios · Personas con acceso.
+- **Cursos**: Curso académico (preparar y activar cursos) · Exportar / importar (copia, CSV, PDF y XML de aSc, Séneca) ·
+  Nuevo horario (enlace a la herramienta de creación de horarios, proyecto aparte: `nuevoHorarioUrl` en `config.js`).
+
+Todo lo imprimible sale con plantilla corporativa (logo, cabecera y pie), ajustado a una o dos páginas.
 
 Sin base de datos configurada, la web funciona en **modo demostración** (lee `data/seed.json` y los cambios se quedan en el navegador).
 Así se puede probar todo antes de instalarlo.
@@ -60,7 +58,7 @@ de esta web llevan el prefijo `hor_` y no tocan las de las demás.
 
 1. En Supabase, abre el proyecto **«Acceso Microsoft 365»** → **SQL Editor → New query**, pega
    [`supabase/schema.sql`](supabase/schema.sql) y pulsa *Run*. Crea las tablas y da acceso de administración a
-   Marián, Laura R., Rocío, Ana F., Ana G. y Miguel Ángel (se puede cambiar después en *Datos → Cursos*).
+   Marián, Laura R., Rocío, Ana F., Ana G. y Miguel Ángel (se puede cambiar después en *Datos → Personas con acceso*).
 2. **Authentication → URL Configuration → Redirect URLs**: añade `https://TU-WEB.vercel.app/admin.html`
    (la dirección que dé Vercel en el paso 4). No cambies la *Site URL*: es la del control de baños y se comparte.
    El mismo `schema.sql` crea en *Storage* la carpeta pública `hor-adjuntos` para los archivos de los avisos
@@ -94,7 +92,7 @@ En el repositorio de `claustro-utilidades`, añade una entrada en `utilidades.js
 ## Cada curso nuevo
 
 1. *Curso y datos → Preparar nuevo curso* (p. ej. `2027-2028`), copiando profesorado, grupos, tramos y recreos.
-2. Cárgale los horarios en *Datos → Cursos → Importar*: el **PDF** del horario total de aSc (como el de este curso),
+2. Cárgale los horarios en *Cursos → Exportar / importar*: el **PDF** del horario total de aSc (como el de este curso),
    el **XML de aSc** (*Archivo → Exportar → aSc Horarios XML*) o el **XML de Séneca** (*Utilidades →
    Importación/Exportación → Exportación de horarios*: aporta nombres completos, grupos, tramos y aulas). Antes de
    guardar se muestra un resumen; se conservan las personas existentes, sus ausencias y el contador.
@@ -122,7 +120,7 @@ Conviene revisar en el panel:
 - Los nombres de las materias son los oficiales de la normativa (Anexos de ESO y Bachillerato) y dependen del curso
   (p. ej. «F» es Filosofía en 4º ESO y 1º Bach. y Física en 2º Bach.). En 4º ESO las matemáticas se han separado en
   «MAT A» (Mariola, con alumnado de ambos grupos) y «MAT B» (José Antonio e Isa).
-- Falta indicar el **aula** de cada grupo (*Datos → Grupos, materias y tramos*) para que salga en las sustituciones.
+- Falta indicar el **aula** de cada grupo (*Datos → Grupos*) para que salga en las sustituciones.
 
 ## Estructura
 

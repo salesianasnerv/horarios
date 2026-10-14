@@ -44,7 +44,9 @@ export function indices(db) {
     mat: Object.fromEntries(db.materias.map(m => [m.abrev, m])), materias: db.materias, zona: porId(db.zonas_recreo),
     tramos, lectivos: tramos.filter(t => t.lectivo),
     docentes: [...db.docentes].sort((a, b) => (a.orden ?? 999) - (b.orden ?? 999) || a.nombre.localeCompare(b.nombre)),
-    grupos: [...db.grupos].sort((a, b) => (a.orden ?? 999) - (b.orden ?? 999))
+    grupos: [...db.grupos].sort((a, b) => (a.orden ?? 999) - (b.orden ?? 999)),
+    // Para los desplegables: por orden alfabético del nombre
+    alfabetico: [...db.docentes].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }))
   };
 }
 

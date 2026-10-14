@@ -67,9 +67,9 @@ const IC = {
 const MENU = {
   ausencias: { t: 'Ausencias', subs: [['sustituciones', 'Sustituciones del día', () => vSust(), 'sust', '#009abb'], ['bajas', 'Ausencias y bajas', () => vAusencias(), 'bajas', '#ee712a'], ['contador', 'Contador', () => vContador(), 'contador', '#8a9400'], ['prioridad', 'Prioridad para sustituir', () => vPrioridad(), 'prioridad', '#7a5bc7']] },
   avisos: { t: 'Avisos', subs: [['sustitucion', 'Para una sustitución', () => vAvisosSust(), 'clip', '#ee712a'], ['generales', 'Avisos generales', () => vAvisos(), 'aviso', '#d23c3c']] },
-  horarios: { t: 'Horarios', subs: [['horario', 'Horario de profesorado y grupos', () => vHorarios(), 'horario', '#009abb'], ['recreos', 'Recreos', () => vRecreos(), 'recreo', '#8a9400'], ['otras', 'Apoyos, coordinación y NL', () => vOtras(), 'apoyo', '#ee712a']] },
-  datos: { t: 'Datos', subs: [['profesorado', 'Profesorado', () => vProfes(), 'profes', '#009abb'], ['catalogos', 'Grupos, materias y tramos', () => vCatalogos(), 'catalogo', '#8a9400'], ['cursos', 'Cursos, importar y exportar', () => vCurso(), 'cursos', '#ee712a']] },
-  nuevo: { t: 'Nuevo horario', subs: [['crear', 'Nuevo horario', () => vNuevo(), 'nuevo', '#009abb']] }
+  horarios: { t: 'Horarios', subs: [['profesorado', 'Profesorado', () => { st.modoH = 'docente'; vHorarios(); }, 'profes', '#009abb'], ['grupos', 'Grupos', () => { st.modoH = 'grupo'; vHorarios(); }, 'horario', '#8a9400'], ['recreos', 'Recreos', () => vRecreos(), 'recreo', '#ee712a'], ['otras', 'Apoyos, coordinación y NL', () => vOtras(), 'apoyo', '#7a5bc7']] },
+  datos: { t: 'Datos', subs: [['profesorado', 'Profesorado', () => vProfes(), 'profes', '#009abb'], ['grupos', 'Grupos', () => vCatalogos('grupos'), 'apoyo', '#8a9400'], ['materias', 'Materias', () => vMaterias(), 'catalogo', '#ee712a'], ['tramos', 'Tramos horarios', () => vCatalogos('tramos'), 'bajas', '#7a5bc7'], ['accesos', 'Personas con acceso', () => vCurso('accesos'), 'cursos', '#d23c3c']] },
+  cursos: { t: 'Cursos', subs: [['academico', 'Curso académico', () => vCurso('academico'), 'bajas', '#009abb'], ['datos', 'Exportar / importar', () => vCurso('datos'), 'contador', '#8a9400'], ['nuevo', 'Nuevo horario', () => vNuevo(), 'nuevo', '#ee712a']] }
 };
 function leerRuta() {
   const [c, s] = location.hash.replace(/^#\/?/, '').split('/');
@@ -498,7 +498,7 @@ function descargar(nombreArchivo, contenido, tipo = 'application/json') {
 function vHorarios() {
   const v = $('#vista');
   const porGrupo = st.modoH === 'grupo';
-  if (!st.docH) st.docH = ix.docentes[0]?.id || '';
+  if (!st.docH) st.docH = ix.alfabetico[0]?.id || '';
   if (!st.grpH) st.grpH = ix.grupos[0]?.id || '';
   let selector, titulo;
   if (porGrupo) {
@@ -515,7 +515,6 @@ function vHorarios() {
   }
   v.innerHTML = `<div class="panel">
     <div class="barra">
-      <div class="seg" id="h-modo"><button data-m="docente" class="${porGrupo ? '' : 'activa'}">Por profesorado</button><button data-m="grupo" class="${porGrupo ? 'activa' : ''}">Por grupos</button></div>
       ${selector}
       <span class="sep"></span>
       ${porGrupo ? '' : `<button class="btn" id="h-copiar">Copiar horario de otra persona…</button>`}
@@ -526,7 +525,6 @@ function vHorarios() {
     <div id="h-grid">${horarioSemanal(db, ix, { tipo: porGrupo ? 'grupo' : 'docente', id: porGrupo ? st.grpH : st.docH, editable: true, resaltarHoy: false })}</div>
     <div id="h-avisos"></div>
   </div>`;
-  $$('#h-modo button').forEach(b => b.onclick = () => { st.modoH = b.dataset.m; vHorarios(); });
   if (porGrupo) $('#h-grp').onchange = e => { st.grpH = e.target.value; vHorarios(); };
   else { $('#h-doc').onchange = e => { st.docH = e.target.value; vHorarios(); }; $('#h-copiar').onclick = copiarHorario; }
   $$('.celda.editable', v).forEach(c => c.onclick = () => editarCelda(porGrupo ? { grupo: st.grpH } : { docente: st.docH }, +c.dataset.dia, c.dataset.tramo));
@@ -763,7 +761,7 @@ function vProfes() {
 /* =====================================================================
    CATÁLOGOS: grupos, materias, tramos
    ===================================================================== */
-function vCatalogos() {
+function vCatalogos(parte) {
   const v = $('#vista');
   const tablaEditable = (tabla, cols, filas, titulo, ayuda) => `<div class="panel" data-tabla="${tabla}">
     <div class="barra"><h2 style="margin:0">${titulo}</h2><span class="sep"></span><button class="btn" data-add="${tabla}">${svg('mas')} Añadir</button></div>
@@ -772,21 +770,17 @@ function vCatalogos() {
     ${filas.map(f => `<tr data-id="${f.id}">${cols.map(c => `<td>${c.campo(f)}</td>`).join('')}<td><button class="btn mini peligro" data-del="${f.id}" aria-label="Borrar">${svg('x')}</button></td></tr>`).join('')}
     </tbody></table></div></div>`;
   const txt = (k, w = '') => f => `<input type="text" name="${k}" value="${esc(f[k] ?? '')}" ${w ? `style="width:${w}"` : ''}>`;
-  v.innerHTML =
+  v.innerHTML = parte === 'grupos' ?
     tablaEditable('grupos', [
       { t: 'Orden', campo: txt('orden', '52px') }, { t: 'Nombre', campo: txt('nombre') }, { t: 'Etapa', campo: txt('etapa') },
       { t: 'Tutor/a', campo: f => `<select name="tutor_id">${opcionesDocentes(ix, f.tutor_id || '', { vacio: '—' })}</select>` },
       { t: 'Aula', campo: txt('aula', '110px') }
-    ], ix.grupos, 'Grupos', 'El aula de cada grupo aparece en «Hoy» junto a cada sustitución.') +
-    tablaEditable('materias', [{ t: 'Siglas', campo: txt('abrev', '90px') }, { t: 'Nombre oficial', campo: txt('nombre') },
-      { t: 'Cursos', campo: f => `<input type="text" name="niveles" value="${esc((f.niveles || []).join(', '))}" placeholder="Todos" style="width:170px">` }],
-      [...db.materias].sort((a, b) => a.abrev.localeCompare(b.abrev) || (a.niveles || []).join().localeCompare((b.niveles || []).join())), 'Materias',
-      'Las siglas son las de aSc. Si una sigla tiene distinto nombre según el curso, añade una fila por curso (p. ej. «LyL» · «Lengua Castellana y Literatura I» · «1º Bach.»). Cursos vacío = todos los demás.') +
+    ], ix.grupos, 'Grupos', 'El aula de cada grupo aparece en «Hoy» junto a cada sustitución.') :
     tablaEditable('tramos', [
       { t: 'Orden', campo: txt('orden', '52px') }, { t: 'Etiqueta', campo: txt('etiqueta') },
       { t: 'Inicio', campo: f => `<input type="time" name="inicio" value="${f.inicio}">` }, { t: 'Fin', campo: f => `<input type="time" name="fin" value="${f.fin}">` },
       { t: 'Lectivo', campo: f => `<input type="checkbox" name="lectivo" ${f.lectivo ? 'checked' : ''}>` }
-    ], ix.tramos, 'Tramos horarios', 'Marca como no lectivo el recreo. «Ahora» usa estas horas para saber qué tramo está en curso.');
+    ], ix.tramos, 'Tramos horarios', 'Marca como no lectivo el recreo. «Hoy» usa estas horas para saber qué tramo está en curso.');
 
   $$('[data-tabla]', v).forEach(p => {
     const tabla = p.dataset.tabla;
@@ -803,7 +797,7 @@ function vCatalogos() {
       const nuevo = tabla === 'grupos' ? { id: uid('g'), nombre: 'Nuevo grupo', etapa: '', orden: n, tutor_id: null, aula: '' }
         : tabla === 'materias' ? { id: uid('m'), abrev: 'NUEVA', nombre: '', niveles: [] }
           : { id: uid('t'), orden: n, etiqueta: `${n}ª`, inicio: '14:30', fin: '15:30', lectivo: true };
-      await seguro(() => guardarFilas(tabla, nuevo)); vCatalogos();
+      await seguro(() => guardarFilas(tabla, nuevo)); pintar();
     };
     $$('[data-del]', p).forEach(b => b.onclick = async () => {
       const id = b.dataset.del;
@@ -811,8 +805,79 @@ function vCatalogos() {
         : tabla === 'tramos' ? db.ocupaciones.some(o => o.tramo_id === id) : false;
       if (usado) return toast('Está en uso en algún horario: quítalo de los horarios antes de borrarlo.', true);
       if (!await confirmar('¿Borrar?', 'Borrar', true)) return;
-      await seguro(() => borrarFilas(tabla, id), 'Borrado'); vCatalogos();
+      await seguro(() => borrarFilas(tabla, id), 'Borrado'); pintar();
     });
+  });
+}
+
+/* =====================================================================
+   MATERIAS: nombre oficial y quién la da en cada grupo (sale del horario)
+   ===================================================================== */
+const nivelDe = gid => (ix.grp[gid]?.nombre || '').replace(/\s+[A-Z]$/, '');
+function vMaterias() {
+  const v = $('#vista');
+  const abrevs = [...new Set([...db.materias.map(m => m.abrev), ...db.ocupaciones.filter(o => o.materia).map(o => o.materia)])].sort((a, b) => a.localeCompare(b));
+  st.matFiltro = st.matFiltro || '';
+  const tarjetas = abrevs.filter(ab => !st.matFiltro || normal(ab + ' ' + db.materias.filter(m => m.abrev === ab).map(m => m.nombre).join(' ')).includes(normal(st.matFiltro))).map(ab => {
+    const ocs = db.ocupaciones.filter(o => o.materia === ab && LECTIVAS.has(o.tipo));
+    // Quién la da y en qué grupos
+    const porDoc = {};
+    for (const o of ocs) {
+      const d = (porDoc[o.docente_id] = porDoc[o.docente_id] || { horas: 0, grupos: new Set() });
+      d.horas++; (o.grupos || []).forEach(g => d.grupos.add(g));
+    }
+    // Nombre oficial por curso: un nombre para cada curso donde se imparte
+    const niveles = [...new Set(ocs.flatMap(o => (o.grupos || []).map(nivelDe)))].sort();
+    const filasNombre = (niveles.length ? niveles : ['']).map(n => {
+      const nom = nombreMateria(ix, ab, ocs.find(o => (o.grupos || []).some(g => nivelDe(g) === n))?.grupos || []);
+      return `<label class="campo fila" style="color:var(--texto);font-weight:500"><span style="min-width:74px" class="muted small">${esc(n || 'Nombre')}</span>
+        <input type="text" data-nombre="${esc(ab)}" data-nivel="${esc(n)}" value="${esc(nom === ab ? '' : nom)}" placeholder="Nombre oficial" style="flex:1"></label>`;
+    }).join('');
+    const quien = Object.entries(porDoc).sort((a, b) => b[1].horas - a[1].horas).map(([d, x]) =>
+      `<li><span><b>${esc(nombre(ix, d))}</b> <span class="d">${x.horas} h</span></span><span class="chips">${[...x.grupos].sort((a, b) => (ix.grp[a]?.orden || 0) - (ix.grp[b]?.orden || 0)).map(g => `<span class="chip azul">${esc(ix.grp[g]?.nombre || g)}</span>`).join('')}</span></li>`).join('');
+    return `<div class="panel" style="margin-bottom:10px">
+      <div class="barra" style="margin-bottom:6px"><h2 style="margin:0">${esc(ab)}</h2><span class="chip">${ocs.length} h/semana</span><span class="sep"></span>
+        ${ocs.length ? '' : `<button class="btn mini peligro" data-delmat="${esc(ab)}">Borrar</button>`}</div>
+      <div class="cols" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)">
+        <div><h3 style="margin-top:0">Nombre oficial${niveles.length > 1 ? ' por curso' : ''}</h3>${filasNombre}</div>
+        <div><h3 style="margin-top:0">Quién la da</h3>${quien ? `<ul class="lista">${quien}</ul>` : '<p class="muted small">Todavía no está en ningún horario.</p>'}</div>
+      </div></div>`;
+  }).join('');
+  v.innerHTML = `<div class="panel">
+    <div class="barra"><h2 style="margin:0">Materias</h2><input type="search" id="m-buscar" placeholder="Buscar materia…" value="${esc(st.matFiltro)}"><span class="sep"></span>
+      <button class="btn" id="m-nueva">${svg('mas')} Nueva materia</button></div>
+    <p class="sub">Cada materia muestra quién la da y en qué grupos. Esa relación sale directamente de los horarios: para cambiar quién da una materia o dónde,
+      edítalo en <i>Horarios</i> y aquí se actualiza solo. Si una materia cambia de nombre según el curso (p. ej. Lengua Castellana y Literatura I en 1º Bach.), aparece una línea por curso.</p>
+  </div>${tarjetas || '<p class="vacio">No hay materias.</p>'}`;
+  const b = $('#m-buscar'); b.oninput = () => { st.matFiltro = b.value; const pos = b.selectionStart; vMaterias(); const n = $('#m-buscar'); n.focus(); n.setSelectionRange(pos, pos); };
+  $$('[data-nombre]', v).forEach(inp => inp.onchange = async () => {
+    const ab = inp.dataset.nombre, niv = inp.dataset.nivel, nom = inp.value.trim() || ab;
+    const filas = db.materias.filter(m => m.abrev === ab);
+    const general = filas.find(m => !(m.niveles || []).length);
+    const propia = filas.find(m => (m.niveles || []).includes(niv));
+    let fila;
+    if (!niv) fila = { ...(general || { id: uid('m'), abrev: ab, niveles: [] }), nombre: nom };
+    else if (propia && propia.niveles.length === 1) fila = { ...propia, nombre: nom };
+    else {
+      // Separar este curso de la fila compartida
+      if (propia) await guardarFilas('materias', { ...propia, niveles: propia.niveles.filter(n => n !== niv) });
+      fila = { id: uid('m'), abrev: ab, nombre: nom, niveles: [niv] };
+    }
+    await seguro(() => guardarFilas('materias', fila), 'Nombre guardado');
+  });
+  $('#m-nueva').onclick = async () => {
+    const r = await modal({ titulo: 'Nueva materia', contenido: `<div class="form-grid"><label class="campo">Siglas<input type="text" name="abrev" placeholder="p. ej. LAT"></label>
+      <label class="campo">Nombre oficial<input type="text" name="nombre" placeholder="Latín"></label></div>
+      <p class="small muted" style="margin:0">Después, ponla en los horarios (Horarios → Profesorado o Grupos) y aquí aparecerá quién la da.</p>`,
+      validar: (b, d) => { const ab = d.querySelector('[name=abrev]').value.trim(); return !ab ? 'Escribe las siglas.' : ix.mat[ab] ? 'Ya existe una materia con esas siglas.' : null; } });
+    if (!r) return;
+    const q = n => r.form.querySelector(`[name=${n}]`).value.trim();
+    await seguro(() => guardarFilas('materias', { id: uid('m'), abrev: q('abrev'), nombre: q('nombre') || q('abrev'), niveles: [] }), 'Materia creada');
+    vMaterias();
+  };
+  $$('[data-delmat]', v).forEach(btn => btn.onclick = async () => {
+    if (!await confirmar(`¿Borrar la materia ${btn.dataset.delmat}?`, 'Borrar', true)) return;
+    await seguro(() => borrarFilas('materias', db.materias.filter(m => m.abrev === btn.dataset.delmat).map(m => m.id)), 'Borrada'); vMaterias();
   });
 }
 
@@ -895,26 +960,27 @@ function vPrioridad() {
    NUEVO HORARIO (próximamente)
    ===================================================================== */
 function vNuevo() {
-  $('#vista').innerHTML = `<div class="panel" style="max-width:720px">
+  const url = D.config().nuevoHorarioUrl;
+  $('#vista').innerHTML = `<div class="panel" style="max-width:760px">
     <h2 class="naranja">Nuevo horario</h2>
-    <p>Aquí irá la herramienta para <b>crear los horarios</b> del curso siguiente (asignar materias y horas a cada grupo y profesor/a
-      y generar el horario), al estilo de <a href="https://horarium-edu.lovable.app" target="_blank" rel="noopener">Horarium</a>.</p>
-    <p class="muted">Cuando esté lista, el horario generado se podrá volcar directamente en un curso nuevo de esta aplicación.
-      Mientras tanto, los horarios se cargan importando el XML de aSc (Datos → Cursos) o editándolos en Horarios.</p>
-    <span class="chip naranja">Próximamente</span>
+    <p>La herramienta para <b>crear los horarios</b> del curso siguiente será un proyecto aparte. Desde aquí se abrirá y, cuando el horario esté
+      terminado, se exportará para cargarlo en <i>Cursos → Exportar / importar</i> (en un curso nuevo preparado en <i>Cursos → Curso académico</i>).</p>
+    ${url ? `<a class="btn pri" href="${esc(url)}" target="_blank" rel="noopener">Abrir la herramienta de horarios</a>`
+      : '<span class="chip naranja">Próximamente</span><p class="small muted">Cuando exista, basta con poner su dirección en <code>config.js</code> (<code>nuevoHorarioUrl</code>) y aparecerá aquí el botón.</p>'}
   </div>`;
 }
 
 /* =====================================================================
    CURSO Y DATOS
    ===================================================================== */
-async function vCurso() {
+async function vCurso(parte = 'academico') {
   const v = $('#vista');
   let admins = [];
-  try { admins = await D.listarAdmins(); } catch {}
-  v.innerHTML = `
+  if (parte === 'accesos') try { admins = await D.listarAdmins(); } catch {}
+  const P = {};
+  P.academico = `
   <div class="panel">
-    <h2>Cursos</h2>
+    <h2>Cursos académicos</h2>
     <p class="sub">Cada curso guarda su propio profesorado, horarios, ausencias y contador. El curso activo es el que ve el claustro.</p>
     <div class="tabla-wrap"><table class="datos"><thead><tr><th>Curso</th><th>Inicio</th><th>Fin</th><th>Estado</th><th></th></tr></thead><tbody>
       ${db.cursos.map(c => `<tr><td><b>${esc(c.nombre)}</b></td><td>${esc(fechaCorta(c.inicio))}</td><td>${esc(fechaCorta(c.fin))}</td>
@@ -925,8 +991,8 @@ async function vCurso() {
           ${!c.activo ? `<button class="btn mini peligro" data-borrar="${c.id}">Borrar</button>` : ''}</td></tr>`).join('')}
     </tbody></table></div>
     <div class="barra" style="margin-top:12px"><button class="btn pri" id="k-nuevo">${svg('mas')} Preparar nuevo curso</button></div>
-  </div>
-
+  </div>`;
+  P.datos = `
   <div class="panel">
     <h2 class="verde">Exportar</h2>
     <p class="sub">Descarga los datos del curso que estás viendo (${esc(db.curso.nombre)}).</p>
@@ -947,28 +1013,30 @@ async function vCurso() {
     </div>
     <p class="small muted" id="k-estado"></p>
   </div>
-
-  <div class="panel">
-    <h2 class="rojo">Personas con acceso a la administración</h2>
-    <p class="sub">Correos de Microsoft 365 que pueden entrar a este panel.</p>
-    ${D.esDemo() ? '<p class="muted small">En modo demostración no se piden credenciales.</p>' : ''}
-    <ul class="lista" style="max-width:460px">${admins.map(a => `<li><span>${esc(a.email)}</span><button class="btn mini peligro" data-qadm="${esc(a.email)}">Quitar</button></li>`).join('') || '<li class="muted">Ninguna</li>'}</ul>
-    <div class="barra" style="margin-top:10px"><input type="email" id="k-adm" placeholder="nombre@colegio.org" style="min-width:260px"><button class="btn" id="k-add">Añadir</button></div>
-  </div>
   ${D.esDemo() ? `<div class="panel"><h2>Modo demostración</h2><p class="sub">Vuelve a cargar los datos originales importados del PDF (borra los cambios hechos en este navegador).</p>
     <button class="btn peligro" id="k-reset">Restablecer datos de demostración</button></div>` : ''}`;
+  P.accesos = `
+  <div class="panel">
+    <h2 class="rojo">Personas con acceso a la administración</h2>
+    <p class="sub">Correos de Microsoft 365 que pueden entrar a este panel (además de la propia web, Supabase solo admite cuentas @salesianas.org).</p>
+    ${D.esDemo() ? '<p class="muted small">En modo demostración no se piden credenciales.</p>' : ''}
+    <ul class="lista" style="max-width:460px">${admins.map(a => `<li><span>${esc(a.email)}</span><button class="btn mini peligro" data-qadm="${esc(a.email)}">Quitar</button></li>`).join('') || '<li class="muted">Ninguna</li>'}</ul>
+    <div class="barra" style="margin-top:10px"><input type="email" id="k-adm" placeholder="nombre@salesianas.org" style="min-width:260px"><button class="btn" id="k-add">Añadir</button></div>
+  </div>`;
+  v.innerHTML = P[parte];
+  const en = (sel, ev, fn) => { const e = $(sel); if (e) e[ev] = fn; };
 
-  $$('[data-ver]', v).forEach(b => b.onclick = async () => { st.cursoId = b.dataset.ver; await recargar(); vCurso(); });
+  $$('[data-ver]', v).forEach(b => b.onclick = async () => { st.cursoId = b.dataset.ver; await recargar(); pintar(); });
   $$('[data-act]', v).forEach(b => b.onclick = async () => {
     if (!await confirmar('¿Activar este curso? Será el que vea todo el claustro.', 'Activar')) return;
-    await seguro(() => D.activarCurso(b.dataset.act), 'Curso activado'); st.cursoId = b.dataset.act; await recargar(); vCurso();
+    await seguro(() => D.activarCurso(b.dataset.act), 'Curso activado'); st.cursoId = b.dataset.act; await recargar(); pintar();
   });
   $$('[data-borrar]', v).forEach(b => b.onclick = async () => {
     const c = db.cursos.find(x => x.id === b.dataset.borrar);
     if (!await confirmar(`¿Borrar el curso ${c.nombre} con todos sus datos? No se puede deshacer. Descarga antes una copia si la necesitas.`, 'Borrar definitivamente', true)) return;
     await seguro(() => D.borrarCursoCompleto(c.id), 'Curso borrado');
     if (st.cursoId === c.id) st.cursoId = null;
-    await recargar(); vCurso();
+    await recargar(); pintar();
   });
   $$('[data-fechas]', v).forEach(b => b.onclick = async () => {
     const c = db.curso;
@@ -977,16 +1045,16 @@ async function vCurso() {
     if (!r) return;
     const q = n => r.form.querySelector(`[name=${n}]`).value;
     await seguro(() => D.guardarCurso({ ...c, nombre: q('nombre'), inicio: q('inicio') || null, fin: q('fin') || null }), 'Guardado');
-    await recargar(); vCurso();
+    await recargar(); pintar();
   });
-  $('#k-nuevo').onclick = nuevoCurso;
-  $('#k-exp').onclick = () => {
+  en('#k-nuevo', 'onclick', nuevoCurso);
+  en('#k-exp', 'onclick', () => {
     const out = { version: 1, centro: D.config().centro, curso: db.curso, config: db.config, exportado: new Date().toISOString() };
     for (const t of D.TABLAS) out[t] = db[t].map(({ curso_id, ...x }) => x);
     out.motivos = db.motivos;
     descargar(`horarios_${db.curso.nombre}_${hoyISO()}.json`, JSON.stringify(out, null, 1));
-  };
-  $('#k-imp').onchange = async e => {
+  });
+  en('#k-imp', 'onchange', async e => {
     const f = e.target.files[0]; if (!f) return;
     let datos; try { datos = JSON.parse(await f.text()); } catch { return toast('El archivo no es un JSON válido.', true); }
     if (!datos.docentes || !datos.ocupaciones) return toast('El archivo no parece una copia de esta aplicación.', true);
@@ -996,9 +1064,9 @@ async function vCurso() {
       for (const [k, val] of Object.entries(datos.config || {})) await D.guardarConfig(k, val, cid());
       for (const [id, m] of Object.entries(datos.motivos || {})) await D.guardarMotivo(id, m, cid());
     }, 'Copia restaurada');
-    await recargar(); vCurso();
-  };
-  $('#k-csv').onclick = () => {
+    await recargar(); pintar();
+  });
+  en('#k-csv', 'onclick', () => {
     const filas = [['Docente', 'Día', 'Tramo', 'Inicio', 'Tipo', 'Materia', 'Grupos', 'Subgrupo', 'Aula', 'Detalle']];
     const orden = o => (ix.doc[o.docente_id]?.orden || 0) * 1000 + o.dia * 100 + (ix.tramo[o.tramo_id]?.orden || 0);
     for (const o of [...db.ocupaciones].sort((a, b) => orden(a) - orden(b))) {
@@ -1006,29 +1074,29 @@ async function vCurso() {
       filas.push([nombre(ix, o.docente_id), DIAS[o.dia - 1], t?.etiqueta || '', t?.inicio || '', TIPOS[o.tipo] || o.tipo, o.materia || '', nombreGrupos(ix, o.grupos), o.subgrupo || '', o.aula || '', o.detalle || '']);
     }
     descargar(`horarios_${db.curso.nombre}.csv`, '\ufeff' + filas.map(r => r.map(x => `"${String(x).replace(/"/g, '""')}"`).join(';')).join('\r\n'), 'text/csv');
-  };
+  });
   const leer = async (input, fn, origen) => {
     const f = input.files[0]; input.value = ''; if (!f) return;
     const est = $('#k-estado');
     try { est.textContent = 'Leyendo el archivo…'; const res = await fn(f, m => { est.textContent = m; }); est.textContent = ''; await aplicarImportacion(res, origen); }
     catch (err) { console.error(err); est.textContent = ''; toast(err.message || String(err), true); }
   };
-  $('#k-pdf').onchange = e => leer(e.target, importarPdfAsc, 'PDF de aSc');
-  $('#k-asc').onchange = e => leer(e.target, async f => importarAsc(await f.text()), 'XML de aSc');
-  $('#k-sen').onchange = e => leer(e.target, leerArchivoSeneca, 'Séneca');
-  $('#k-add').onclick = async () => {
+  en('#k-pdf', 'onchange', e => leer(e.target, importarPdfAsc, 'PDF de aSc'));
+  en('#k-asc', 'onchange', e => leer(e.target, async f => importarAsc(await f.text()), 'XML de aSc'));
+  en('#k-sen', 'onchange', e => leer(e.target, leerArchivoSeneca, 'Séneca'));
+  en('#k-add', 'onclick', async () => {
     const e = $('#k-adm').value.trim();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) return toast('Escribe un correo válido.', true);
-    await seguro(() => D.guardarAdmin(e), 'Acceso concedido'); vCurso();
-  };
+    await seguro(() => D.guardarAdmin(e), 'Acceso concedido'); pintar();
+  });
   $$('[data-qadm]', v).forEach(b => b.onclick = async () => {
     if (!await confirmar(`¿Quitar el acceso a ${b.dataset.qadm}?`, 'Quitar', true)) return;
-    await seguro(() => D.borrarAdmin(b.dataset.qadm), 'Acceso retirado'); vCurso();
+    await seguro(() => D.borrarAdmin(b.dataset.qadm), 'Acceso retirado'); pintar();
   });
   const reset = $('#k-reset');
   if (reset) reset.onclick = async () => {
     if (!await confirmar('¿Restablecer los datos de demostración? Se perderán los cambios hechos en este navegador.', 'Restablecer', true)) return;
-    await D.reiniciarDemo(); st.cursoId = null; await recargar(); toast('Datos restablecidos'); vCurso();
+    await D.reiniciarDemo(); st.cursoId = null; await recargar(); toast('Datos restablecidos'); pintar();
   };
 }
 
@@ -1135,7 +1203,7 @@ async function aplicarImportacion(res, origen) {
     await borrarFilas('ocupaciones', quitar);
     await guardarFilas('ocupaciones', nuevas);
   }, res.soloCatalogos ? 'Datos completados' : 'Horarios importados');
-  await recargar(); vCurso();
+  await recargar(); pintar();
 }
 
 async function nuevoCurso() {
@@ -1179,7 +1247,7 @@ async function nuevoCurso() {
     if (q('activar').checked) await D.activarCurso(curso.id);
   }, `Curso ${nombreC} creado`);
   st.cursoId = curso.id;
-  await recargar(); vCurso();
+  await recargar(); pintar();
 }
 
 // Base de datos vacía: ofrece cargar los horarios importados del PDF (data/seed.json).
