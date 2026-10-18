@@ -1,7 +1,7 @@
 // Permite instalar Horarios como app y que abra rápido.
 // Los datos siempre se piden en el momento; aquí solo se guarda la «carcasa» de la web.
 // Si cambias la lista de archivos, sube también el número de VERSION.
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE = `horarios-${VERSION}`;
 const CARCASA = ['./', 'index.html', 'css/styles.css', 'config.js', 'js/admin.js', 'js/asc.js', 'js/data.js', 'js/logic.js', 'js/pdfasc.js', 'js/public.js', 'js/seneca.js', 'js/ui.js', 'manifest.json', 'logo.svg', 'favicon-32.png', 'favicon-48.png', 'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png'];
 
