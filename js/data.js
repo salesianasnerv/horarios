@@ -216,10 +216,13 @@ export async function borrarAdjunto(adj) {
 /* ---------- Acceso (Microsoft 365) ---------- */
 export async function sesion() {
   if (modo === 'demo') return { email: 'modo-demostracion', demo: true };
-  const { data } = await sb.auth.getSession();
+  let { data } = await sb.auth.getSession();
+  // Abierta desde la app de Teams: entra sola con la cuenta de Teams
+  if (!data.session && await window.TeamsSSO?.entrar(sb)) ({ data } = await sb.auth.getSession());
   return data.session ? { email: data.session.user.email, nombre: data.session.user.user_metadata?.full_name } : null;
 }
 export async function entrar() {
+  if (await window.TeamsSSO?.entrar(sb)) return location.reload();
   const { error } = await sb.auth.signInWithOAuth({
     provider: 'azure',
     options: { scopes: 'email openid profile', redirectTo: location.origin + location.pathname }
