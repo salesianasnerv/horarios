@@ -1299,7 +1299,11 @@ function primerArranque() {
     return;
   }
   activarImpresion(() => db?.curso ? `Curso ${db.curso.nombre}` : '');
-  if (!D.esDemo()) { $('#usuario').textContent = s.email; $('#salir').hidden = false; $('#salir').onclick = async () => { await D.salir(); location.href = './'; }; }
+  // Nombre de quien ha entrado y botón «Salir», justo debajo de la franja
+  if (!D.esDemo()) {
+    $('#usuario').textContent = s.nombre || s.email; $('#sesion').hidden = false;
+    $('#salir').hidden = false; $('#salir').onclick = async () => { await D.salir(); location.href = './'; };
+  }
   $('#demo').hidden = !D.esDemo();
   $('#app').hidden = false;
   $('#tabs').hidden = false;
