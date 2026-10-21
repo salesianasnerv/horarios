@@ -497,7 +497,7 @@ function vRecreos() {
       return;
     }
     if (!(await D.esPersonal())) {
-      login(`La cuenta <b>${esc(s.email)}</b> no es del personal del colegio.<br><button class="btn" id="otra" style="margin-top:10px">Usar otra cuenta</button>`);
+      login(`Los horarios son del personal de ESO y Bachillerato, y la cuenta <b>${esc(s.email)}</b> no está en esas etapas. Si debería estarlo, pide a Dirección que te añadan al grupo de la etapa.<br><button class="btn" id="otra" style="margin-top:10px">Usar otra cuenta</button>`);
       $('#otra').onclick = async () => { await D.salir(); location.reload(); };
       return;
     }
