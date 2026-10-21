@@ -1,5 +1,5 @@
 // Utilidades de interfaz compartidas por la parte pública y la de administración.
-import { DIAS, DIAS_CORTOS, TIPOS, LECTIVAS, hueMateria, ocupacionesDe, sustitutoLargo, diaSemana, hoyISO } from './logic.js';
+import { DIAS, DIAS_CORTOS, TIPOS, LECTIVAS, hueMateria, ocupacionesDe, sustitutoLargo, diaSemana, hoyISO, ausenteEn, ausenciasDelDia, fechaLarga } from './logic.js';
 
 export const $ = (sel, root = document) => root.querySelector(sel);
 export const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -17,7 +17,8 @@ export const ICON = {
   descargar: '<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
   subir: '<path d="M12 21V9M7 14l5-5 5 5M5 3h14"/>',
   x: '<path d="M6 6l12 12M18 6L6 18"/>',
-  lapiz: '<path d="M4 20h4L19 9l-4-4L4 16z"/>'
+  lapiz: '<path d="M4 20h4L19 9l-4-4L4 16z"/>',
+  enviar: '<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>'
 };
 export const svg = n => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
 
@@ -173,6 +174,58 @@ export function opcionesGrupos(ix, sel = '') {
 }
 export { DIAS, DIAS_CORTOS };
 
+/* ---------- Tabla de sustituciones: una columna por ausente, una fila por tramo ---------- */
+export function tablaSustituciones(db, ix, fecha, { columnas = 0 } = {}) {
+  const aulaDe = o => o.aula || ix.grp[(o.grupos || [])[0]]?.aula || '';
+  const dia = diaSemana(fecha);
+  const aus = ausenciasDelDia(db, fecha);
+  // Primero quienes hay que cubrir hoy; después las bajas que ya tienen sustituto/a.
+  const largo = id => aus.find(a => a.docente_id === id && sustitutoLargo(a, fecha));
+  const ids = [...new Set(aus.map(a => a.docente_id))].filter(id => !largo(id));
+  const conSustituto = aus.filter(a => sustitutoLargo(a, fecha));
+  const bajas = conSustituto.length ? `<h3>Ausencias con profesor/a sustituto</h3><ul class="lista">${conSustituto.map(a =>
+    `<li><span><b>${esc(nombre(ix, a.docente_id))}</b>${a.hasta ? ` <span class="d">hasta el ${esc(fechaLarga(a.hasta).replace(/^\S+ /, ''))}</span>` : ''}</span>
+      <span class="chip morado">Le sustituye ${esc(nombre(ix, sustitutoLargo(a, fecha)))}</span></li>`).join('')}</ul>` : '';
+  if (!ids.length) return '<p class="muted small" style="margin:0">Hoy no hay ausencias que cubrir.</p>' + bajas;
+  const cobs = db.coberturas.filter(c => c.fecha === fecha);
+  const celda = (id, t) => {
+    const l = largo(id);
+    if (!ausenteEn(db, id, fecha, t.id)) return '<td><span class="muted small">Presente</span></td>';
+    const ocs = ocupacionesDe(db, id, fecha, dia).filter(o => o.tramo_id === t.id);
+    if (!ocs.length) return '<td><span class="muted small">—</span></td>';
+    return '<td>' + ocs.map(o => {
+      if (!LECTIVAS.has(o.tipo)) return `<div class="muted small">${esc(TIPOS[o.tipo])}${o.detalle && o.detalle !== TIPOS[o.tipo] ? ' · ' + esc(o.detalle) : ''}${l ? '' : ' <i>(no se cubre)</i>'}</div>`;
+      const aula = aulaDe(o);
+      const datos = `<div class="mat-n">${esc(nombreMateria(ix, o.materia, o.grupos))}</div>
+          <div class="small">${esc(nombreGrupos(ix, o.grupos))}${o.subgrupo ? ' · ' + esc(o.subgrupo) : ''}${aula ? ` · <b>Aula ${esc(aula)}</b>` : ''}</div>`;
+      if (l) return `<div class="sust-celda larga">${datos}<span class="chip morado">${esc(corto(ix, sustitutoLargo(l, fecha)))} (baja)</span></div>`;
+      const c = cobs.find(x => x.ocupacion_id === o.id && x.tramo_id === t.id);
+      return `<div class="sust-celda ${c?.sustituto_id ? 'ok' : 'pend'}">${datos}
+          ${c?.sustituto_id ? `<span class="chip verde">Sustituye: ${esc(corto(ix, c.sustituto_id))}</span>` : '<span class="chip naranja">Pendiente</span>'}
+          ${c?.nota ? `<div class="nota-hora">${esc(c.nota)}</div>` : ''}
+          ${(c?.adjuntos || []).map(x => `<a class="adjunto" href="${esc(x.url)}" target="_blank" rel="noopener" download="${esc(x.nombre)}">📎 ${esc(x.nombre)}</a>`).join('')}</div>`;
+    }).join('') + '</td>';
+  };
+  const notasDe = id => aus.filter(a => a.docente_id === id).map(a => a.nota).filter(Boolean);
+  // Una tabla para un grupo de ausentes: nombres (todos a la misma altura), anotaciones en su propia fila y una fila por tramo.
+  const tabla = grupo => {
+    const cab = grupo.map(id => {
+      const parcial = aus.filter(a => a.docente_id === id).every(a => a.tramos && a.tramos.length);
+      return `<th><span class="aus-nombre">${esc(nombre(ix, id))}</span><span class="muted small">${parcial ? 'Algunas horas' : 'Todo el día'}</span></th>`;
+    }).join('');
+    const notas = grupo.some(id => notasDe(id).length)
+      ? `<tr class="fila-notas"><th class="tramo"><b>Anotaciones</b></th>${grupo.map(id => notasDe(id).length
+        ? `<td><div class="nota-ausencia">${esc(notasDe(id).join(' · '))}</div></td>` : '<td></td>').join('')}</tr>` : '';
+    const filas = ix.lectivos.map(t => `<tr><th class="tramo"><b>${esc(t.etiqueta)}</b>${esc(t.inicio)}–${esc(t.fin)}</th>${grupo.map(id => celda(id, t)).join('')}</tr>`).join('');
+    return `<div class="scroll"><table class="tabla-sust" style="width:${84 + grupo.length * 240}px"><colgroup><col style="width:84px">${grupo.map(() => '<col style="width:240px">').join('')}</colgroup>
+    <thead><tr><th class="tramo"></th>${cab}</tr></thead><tbody>${notas}${filas}</tbody></table></div>`;
+  };
+  // columnas: como mucho tantos ausentes por tabla (en la imagen para Teams, para que no salga demasiado ancha)
+  const grupos = [];
+  for (let k = 0; k < ids.length; k += columnas || ids.length) grupos.push(ids.slice(k, k + (columnas || ids.length)));
+  return grupos.map(tabla).join('<div class="sep-tablas"></div>') + bajas;
+}
+
 /* ---------- Impresión con plantilla corporativa ---------- */
 // Cualquier botón con data-imprimir imprime el bloque (panel o apartado) en el que está, con cabecera
 // (logo, título, fecha y curso) y pie del colegio, ajustado a una página completa (o dos si no cabe).
@@ -277,4 +330,30 @@ export function imprimirBloque(origen, { titulo, subtitulo = '', curso = '' }) {
   const logo = cont.querySelector('img');
   const ir = () => setTimeout(() => print(), 50);
   if (logo.complete) ir(); else { logo.onload = ir; logo.onerror = ir; }
+}
+
+/* ---------- Imagen del parte (para mandarla a Teams) ---------- */
+// Misma plantilla corporativa que al imprimir, pero como imagen PNG: siempre en colores claros y al ancho de la tabla.
+const HTML_A_IMAGEN = 'https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/+esm';
+export async function imagenParte(html, { titulo, subtitulo = '', curso = '' }) {
+  const { toBlob } = await import(HTML_A_IMAGEN);
+  const hoy = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+  const cont = document.createElement('div');
+  cont.className = 'captura-parte';
+  cont.innerHTML = `<header class="imp-cab">
+      <img src="logo.svg" alt="">
+      <div class="imp-tit"><b>${esc(titulo)}</b>${subtitulo ? `<span>${esc(subtitulo)}</span>` : ''}</div>
+      <div class="imp-cen">${esc(CENTRO)}<br>${curso ? esc(curso) + ' · ' : ''}${esc(hoy)}</div>
+    </header><div class="imp-cuerpo">${html}</div>`;
+  // Se pinta fuera de la pantalla dentro de un contenedor (si no, la imagen copiaría también esa posición y saldría vacía)
+  const fuera = document.createElement('div');
+  fuera.className = 'captura-fuera';
+  fuera.appendChild(cont);
+  document.body.appendChild(fuera);
+  try {
+    const logo = cont.querySelector('img');
+    if (!logo.complete) await new Promise(ok => { logo.onload = logo.onerror = ok; });
+    await document.fonts?.ready;
+    return await toBlob(cont, { pixelRatio: 2, backgroundColor: '#ffffff' });
+  } finally { fuera.remove(); }
 }

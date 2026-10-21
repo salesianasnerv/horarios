@@ -213,6 +213,65 @@ export async function borrarAdjunto(adj) {
   await sb.storage.from(BUCKET).remove([adj.ruta]);
 }
 
+/* ---------- Teams: el parte de sustituciones en un canal, a las 7:30 ---------- */
+// La web deja preparado el parte de cada día (imagen + mensaje) en hor_teams_partes y la base de datos lo manda
+// ese día a las 7:30 (supabase/teams.sql). La dirección del flujo de Teams es secreta y solo la conoce la base de datos.
+// En modo demostración los partes se quedan en memoria y no se manda nada.
+const DEMO_TEAMS = 'horarios-demo-teams';
+const demoPartes = new Map();
+export async function teamsConfigurado() {
+  if (modo === 'demo') { try { return !!localStorage.getItem(DEMO_TEAMS); } catch { return false; } }
+  const { data, error } = await sb.rpc('hor_teams_configurado');
+  if (error) throw new Error(/function|schema cache/i.test(error.message) ? 'Falta ejecutar supabase/teams.sql en Supabase.' : error.message);
+  return !!data;
+}
+export async function guardarWebhookTeams(url) {
+  if (modo === 'demo') { try { if (url) localStorage.setItem(DEMO_TEAMS, '1'); else localStorage.removeItem(DEMO_TEAMS); } catch {} return; }
+  const { error } = await sb.rpc('hor_guardar_webhook_teams', { url });
+  if (error) throw error;
+}
+async function leerParte(fecha, cursoId) {
+  if (modo === 'demo') return demoPartes.get(fecha) || null;
+  const { data, error } = await sb.from(T('teams_partes')).select('*').eq('curso_id', cursoId).eq('fecha', fecha).maybeSingle();
+  if (error) throw error;
+  return data;
+}
+// Guarda (o rehace) el parte de un día. mensajeDe(urlImagen) monta la tarjeta de Teams.
+export async function guardarParteTeams(fecha, imagen, mensajeDe, cursoId) {
+  const antes = await leerParte(fecha, cursoId);
+  if (modo === 'demo') {
+    const url = URL.createObjectURL(imagen);
+    if (antes?.imagen_url) URL.revokeObjectURL(antes.imagen_url);
+    demoPartes.set(fecha, { ...antes, fecha, imagen_url: url, mensaje: mensajeDe(url), actualizado: new Date().toISOString(), enviado: antes?.enviado || null });
+    return;
+  }
+  const ruta = `${cursoId}/teams/parte-${fecha}-${Date.now()}.png`;
+  const { error: e1 } = await sb.storage.from(BUCKET).upload(ruta, imagen, { contentType: 'image/png' });
+  if (e1) throw e1;
+  const url = sb.storage.from(BUCKET).getPublicUrl(ruta).data.publicUrl;
+  const { error: e2 } = await sb.from(T('teams_partes')).upsert(
+    { curso_id: cursoId, fecha, imagen_ruta: ruta, mensaje: mensajeDe(url), actualizado: new Date().toISOString() },
+    { onConflict: 'curso_id,fecha' });
+  if (e2) throw e2;
+  // La imagen anterior sobra, salvo que ya se haya mandado (el mensaje de Teams la sigue usando).
+  if (antes?.imagen_ruta && !antes.enviado) await sb.storage.from(BUCKET).remove([antes.imagen_ruta]);
+}
+// El día ya no tiene sustituciones: se quita su parte (si no se ha mandado ya).
+export async function borrarParteTeams(fecha, cursoId) {
+  const antes = await leerParte(fecha, cursoId);
+  if (!antes || antes.enviado) return;
+  if (modo === 'demo') { if (antes.imagen_url) URL.revokeObjectURL(antes.imagen_url); demoPartes.delete(fecha); return; }
+  await sb.from(T('teams_partes')).delete().eq('curso_id', cursoId).eq('fecha', fecha);
+  if (antes.imagen_ruta) await sb.storage.from(BUCKET).remove([antes.imagen_ruta]);
+}
+// Estado del parte de un día: null (no hay) o { imagen_url, actualizado, enviado, resultado: { codigo, error } }.
+export async function estadoParteTeams(fecha, cursoId) {
+  const p = await leerParte(fecha, cursoId);
+  if (!p) return null;
+  if (modo !== 'demo') p.imagen_url = p.mensaje?.attachments?.[0]?.content?.body?.find(b => b.type === 'Image')?.url;
+  return p;
+}
+
 /* ---------- Acceso (Microsoft 365) ---------- */
 export async function sesion() {
   if (modo === 'demo') return { email: 'modo-demostracion', demo: true };
@@ -232,6 +291,12 @@ export async function entrar() {
 export async function salir() {
   if (modo === 'demo') return;
   await sb.auth.signOut();
+}
+// Personal del colegio (los horarios, ausencias y sustituciones solo los ve el personal)
+export async function esPersonal() {
+  if (modo === 'demo') return true;
+  const { data, error } = await sb.rpc('es_profesorado');
+  return !error && !!data;
 }
 export async function esAdmin() {
   if (modo === 'demo') return true;

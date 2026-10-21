@@ -4,7 +4,7 @@ import {
   DIAS, TIPOS, LECTIVAS, CATEGORIAS, indices, hoyISO, diaSemana, sumarDias, fechaLarga, tramoActual,
   estadoOcupacion, ocupacionesDe, ausenteEn, ausenciasDelDia, sustitutoLargo, avisosDelDia
 } from './logic.js';
-import { $, $$, esc, svg, activarImpresion, horarioSemanal, bloqueOcupacion, nombreGrupos, corto, nombre, nombreMateria, opcionesDocentes, opcionesGrupos, modal } from './ui.js';
+import { $, $$, esc, svg, activarImpresion, horarioSemanal, bloqueOcupacion, nombreGrupos, corto, nombre, nombreMateria, opcionesDocentes, opcionesGrupos, modal, tablaSustituciones } from './ui.js';
 
 let db, ix;
 const estado = { vista: 'hoy', fecha: hoyISO(), tramo: '', tipo: 'docente', id: '', sabDia: 0, sabModo: 'docentes', susFecha: hoyISO() };
@@ -23,6 +23,7 @@ function leerHash() {
   if (v === 'ahora') v = 'hoy';
   if (v === 'horarios') { v = a === 'grupo' ? 'grupos' : 'profesorado'; a = b; } // direcciones antiguas
   if (VISTAS.includes(v)) estado.vista = v;
+  if (v === 'sustituciones' && /^\d{4}-\d{2}-\d{2}$/.test(a || '')) estado.susFecha = a; // enlace del mensaje de Teams
   if (v === 'profesorado' || v === 'grupos') {
     const tipo = v === 'grupos' ? 'grupo' : 'docente';
     if (estado.tipo !== tipo) estado.id = '';
@@ -100,7 +101,7 @@ function vHoy() {
   html += plegable('s-sust', 'Sustituciones', 'naranja',
     (nAus ? `<span class="chip naranja">${nAus} ${nAus === 1 ? 'ausencia' : 'ausencias'}</span>${pendientes ? `<span class="chip rojo">${pendientes} sin cubrir</span>` : cobs.length ? '<span class="chip verde">Todo cubierto</span>' : ''}` : '<span class="chip">Nada que cubrir</span>') + (nLargas ? `<span class="chip morado">${nLargas} con sustituto/a</span>` : ''),
     nAus > 0,
-    `<div class="barra no-imprimir" style="justify-content:flex-end;margin:0 0 6px"><button class="btn mini" data-imprimir data-titulo="Parte de sustituciones" data-sub="${esc(fechaLarga(fecha))}">${svg('imprimir')} Imprimir</button></div>${tablaSustituciones(fecha)}`);
+    `<div class="barra no-imprimir" style="justify-content:flex-end;margin:0 0 6px"><button class="btn mini" data-imprimir data-titulo="Parte de sustituciones" data-sub="${esc(fechaLarga(fecha))}">${svg('imprimir')} Imprimir</button></div>${tablaSustituciones(db, ix, fecha)}`);
 
   html += plegable('s-ahora', 'Ahora', 'azul', fueraDeJornada(fecha) ? '<span class="chip">Fuera del horario lectivo</span>' : `<span class="chip azul">${esc(tr.tramo?.etiqueta || '')}</span>`, true,
     `<div id="s-ahora-cuerpo">${seccionAhora(fecha, dia)}</div>`, 'sin-panel');
@@ -153,53 +154,6 @@ function contarPendientes(fecha) {
   const cobs = db.coberturas.filter(c => c.fecha === fecha);
   for (const o of db.ocupaciones) if (o.dia === dia && LECTIVAS.has(o.tipo) && estadoOcupacion(db, o, fecha, cobs).estado === 'sin_cubrir') n++;
   return n;
-}
-
-/* ---------- Tabla de sustituciones: una columna por ausente, una fila por tramo ---------- */
-function tablaSustituciones(fecha) {
-  const dia = diaSemana(fecha);
-  const aus = ausenciasDelDia(db, fecha);
-  // Primero quienes hay que cubrir hoy; después las bajas que ya tienen sustituto/a.
-  const largo = id => aus.find(a => a.docente_id === id && sustitutoLargo(a, fecha));
-  const ids = [...new Set(aus.map(a => a.docente_id))].filter(id => !largo(id));
-  const conSustituto = aus.filter(a => sustitutoLargo(a, fecha));
-  const bajas = conSustituto.length ? `<h3>Ausencias con profesor/a sustituto</h3><ul class="lista">${conSustituto.map(a =>
-    `<li><span><b>${esc(nombre(ix, a.docente_id))}</b>${a.hasta ? ` <span class="d">hasta el ${esc(fechaLarga(a.hasta).replace(/^\S+ /, ''))}</span>` : ''}</span>
-      <span class="chip morado">Le sustituye ${esc(nombre(ix, sustitutoLargo(a, fecha)))}</span></li>`).join('')}</ul>` : '';
-  if (!ids.length) return '<p class="muted small" style="margin:0">Hoy no hay ausencias que cubrir.</p>' + bajas;
-  const cobs = db.coberturas.filter(c => c.fecha === fecha);
-  const filas = ix.lectivos.map(t => {
-    const celdas = ids.map(id => {
-      const l = largo(id);
-      if (!ausenteEn(db, id, fecha, t.id)) return '<td><span class="muted small">Presente</span></td>';
-      const ocs = ocupacionesDe(db, id, fecha, dia).filter(o => o.tramo_id === t.id);
-      if (!ocs.length) return '<td><span class="muted small">—</span></td>';
-      return '<td>' + ocs.map(o => {
-        if (!LECTIVAS.has(o.tipo)) return `<div class="muted small">${esc(TIPOS[o.tipo])}${o.detalle && o.detalle !== TIPOS[o.tipo] ? ' · ' + esc(o.detalle) : ''}${l ? '' : ' <i>(no se cubre)</i>'}</div>`;
-        const aula = aulaDe(o);
-        const datos = `<div class="mat-n">${esc(nombreMateria(ix, o.materia, o.grupos))}</div>
-            <div class="small">${esc(nombreGrupos(ix, o.grupos))}${o.subgrupo ? ' · ' + esc(o.subgrupo) : ''}${aula ? ` · <b>Aula ${esc(aula)}</b>` : ''}</div>`;
-        if (l) return `<div class="sust-celda larga">${datos}<span class="chip morado">${esc(corto(ix, sustitutoLargo(l, fecha)))} (baja)</span></div>`;
-        const c = cobs.find(x => x.ocupacion_id === o.id && x.tramo_id === t.id);
-        return `<div class="sust-celda ${c?.sustituto_id ? 'ok' : 'pend'}">${datos}
-            ${c?.sustituto_id ? `<span class="chip verde">Sustituye: ${esc(corto(ix, c.sustituto_id))}</span>` : '<span class="chip naranja">Pendiente</span>'}
-            ${c?.nota ? `<div class="nota-hora">${esc(c.nota)}</div>` : ''}
-            ${(c?.adjuntos || []).map(x => `<a class="adjunto" href="${esc(x.url)}" target="_blank" rel="noopener" download="${esc(x.nombre)}">📎 ${esc(x.nombre)}</a>`).join('')}</div>`;
-      }).join('') + '</td>';
-    }).join('');
-    return `<tr><th class="tramo"><b>${esc(t.etiqueta)}</b>${esc(t.inicio)}–${esc(t.fin)}</th>${celdas}</tr>`;
-  }).join('');
-  const cab = ids.map(id => {
-    const as = aus.filter(a => a.docente_id === id);
-    const l = largo(id);
-    const parcial = as.every(a => a.tramos && a.tramos.length);
-    const notas = as.map(a => a.nota).filter(Boolean);
-    return `<th class="${l ? 'col-larga' : ''}"><span class="aus-nombre">${esc(nombre(ix, id))}</span>
-      <span class="muted small">${l ? `Baja · le sustituye <b>${esc(nombre(ix, sustitutoLargo(l, fecha)))}</b>` : parcial ? 'Algunas horas' : 'Todo el día'}</span>
-      ${notas.length && !l ? `<span class="small">${esc(notas.join(' · '))}</span>` : ''}</th>`;
-  }).join('');
-  return `<div class="scroll"><table class="tabla-sust" style="width:${84 + ids.length * 240}px"><colgroup><col style="width:84px">${ids.map(() => '<col style="width:240px">').join('')}</colgroup>
-    <thead><tr><th class="tramo"></th>${cab}</tr></thead><tbody>${filas}</tbody></table></div>${bajas}`;
 }
 
 /* ---------- Ahora: clases, dónde está y profesorado fuera de aula ---------- */
@@ -495,7 +449,7 @@ function vSustituciones() {
     </div>
     <h2>Parte de sustituciones</h2>
     <p class="sub">${esc(fechaLarga(fecha))}</p>
-    ${dia ? tablaSustituciones(fecha) : '<p class="vacio">Fin de semana.</p>'}
+    ${dia ? tablaSustituciones(db, ix, fecha) : '<p class="vacio">Fin de semana.</p>'}
   </div>`;
   const ir = f => { estado.susFecha = f; vSustituciones(); };
   $('#s-fecha').onchange = e => ir(e.target.value || hoyISO());
@@ -530,6 +484,27 @@ function vRecreos() {
   try {
     await D.conectar();
     $('#demo').hidden = !D.esDemo();
+    // Solo para el personal: hay que entrar con Microsoft 365 (desde Teams entra sola)
+    const s = await D.sesion();
+    const login = msg => {
+      document.body.classList.add('sin-sesion');
+      $('#vista').hidden = true; $('#login').hidden = false;
+      if (msg) { $('#entrar').hidden = true; $('#login-msg').innerHTML = msg; }
+    };
+    if (!s) {
+      login();
+      $('#entrar').onclick = () => D.entrar().catch(e => { $('#login-msg').textContent = e.message; });
+      return;
+    }
+    if (!(await D.esPersonal())) {
+      login(`La cuenta <b>${esc(s.email)}</b> no es del personal del colegio.<br><button class="btn" id="otra" style="margin-top:10px">Usar otra cuenta</button>`);
+      $('#otra').onclick = async () => { await D.salir(); location.reload(); };
+      return;
+    }
+    if (!D.esDemo()) {
+      $('#usuario').textContent = s.nombre || s.email; $('#sesion').hidden = false;
+      $('#salir').onclick = async () => { await D.salir(); location.reload(); };
+    }
     await cargar();
   } catch (e) {
     console.error(e);

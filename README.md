@@ -9,7 +9,7 @@ Es una web estática (HTML + JavaScript, sin compilación) que se publica en **V
 
 ## Qué tiene
 
-**Parte pública** (`/`): para todo el claustro, sin contraseña. Menú: **Hoy · Sustituciones · Horarios ▾ · Sábana**.
+**Parte del claustro** (`/`): para el personal del colegio, con inicio de sesión de Microsoft 365 (desde Teams entra sola). Menú: **Hoy · Sustituciones · Horarios ▾ · Sábana**.
 
 - **Hoy**: apartados plegables (empiezan cerrados y se resaltan si tienen algo):
   - **Avisos** que publica jefatura.
@@ -89,6 +89,37 @@ personas que podrán administrar.
 En el repositorio de `claustro-utilidades`, añade una entrada en `utilidades.js` apuntando a la URL de Vercel
 (o a `/admin.html` para jefatura).
 
+### 7. El parte de sustituciones en un canal de Teams, cada día a las 7:30 (opcional)
+
+Cada día lectivo con sustituciones, a las **7:30** se publica solo en un canal de Teams la imagen del parte de ese día
+(con la plantilla del colegio) y un botón «Ver versión actualizada en la web». No hay que pulsar nada: al guardar
+ausencias y sustituciones, la web deja preparado el parte de los días afectados (hasta tres semanas), y la base de datos
+lo manda ese mismo día a las 7:30. Si se preparan hoy las del martes, el mensaje sale el martes a las 7:30.
+En **Ausencias → Sustituciones del día** se ve el estado junto a la fecha (*Teams: 7:30*, *enviado*…) y el botón
+**Teams** muestra la imagen que se mandará.
+
+1. **Supabase** (una vez): en el proyecto «Acceso Microsoft 365» → **SQL Editor → New query**, pega
+   [`supabase/teams.sql`](supabase/teams.sql) y pulsa *Run*. Activa el envío diario (pg_cron) y las llamadas (pg_net).
+2. **Función de Supabase** (una vez): **Edge Functions → Deploy a new function → Via Editor**, nombre `hor-teams`,
+   pega [`supabase/functions/hor-teams/index.ts`](supabase/functions/hor-teams/index.ts) y publícala. En sus ajustes,
+   desactiva **Enforce JWT verification** (la protege su propia clave, que solo conoce la base de datos).
+3. **Teams** (una vez por canal): en el canal → **⋯ → Flujos de trabajo** → plantilla
+   **«Enviar alertas de webhook a un canal»** → equipo y canal → **Guardar**. Copia la dirección que aparece al final
+   (empieza por `https://`). Esta plantilla lleva su propia firma en la dirección y no pide identificarse.
+4. **Solo si algún flujo exige ser de la organización** («Cualquier usuario de mi espacio empresarial»): la función
+   lo detecta y repite identificándose como la app **«Acceso a Microsoft 365»** de Entra. Para eso, en Entra →
+   Registros de aplicaciones → Acceso a Microsoft 365 → **Certificados y secretos → Nuevo secreto de cliente**, copia el
+   **Valor** y pégalo en Supabase → **Edge Functions → Secrets** como `MS_CLIENT_SECRET` (ya está puesto; caduca en 24 meses).
+5. **En la web**: Sustituciones del día → **Teams** → pega esa dirección. Se guarda en secreto en la base de datos
+   (no en el código) y no se vuelve a mostrar. Para cambiar de canal: **Teams → Cambiar canal**.
+
+Para probar sin esperar a las 7:30: en el SQL Editor, `select hor_teams_mandar(current_date);` manda el parte de hoy
+(si lo hay y no se ha mandado ya). El resultado se ve en Sustituciones del día, junto a la fecha.
+
+Lo que se cambie de un día después de las 7:30 de ese día no se vuelve a mandar (se ve en la web, con el botón del mensaje).
+Quien tenga la dirección del flujo puede publicar en el canal: no la pegues en correos ni documentos. Si se filtra,
+borra el flujo en Teams, crea otro y guarda la dirección nueva. El parte no lleva el motivo de las ausencias.
+
 ## Cada curso nuevo
 
 1. *Curso y datos → Preparar nuevo curso* (p. ej. `2027-2028`), copiando profesorado, grupos, tramos y recreos.
@@ -131,12 +162,14 @@ config.js         Datos de conexión (Supabase) y del centro
 css/styles.css    Estilos (paleta corporativa, modo oscuro, impresión)
 js/data.js        Acceso a datos (Supabase o modo demostración)
 js/logic.js       Lógica: horario efectivo, ausencias, candidatos, autoasignación, contador
-js/ui.js          Componentes comunes (rejilla de horario, diálogos…)
+js/ui.js          Componentes comunes (rejilla de horario, parte de sustituciones, diálogos, impresión, imagen para Teams)
 js/public.js      Vistas públicas
 js/admin.js       Vistas de administración
 js/asc.js         Importador del XML de aSc Horarios
 data/seed.json    Datos iniciales del curso 2026-2027
 supabase/schema.sql  Tablas y reglas de seguridad
+supabase/teams.sql   Envío del parte a un canal de Teams a las 7:30 (dirección del flujo en secreto)
+supabase/functions/hor-teams/index.ts  Función que se identifica ante Microsoft y manda el parte al flujo
 ```
 
 Para probarlo en local: `python3 -m http.server` en esta carpeta y abrir <http://localhost:8000>.

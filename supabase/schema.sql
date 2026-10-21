@@ -162,7 +162,7 @@ language sql security definer stable set search_path = public as $$
 $$;
 grant execute on function hor_es_admin() to anon, authenticated;
 
--- Seguridad: todo el mundo puede LEER los horarios; solo los administradores pueden ESCRIBIR.
+-- Seguridad: solo el personal del colegio con sesión iniciada puede LEER; solo los administradores pueden ESCRIBIR.
 do $$
 declare t text;
 begin
@@ -171,7 +171,8 @@ begin
     execute format('alter table %I enable row level security', t);
     execute format('drop policy if exists lectura_publica on %I', t);
     execute format('drop policy if exists escritura_admin on %I', t);
-    execute format('create policy lectura_publica on %I for select using (true)', t);
+    execute format('drop policy if exists lectura_personal on %I', t);
+    execute format('create policy lectura_personal on %I for select to authenticated using (es_profesorado())', t);
     execute format('create policy escritura_admin on %I for all to authenticated using (hor_es_admin()) with check (hor_es_admin())', t);
   end loop;
 end $$;

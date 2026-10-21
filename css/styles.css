@@ -212,12 +212,15 @@ section[id^="s-"] { scroll-margin-top: 72px; }
 .lista.avisos li { justify-content: flex-start; background: var(--azul-bg); border-color: transparent; }
 .lista.avisos li.importante { background: var(--rojo-bg); }
 table.tabla-sust { border-collapse: separate; border-spacing: 4px; table-layout: fixed; max-width: none; }
-.tabla-sust thead th { text-align: left; vertical-align: bottom; padding: 4px 6px; font-weight: 600; }
+.tabla-sust thead th { text-align: left; vertical-align: top; padding: 4px 6px; font-weight: 600; }
 .tabla-sust thead th > span { display: block; }
 .tabla-sust .aus-nombre { color: var(--rojo); font-size: .95rem; }
 .tabla-sust th.tramo { width: 80px; text-align: right; font-size: .8rem; color: var(--suave); font-weight: 600; padding-right: 8px; line-height: 1.2; }
 .tabla-sust th.tramo b { display: block; color: var(--texto); font-size: .9rem; }
 .tabla-sust td { vertical-align: top; padding: 0; }
+.tabla-sust .fila-notas th.tramo b { font-size: .8rem; color: var(--suave); }
+.nota-ausencia { font-size: .82rem; background: var(--azul-bg); border-radius: 8px; padding: 6px 9px; border-left: 3px solid var(--azul); }
+.sep-tablas { border-top: 3px solid var(--azul); opacity: .45; margin: 20px 0 16px; }
 .sust-celda { border-radius: 10px; padding: 7px 9px; border: 1px solid var(--borde); display: flex; flex-direction: column; gap: 4px; align-items: flex-start; font-size: .85rem; }
 .sust-celda.ok { background: var(--verde-bg); border-color: transparent; }
 .sust-celda.pend { background: var(--naranja-bg); border-color: var(--naranja); }
@@ -438,3 +441,14 @@ details.plegable.sin-panel .cols { gap: 12px; }
 .cartel a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .cartel svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .cartel .sep { opacity: .6; }
+
+/* Imagen del parte para Teams: fuera de la pantalla y siempre con los colores claros */
+.captura-fuera { position: fixed; left: -100000px; top: 0; }
+.captura-parte { width: max-content; min-width: 640px; padding: 22px 24px 18px;
+  background: #fff; color: #1E293B; font: 14px/1.4 "Fira Sans", system-ui, sans-serif;
+  --bg: #F8FAFC; --panel: #FFFFFF; --texto: #1E293B; --suave: #64748B; --borde: #E2E8F0;
+  --azul: #009abb; --verde-oscuro: #6b7200; --rojo: #d23c3c; --morado: #7a5bc7; --naranja: #ee712a;
+  --azul-bg: rgba(0, 154, 187, .11); --verde-bg: rgba(180, 190, 0, .16); --naranja-bg: rgba(238, 113, 42, .14);
+  --rojo-bg: rgba(210, 60, 60, .12); --morado-bg: rgba(122, 91, 199, .13); --gris-bg: rgba(100, 116, 139, .12); }
+.captura-parte .scroll { overflow: visible; }
+.captura-parte h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .07em; color: var(--suave); margin: 14px 0 8px; }
