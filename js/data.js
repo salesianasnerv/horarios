@@ -292,6 +292,12 @@ export async function salir() {
   if (modo === 'demo') return;
   await sb.auth.signOut();
 }
+// Personal del colegio (los horarios, ausencias y sustituciones solo los ve el personal)
+export async function esPersonal() {
+  if (modo === 'demo') return true;
+  const { data, error } = await sb.rpc('es_profesorado');
+  return !error && !!data;
+}
 export async function esAdmin() {
   if (modo === 'demo') return true;
   const { data, error } = await sb.rpc('hor_es_admin');
