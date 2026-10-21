@@ -191,9 +191,13 @@ values ('hor-adjuntos', 'hor-adjuntos', true, 10485760)
 on conflict (id) do nothing;
 drop policy if exists hor_adjuntos_subir on storage.objects;
 drop policy if exists hor_adjuntos_borrar on storage.objects;
+drop policy if exists hor_adjuntos_ver on storage.objects;
 create policy hor_adjuntos_subir on storage.objects for insert to authenticated
   with check (bucket_id = 'hor-adjuntos' and hor_es_admin());
 create policy hor_adjuntos_borrar on storage.objects for delete to authenticated
+  using (bucket_id = 'hor-adjuntos' and hor_es_admin());
+-- Sin poder «ver» los archivos, Supabase no los encuentra al borrarlos (y no da error).
+create policy hor_adjuntos_ver on storage.objects for select to authenticated
   using (bucket_id = 'hor-adjuntos' and hor_es_admin());
 
 -- Personas con acceso a la administración (se pueden cambiar después desde Datos → Cursos).
