@@ -238,7 +238,7 @@ async function prepararPartes() {
 async function prepararParte(fecha) {
   const nec = diaSemana(fecha) ? necesidades(db, fecha) : [];
   if (!nec.length) return D.borrarParteTeams(fecha, cid());
-  const imagen = await imagenParte(tablaSustituciones(db, ix, fecha),
+  const imagen = await imagenParte(tablaSustituciones(db, ix, fecha, { columnas: 3 }),
     { titulo: 'Parte de sustituciones', subtitulo: fechaLarga(fecha), curso: `Curso ${db.curso.nombre}` });
   const pend = nec.filter(n => n.estado === 'sin_cubrir').length;
   const nAus = new Set(nec.map(n => n.ausente_id)).size;
