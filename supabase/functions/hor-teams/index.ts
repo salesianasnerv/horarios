@@ -40,7 +40,11 @@ Deno.serve(async req => {
     if (!token.access_token) {
       resultado = { codigo: r.status, error: 'Microsoft no ha dado acceso a la app: ' + String(token.error_description ?? token.error ?? 'sin respuesta').slice(0, 300) };
     } else {
-      const t = await fetch(secreto.teams_webhook, {
+      // La dirección del flujo trae su propia firma (sig, sp, sv); con la identificación de la app hay que quitarla,
+      // porque Teams no admite las dos a la vez.
+      const destino = new URL(secreto.teams_webhook);
+      for (const firma of ['sig', 'sp', 'sv']) destino.searchParams.delete(firma);
+      const t = await fetch(destino, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.access_token}` },
         body: JSON.stringify(p.mensaje)
