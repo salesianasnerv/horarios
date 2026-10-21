@@ -89,6 +89,27 @@ personas que podrán administrar.
 En el repositorio de `claustro-utilidades`, añade una entrada en `utilidades.js` apuntando a la URL de Vercel
 (o a `/admin.html` para jefatura).
 
+### 7. El parte de sustituciones en un canal de Teams, cada día a las 7:30 (opcional)
+
+Cada día lectivo con sustituciones, a las **7:30** se publica solo en un canal de Teams la imagen del parte de ese día
+(con la plantilla del colegio) y un botón «Ver versión actualizada en la web». No hay que pulsar nada: al guardar
+ausencias y sustituciones, la web deja preparado el parte de los días afectados (hasta tres semanas), y la base de datos
+lo manda ese mismo día a las 7:30. Si se preparan hoy las del martes, el mensaje sale el martes a las 7:30.
+En **Ausencias → Sustituciones del día** se ve el estado junto a la fecha (*Teams: 7:30*, *enviado*…) y el botón
+**Teams** muestra la imagen que se mandará.
+
+1. **Supabase** (una vez): en el proyecto «Acceso Microsoft 365» → **SQL Editor → New query**, pega
+   [`supabase/teams.sql`](supabase/teams.sql) y pulsa *Run*. Activa el envío diario (pg_cron) y el envío a Teams (pg_net).
+2. **Teams** (una vez por canal): en el canal → **⋯ → Flujos de trabajo** (*Workflows*) → plantilla
+   **«Publicar en un canal cuando se recibe una solicitud de webhook»** → comprueba el equipo y el canal → **Agregar flujo de trabajo**.
+   Copia la dirección que aparece al final (empieza por `https://`).
+3. **En la web**: Sustituciones del día → **Teams** → pega esa dirección. Se guarda en secreto en la base de datos
+   (no en el código) y no se vuelve a mostrar. Para cambiar de canal: **Teams → Cambiar canal**.
+
+Lo que se cambie de un día después de las 7:30 de ese día no se vuelve a mandar (se ve en la web, con el botón del mensaje).
+Quien tenga la dirección del flujo puede publicar en el canal: no la pegues en correos ni documentos. Si se filtra,
+borra el flujo en Teams, crea otro y guarda la dirección nueva. El parte no lleva el motivo de las ausencias.
+
 ## Cada curso nuevo
 
 1. *Curso y datos → Preparar nuevo curso* (p. ej. `2027-2028`), copiando profesorado, grupos, tramos y recreos.
@@ -131,12 +152,13 @@ config.js         Datos de conexión (Supabase) y del centro
 css/styles.css    Estilos (paleta corporativa, modo oscuro, impresión)
 js/data.js        Acceso a datos (Supabase o modo demostración)
 js/logic.js       Lógica: horario efectivo, ausencias, candidatos, autoasignación, contador
-js/ui.js          Componentes comunes (rejilla de horario, diálogos…)
+js/ui.js          Componentes comunes (rejilla de horario, parte de sustituciones, diálogos, impresión, imagen para Teams)
 js/public.js      Vistas públicas
 js/admin.js       Vistas de administración
 js/asc.js         Importador del XML de aSc Horarios
 data/seed.json    Datos iniciales del curso 2026-2027
 supabase/schema.sql  Tablas y reglas de seguridad
+supabase/teams.sql   Envío del parte a un canal de Teams (dirección del flujo en secreto)
 ```
 
 Para probarlo en local: `python3 -m http.server` en esta carpeta y abrir <http://localhost:8000>.

@@ -438,3 +438,14 @@ details.plegable.sin-panel .cols { gap: 12px; }
 .cartel a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .cartel svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .cartel .sep { opacity: .6; }
+
+/* Imagen del parte para Teams: fuera de la pantalla y siempre con los colores claros */
+.captura-fuera { position: fixed; left: -100000px; top: 0; }
+.captura-parte { width: max-content; min-width: 640px; padding: 22px 24px 18px;
+  background: #fff; color: #1E293B; font: 14px/1.4 "Fira Sans", system-ui, sans-serif;
+  --bg: #F8FAFC; --panel: #FFFFFF; --texto: #1E293B; --suave: #64748B; --borde: #E2E8F0;
+  --azul: #009abb; --verde-oscuro: #6b7200; --rojo: #d23c3c; --morado: #7a5bc7; --naranja: #ee712a;
+  --azul-bg: rgba(0, 154, 187, .11); --verde-bg: rgba(180, 190, 0, .16); --naranja-bg: rgba(238, 113, 42, .14);
+  --rojo-bg: rgba(210, 60, 60, .12); --morado-bg: rgba(122, 91, 199, .13); --gris-bg: rgba(100, 116, 139, .12); }
+.captura-parte .scroll { overflow: visible; }
+.captura-parte h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .07em; color: var(--suave); margin: 14px 0 8px; }

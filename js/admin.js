@@ -10,7 +10,7 @@ import { importarPdfAsc } from './pdfasc.js';
 import { leerArchivoSeneca } from './seneca.js';
 import {
   $, $$, esc, svg, activarImpresion, toast, modal, confirmar, horarioSemanal, bloqueOcupacion, nombreGrupos, corto, nombre,
-  opcionesDocentes, opcionesGrupos
+  opcionesDocentes, opcionesGrupos, tablaSustituciones, imagenParte
 } from './ui.js';
 
 let db, ix;
@@ -25,6 +25,7 @@ async function recargar() {
 const cid = () => db.curso.id;
 async function guardarFilas(tabla, filas) {
   filas = [].concat(filas);
+  const antes = db[tabla].filter(x => filas.some(f => f.id === x.id));
   await D.guardar(tabla, filas, cid());
   for (const f of filas) {
     const row = { ...f, curso_id: cid() };
@@ -32,12 +33,15 @@ async function guardarFilas(tabla, filas) {
     if (i >= 0) db[tabla][i] = row; else db[tabla].push(row);
   }
   ix = indices(db);
+  partesAfectados(tabla, [...antes, ...filas]);
 }
 async function borrarFilas(tabla, ids) {
   ids = [].concat(ids);
+  const antes = db[tabla].filter(x => ids.includes(x.id));
   await D.borrar(tabla, ids, cid());
   db[tabla] = db[tabla].filter(x => !ids.includes(x.id));
   ix = indices(db);
+  partesAfectados(tabla, antes);
 }
 // Ejecuta una acción mostrando el error si falla.
 async function seguro(fn, ok) {
@@ -147,8 +151,9 @@ function vSust() {
       <button class="btn pri" id="s-nueva">${svg('mas')} Añadir ausencia</button>
       <button class="btn" id="s-auto" ${pendientes ? '' : 'disabled'}>${svg('rayo')} Autoasignar</button>
       <button class="btn" data-imprimir data-titulo="Parte de sustituciones" data-sub="${esc(fechaLarga(fecha))}">${svg('imprimir')} Imprimir parte</button>
+      <button class="btn" id="s-teams" title="Parte en el canal de Teams (se manda solo a las 7:30)">${svg('enviar')} Teams</button>
     </div>
-    <h2>${esc(fechaLarga(fecha))}</h2>
+    <h2>${esc(fechaLarga(fecha))} <span id="s-teams-estado" style="font-size:.8rem;font-weight:500"></span></h2>
     ${!dia ? '<p class="vacio">Fin de semana.</p>' : `
     <div class="cols">
       <div>
@@ -166,6 +171,8 @@ function vSust() {
   $('#s-sig').onclick = () => ir(sumarDias(fecha, 1));
   $('#s-hoy').onclick = () => ir(hoyISO());
   $('#s-nueva').onclick = () => editarAusencia(null, { desde: fecha, hasta: fecha });
+  $('#s-teams').onclick = () => verTeams(fecha);
+  pintarEstadoTeams(fecha);
   const auto = $('#s-auto');
   if (auto) auto.onclick = async () => {
     const nuevas = autoasignar(db, fecha);
@@ -190,6 +197,150 @@ function vSust() {
     const n = nec.find(x => x.oc.id === b.dataset.nota && x.oc.tramo_id === b.dataset.tramo);
     if (await editarAvisoHora(n, fecha)) vSust();
   });
+}
+
+/* ---------- Parte de sustituciones en Teams, a las 7:30 ---------- */
+// Cada vez que se guarda una ausencia o una sustitución, se prepara (en segundo plano) la imagen del parte de los días
+// afectados. La base de datos la manda al canal ese mismo día a las 7:30; aquí no se envía nada.
+const DIAS_TEAMS = 21;               // como mucho, se preparan las tres semanas siguientes
+let teamsActivo = false;
+const porPreparar = new Set();
+let esperaPartes = null, preparando = null;
+
+// Días que tocan unas filas de ausencias o sustituciones (solo de hoy en adelante y días lectivos).
+function partesAfectados(tabla, filas) {
+  if (!teamsActivo || !['ausencias', 'coberturas'].includes(tabla)) return;
+  const hoy = hoyISO(), tope = sumarDias(hoy, DIAS_TEAMS);
+  for (const f of filas) {
+    if (tabla === 'coberturas') { if (f.fecha >= hoy && f.fecha <= tope) porPreparar.add(f.fecha); continue; }
+    for (let d = f.desde > hoy ? f.desde : hoy; d <= (f.hasta && f.hasta < tope ? f.hasta : tope); d = sumarDias(d, 1))
+      if (diaSemana(d)) porPreparar.add(d);
+  }
+  clearTimeout(esperaPartes);
+  esperaPartes = setTimeout(prepararPartes, 1500);
+}
+
+async function prepararPartes() {
+  if (preparando) return preparando.then(prepararPartes);
+  preparando = (async () => {
+    while (porPreparar.size) {
+      const fecha = [...porPreparar].sort()[0];
+      porPreparar.delete(fecha);
+      try { await prepararParte(fecha); }
+      catch (e) { console.error(e); toast('No se ha podido preparar el parte para Teams: ' + (e.message || e), true); }
+    }
+  })();
+  await preparando; preparando = null;
+  if (st.cat === 'ausencias' && st.sub === 'sustituciones') pintarEstadoTeams(st.fecha);
+}
+
+// Hay parte si ese día queda alguna clase que cubrir (con o sin sustituto asignado).
+async function prepararParte(fecha) {
+  const nec = diaSemana(fecha) ? necesidades(db, fecha) : [];
+  if (!nec.length) return D.borrarParteTeams(fecha, cid());
+  const imagen = await imagenParte(tablaSustituciones(db, ix, fecha),
+    { titulo: 'Parte de sustituciones', subtitulo: fechaLarga(fecha), curso: `Curso ${db.curso.nombre}` });
+  const pend = nec.filter(n => n.estado === 'sin_cubrir').length;
+  const nAus = new Set(nec.map(n => n.ausente_id)).size;
+  const resumen = `${nAus} ${nAus === 1 ? 'ausencia' : 'ausencias'} · ${nec.length - pend} ${nec.length - pend === 1 ? 'hora cubierta' : 'horas cubiertas'}` +
+    (pend ? ` · ${pend} ${pend === 1 ? 'pendiente' : 'pendientes'}` : '');
+  const web = new URL(`./#/sustituciones/${fecha}`, location.href).href;
+  await D.guardarParteTeams(fecha, imagen, url => tarjetaTeams({ titulo: `Sustituciones · ${fechaLarga(fecha)}`, resumen, imagen: url, web }), cid());
+}
+
+// Al entrar: si hoy o el próximo día lectivo tienen sustituciones y aún no tienen parte, se prepara.
+async function arrancarTeams() {
+  try { teamsActivo = await D.teamsConfigurado(); } catch { teamsActivo = false; }
+  if (!teamsActivo || !db.curso) return;
+  let sig = sumarDias(hoyISO(), 1); while (!diaSemana(sig)) sig = sumarDias(sig, 1);
+  for (const f of [hoyISO(), sig]) {
+    if (diaSemana(f) && necesidades(db, f).length && !await D.estadoParteTeams(f, cid()).catch(() => null)) porPreparar.add(f);
+  }
+  if (porPreparar.size) prepararPartes();
+}
+
+// Mensaje con el formato que espera el flujo de Teams «Publicar en un canal cuando se recibe una solicitud de webhook».
+function tarjetaTeams({ titulo, resumen, imagen, web }) {
+  return {
+    type: 'message',
+    attachments: [{
+      contentType: 'application/vnd.microsoft.card.adaptive',
+      contentUrl: null,
+      content: {
+        $schema: 'http://adaptivecards.io/schemas/adaptive-card.json', type: 'AdaptiveCard', version: '1.4',
+        msteams: { width: 'Full' },
+        body: [
+          { type: 'TextBlock', text: titulo, weight: 'Bolder', size: 'Medium', color: 'Accent', wrap: true },
+          { type: 'TextBlock', text: resumen, isSubtle: true, spacing: 'None', wrap: true },
+          { type: 'Image', url: imagen, altText: 'Parte de sustituciones', selectAction: { type: 'Action.OpenUrl', url: imagen } }
+        ],
+        actions: [
+          { type: 'Action.OpenUrl', title: 'Ver versión actualizada en la web', url: web },
+          { type: 'Action.OpenUrl', title: 'Ver la imagen en grande', url: imagen }
+        ]
+      }
+    }]
+  };
+}
+
+// Etiqueta junto a la fecha en «Sustituciones del día»: qué va a pasar con el parte de ese día en Teams.
+async function estadoTeams(fecha) {
+  if (!teamsActivo) return { chip: '', texto: 'Todavía no hay ningún canal de Teams. Pulsa «Canal» para indicarlo.' };
+  if (porPreparar.has(fecha) || preparando) return { chip: 'gris', etiqueta: 'Teams: preparando…', texto: 'Preparando la imagen del parte…' };
+  const p = await D.estadoParteTeams(fecha, cid()).catch(() => null);
+  const dia = fechaLarga(fecha).replace(/^./, c => c.toLowerCase());
+  if (!p) return fecha < hoyISO() ? { chip: '', texto: 'Este día no se mandó ningún parte a Teams.' }
+    : { chip: '', texto: `El ${dia} no hay sustituciones: no se mandará nada a Teams.` };
+  const hora = d => new Date(d).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+  if (p.enviado) {
+    const r = p.resultado;
+    if (r && !(r.codigo >= 200 && r.codigo < 300)) return { p, chip: 'rojo', etiqueta: 'Teams: error', texto: `Se intentó mandar a las ${hora(p.enviado)}, pero falló: ${r.error || 'Teams respondió ' + r.codigo}.` };
+    const cambio = new Date(p.actualizado) > new Date(p.enviado);
+    return { p, chip: 'verde', etiqueta: 'Teams: enviado', texto: `Mandado al canal a las ${hora(p.enviado)}.` + (cambio ? ' Los cambios posteriores no se han vuelto a mandar (se ven en la web).' : '') };
+  }
+  if (fecha < hoyISO() || (fecha === hoyISO() && new Date().toTimeString().slice(0, 5) > '07:45'))
+    return { p, chip: 'naranja', etiqueta: 'Teams: no enviado', texto: 'Este parte se preparó después de las 7:30 y no se ha mandado.' };
+  return { p, chip: 'azul', etiqueta: 'Teams: 7:30', texto: `Se mandará al canal el ${dia} a las 7:30. Si cambias algo antes, se manda la versión nueva.` };
+}
+async function pintarEstadoTeams(fecha) {
+  const sitio = $('#s-teams-estado');
+  if (!sitio) return;
+  const e = await estadoTeams(fecha);
+  if (st.fecha !== fecha || !document.contains(sitio)) return;
+  sitio.innerHTML = e.chip ? `<span class="chip ${e.chip}">${esc(e.etiqueta)}</span>` : '';
+  sitio.title = e.texto;
+}
+
+// Ventana «Teams»: qué se mandará ese día (con la imagen) y cambiar el canal.
+async function verTeams(fecha) {
+  if (!teamsActivo) { if (await canalTeams()) verTeams(fecha); return; }
+  const e = await estadoTeams(fecha);
+  const r = await modal({
+    titulo: 'Parte en Teams',
+    contenido: `<p style="margin:0 0 10px">${esc(e.texto)}</p>
+      ${e.p?.imagen_url ? `<div style="max-height:50vh;overflow:auto;border:1px solid var(--borde);border-radius:10px;background:#fff"><img src="${esc(e.p.imagen_url)}" alt="Parte de sustituciones" style="display:block;width:100%;height:auto"></div>` : ''}
+      <p class="small muted" style="margin:10px 0 0">El parte se prepara solo al guardar ausencias y sustituciones, y se manda cada día lectivo a las 7:30 si ese día hay sustituciones.</p>
+      ${D.esDemo() ? '<p class="aviso" style="margin:10px 0 0">Modo demostración: no se manda nada a Teams.</p>' : ''}`,
+    botones: [{ id: 'canal', texto: 'Cambiar canal' }, ...(fecha >= hoyISO() && diaSemana(fecha) ? [{ id: 'rehacer', texto: 'Rehacer imagen' }] : [])],
+    cancelar: 'Cerrar'
+  });
+  if (r?.boton === 'canal') { if (await canalTeams()) verTeams(fecha); }
+  if (r?.boton === 'rehacer') { porPreparar.add(fecha); pintarEstadoTeams(fecha); await prepararPartes(); toast('Parte preparado'); }
+}
+
+// Pide (o cambia) la dirección del flujo de Teams. Devuelve true si queda guardada.
+async function canalTeams() {
+  const r = await modal({
+    titulo: 'Canal de Teams',
+    contenido: `<p class="sub" style="margin:0 0 10px">Pega la dirección que da el flujo de Teams
+      «Publicar en un canal cuando se recibe una solicitud de webhook» (está en la guía). Se guarda en secreto: no se vuelve a mostrar.</p>
+      <label class="campo">Dirección del flujo<input type="url" id="t-url" placeholder="https://…" autocomplete="off"></label>`,
+    validar: (b, d) => /^https:\/\/\S+$/.test(d.querySelector('#t-url').value.trim()) ? '' : 'La dirección tiene que empezar por https://'
+  });
+  if (!r) return false;
+  const ok = !!await seguro(async () => { await D.guardarWebhookTeams(r.form.querySelector('#t-url').value.trim()); return true; }, 'Canal de Teams guardado');
+  if (ok && !teamsActivo) { await arrancarTeams(); pintarEstadoTeams(st.fecha); }
+  return ok;
 }
 
 /* =====================================================================
@@ -1309,6 +1460,7 @@ function primerArranque() {
   $('#tabs').hidden = false;
   await recargar();
   if (!db.curso) return primerArranque();
+  arrancarTeams();
   leerRuta();
   window.addEventListener('hashchange', () => { leerRuta(); pintar(); });
   pintar();
