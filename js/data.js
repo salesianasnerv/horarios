@@ -292,10 +292,11 @@ export async function salir() {
   if (modo === 'demo') return;
   await sb.auth.signOut();
 }
-// Personal del colegio (los horarios, ausencias y sustituciones solo los ve el personal)
+// Personal de ESO y Bachillerato (los horarios, ausencias y sustituciones solo los ve ese personal)
 export async function esPersonal() {
   if (modo === 'demo') return true;
-  const { data, error } = await sb.rpc('es_profesorado');
+  let { data, error } = await sb.rpc('hor_puede_ver');
+  if (error && /function|schema cache/i.test(error.message)) ({ data, error } = await sb.rpc('es_profesorado'));
   return !error && !!data;
 }
 export async function esAdmin() {
