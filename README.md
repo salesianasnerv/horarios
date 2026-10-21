@@ -103,13 +103,13 @@ En **Ausencias → Sustituciones del día** se ve el estado junto a la fecha (*T
 2. **Función de Supabase** (una vez): **Edge Functions → Deploy a new function → Via Editor**, nombre `hor-teams`,
    pega [`supabase/functions/hor-teams/index.ts`](supabase/functions/hor-teams/index.ts) y publícala. En sus ajustes,
    desactiva **Enforce JWT verification** (la protege su propia clave, que solo conoce la base de datos).
-3. **Clave de la app** (una vez): el colegio no deja que nadie de fuera active los flujos de Teams, así que la función
-   se identifica como la app **«Acceso a Microsoft 365»** de Entra. En Entra → Registros de aplicaciones → Acceso a
-   Microsoft 365 → **Certificados y secretos → Nuevo secreto de cliente**, copia el **Valor** y pégalo en Supabase →
-   **Edge Functions → Secrets** con el nombre `MS_CLIENT_SECRET`. Cuando caduque, crea otro y cambia el valor.
-4. **Teams** (una vez por canal): en el canal → **⋯ → Flujos de trabajo** → plantilla
-   **«Enviar alertas de webhook a un canal»** → «¿Quién puede desencadenar…?»: *Cualquier usuario de mi espacio empresarial*
-   → equipo y canal → **Guardar**. Copia la dirección que aparece al final (empieza por `https://`).
+3. **Teams** (una vez por canal): en el canal → **⋯ → Flujos de trabajo** → plantilla
+   **«Enviar alertas de webhook a un canal»** → equipo y canal → **Guardar**. Copia la dirección que aparece al final
+   (empieza por `https://`). Esta plantilla lleva su propia firma en la dirección y no pide identificarse.
+4. **Solo si algún flujo exige ser de la organización** («Cualquier usuario de mi espacio empresarial»): la función
+   lo detecta y repite identificándose como la app **«Acceso a Microsoft 365»** de Entra. Para eso, en Entra →
+   Registros de aplicaciones → Acceso a Microsoft 365 → **Certificados y secretos → Nuevo secreto de cliente**, copia el
+   **Valor** y pégalo en Supabase → **Edge Functions → Secrets** como `MS_CLIENT_SECRET` (ya está puesto; caduca en 24 meses).
 5. **En la web**: Sustituciones del día → **Teams** → pega esa dirección. Se guarda en secreto en la base de datos
    (no en el código) y no se vuelve a mostrar. Para cambiar de canal: **Teams → Cambiar canal**.
 
