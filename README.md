@@ -99,12 +99,22 @@ En **Ausencias → Sustituciones del día** se ve el estado junto a la fecha (*T
 **Teams** muestra la imagen que se mandará.
 
 1. **Supabase** (una vez): en el proyecto «Acceso Microsoft 365» → **SQL Editor → New query**, pega
-   [`supabase/teams.sql`](supabase/teams.sql) y pulsa *Run*. Activa el envío diario (pg_cron) y el envío a Teams (pg_net).
-2. **Teams** (una vez por canal): en el canal → **⋯ → Flujos de trabajo** (*Workflows*) → plantilla
-   **«Publicar en un canal cuando se recibe una solicitud de webhook»** → comprueba el equipo y el canal → **Agregar flujo de trabajo**.
-   Copia la dirección que aparece al final (empieza por `https://`).
-3. **En la web**: Sustituciones del día → **Teams** → pega esa dirección. Se guarda en secreto en la base de datos
+   [`supabase/teams.sql`](supabase/teams.sql) y pulsa *Run*. Activa el envío diario (pg_cron) y las llamadas (pg_net).
+2. **Función de Supabase** (una vez): **Edge Functions → Deploy a new function → Via Editor**, nombre `hor-teams`,
+   pega [`supabase/functions/hor-teams/index.ts`](supabase/functions/hor-teams/index.ts) y publícala. En sus ajustes,
+   desactiva **Enforce JWT verification** (la protege su propia clave, que solo conoce la base de datos).
+3. **Clave de la app** (una vez): el colegio no deja que nadie de fuera active los flujos de Teams, así que la función
+   se identifica como la app **«Acceso a Microsoft 365»** de Entra. En Entra → Registros de aplicaciones → Acceso a
+   Microsoft 365 → **Certificados y secretos → Nuevo secreto de cliente**, copia el **Valor** y pégalo en Supabase →
+   **Edge Functions → Secrets** con el nombre `MS_CLIENT_SECRET`. Cuando caduque, crea otro y cambia el valor.
+4. **Teams** (una vez por canal): en el canal → **⋯ → Flujos de trabajo** → plantilla
+   **«Enviar alertas de webhook a un canal»** → «¿Quién puede desencadenar…?»: *Cualquier usuario de mi espacio empresarial*
+   → equipo y canal → **Guardar**. Copia la dirección que aparece al final (empieza por `https://`).
+5. **En la web**: Sustituciones del día → **Teams** → pega esa dirección. Se guarda en secreto en la base de datos
    (no en el código) y no se vuelve a mostrar. Para cambiar de canal: **Teams → Cambiar canal**.
+
+Para probar sin esperar a las 7:30: en el SQL Editor, `select hor_teams_mandar(current_date);` manda el parte de hoy
+(si lo hay y no se ha mandado ya). El resultado se ve en Sustituciones del día, junto a la fecha.
 
 Lo que se cambie de un día después de las 7:30 de ese día no se vuelve a mandar (se ve en la web, con el botón del mensaje).
 Quien tenga la dirección del flujo puede publicar en el canal: no la pegues en correos ni documentos. Si se filtra,
@@ -158,7 +168,8 @@ js/admin.js       Vistas de administración
 js/asc.js         Importador del XML de aSc Horarios
 data/seed.json    Datos iniciales del curso 2026-2027
 supabase/schema.sql  Tablas y reglas de seguridad
-supabase/teams.sql   Envío del parte a un canal de Teams (dirección del flujo en secreto)
+supabase/teams.sql   Envío del parte a un canal de Teams a las 7:30 (dirección del flujo en secreto)
+supabase/functions/hor-teams/index.ts  Función que se identifica ante Microsoft y manda el parte al flujo
 ```
 
 Para probarlo en local: `python3 -m http.server` en esta carpeta y abrir <http://localhost:8000>.

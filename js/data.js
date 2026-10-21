@@ -264,14 +264,11 @@ export async function borrarParteTeams(fecha, cursoId) {
   await sb.from(T('teams_partes')).delete().eq('curso_id', cursoId).eq('fecha', fecha);
   if (antes.imagen_ruta) await sb.storage.from(BUCKET).remove([antes.imagen_ruta]);
 }
-// Estado del parte de un día: null (no hay) o { imagen_url, actualizado, enviado, resultado }.
+// Estado del parte de un día: null (no hay) o { imagen_url, actualizado, enviado, resultado: { codigo, error } }.
 export async function estadoParteTeams(fecha, cursoId) {
   const p = await leerParte(fecha, cursoId);
   if (!p) return null;
-  if (modo !== 'demo') {
-    p.imagen_url = p.mensaje?.attachments?.[0]?.content?.body?.find(b => b.type === 'Image')?.url;
-    if (p.envio_id) { const { data } = await sb.rpc('hor_resultado_teams', { envio: p.envio_id }); p.resultado = data; }
-  }
+  if (modo !== 'demo') p.imagen_url = p.mensaje?.attachments?.[0]?.content?.body?.find(b => b.type === 'Image')?.url;
   return p;
 }
 

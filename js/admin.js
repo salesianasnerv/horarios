@@ -294,7 +294,7 @@ async function estadoTeams(fecha) {
   const hora = d => new Date(d).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
   if (p.enviado) {
     const r = p.resultado;
-    if (r && !(r.codigo >= 200 && r.codigo < 300)) return { p, chip: 'rojo', etiqueta: 'Teams: error', texto: `Se intentó mandar a las ${hora(p.enviado)}, pero falló: ${r.error || 'Teams respondió ' + r.codigo}.` };
+    if (r && !(r.codigo >= 200 && r.codigo < 300)) return { p, chip: 'rojo', etiqueta: 'Teams: error', texto: `Se intentó mandar a las ${hora(p.enviado)}, pero falló: ${r.error || 'Teams ha respondido ' + r.codigo}.` };
     const cambio = new Date(p.actualizado) > new Date(p.enviado);
     return { p, chip: 'verde', etiqueta: 'Teams: enviado', texto: `Mandado al canal a las ${hora(p.enviado)}.` + (cambio ? ' Los cambios posteriores no se han vuelto a mandar (se ven en la web).' : '') };
   }
