@@ -9,7 +9,7 @@ Es una web estática (HTML + JavaScript, sin compilación) que se publica en **V
 
 ## Qué tiene
 
-**Parte pública** (`/`): para todo el claustro, sin contraseña. Menú: **Hoy · Sustituciones · Horarios ▾ · Sábana**.
+**Parte del claustro** (`/`): para el personal del colegio, con inicio de sesión de Microsoft 365 (desde Teams entra sola). Menú: **Hoy · Sustituciones · Horarios ▾ · Sábana**.
 
 - **Hoy**: apartados plegables (empiezan cerrados y se resaltan si tienen algo):
   - **Avisos** que publica jefatura.
