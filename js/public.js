@@ -484,6 +484,27 @@ function vRecreos() {
   try {
     await D.conectar();
     $('#demo').hidden = !D.esDemo();
+    // Solo para el personal: hay que entrar con Microsoft 365 (desde Teams entra sola)
+    const s = await D.sesion();
+    const login = msg => {
+      document.body.classList.add('sin-sesion');
+      $('#vista').hidden = true; $('#login').hidden = false;
+      if (msg) { $('#entrar').hidden = true; $('#login-msg').innerHTML = msg; }
+    };
+    if (!s) {
+      login();
+      $('#entrar').onclick = () => D.entrar().catch(e => { $('#login-msg').textContent = e.message; });
+      return;
+    }
+    if (!(await D.esPersonal())) {
+      login(`La cuenta <b>${esc(s.email)}</b> no es del personal del colegio.<br><button class="btn" id="otra" style="margin-top:10px">Usar otra cuenta</button>`);
+      $('#otra').onclick = async () => { await D.salir(); location.reload(); };
+      return;
+    }
+    if (!D.esDemo()) {
+      $('#usuario').textContent = s.nombre || s.email; $('#sesion').hidden = false;
+      $('#salir').onclick = async () => { await D.salir(); location.reload(); };
+    }
     await cargar();
   } catch (e) {
     console.error(e);
