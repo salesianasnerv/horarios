@@ -220,7 +220,7 @@ table.tabla-sust { border-collapse: separate; border-spacing: 4px; table-layout:
 .tabla-sust td { vertical-align: top; padding: 0; }
 .tabla-sust .fila-notas th.tramo b { font-size: .8rem; color: var(--suave); }
 .nota-ausencia { font-size: .82rem; background: var(--azul-bg); border-radius: 8px; padding: 6px 9px; border-left: 3px solid var(--azul); }
-.sep-tablas { height: 14px; }
+.sep-tablas { border-top: 3px solid var(--azul); opacity: .45; margin: 20px 0 16px; }
 .sust-celda { border-radius: 10px; padding: 7px 9px; border: 1px solid var(--borde); display: flex; flex-direction: column; gap: 4px; align-items: flex-start; font-size: .85rem; }
 .sust-celda.ok { background: var(--verde-bg); border-color: transparent; }
 .sust-celda.pend { background: var(--naranja-bg); border-color: var(--naranja); }
