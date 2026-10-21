@@ -69,14 +69,14 @@ end $$;
 -- Para probar a mano desde el SQL Editor: select hor_teams_mandar(current_date);
 create or replace function hor_teams_mandar(dia date) returns bigint
 language plpgsql security definer set search_path = public as $$
-declare clave text;
+declare clave_llamada text;
 begin
   if not exists (select 1 from hor_teams_partes where fecha = dia and enviado is null) then return null; end if;
-  select valor into clave from hor_secretos where clave = 'clave_funcion';
+  select valor into clave_llamada from hor_secretos where clave = 'clave_funcion';
   return net.http_post(
     url := 'https://hblayjaknhfxieqbzrlq.supabase.co/functions/v1/hor-teams',
     body := jsonb_build_object('fecha', dia),
-    headers := jsonb_build_object('Content-Type', 'application/json', 'x-clave', clave),
+    headers := jsonb_build_object('Content-Type', 'application/json', 'x-clave', clave_llamada),
     timeout_milliseconds := 30000);
 end $$;
 
