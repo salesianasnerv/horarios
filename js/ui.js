@@ -58,10 +58,10 @@ export function modal({ titulo, contenido, botones = [{ id: 'ok', texto: 'Guarda
   return new Promise(resolve => {
     const d = document.createElement('dialog');
     d.innerHTML = `<form method="dialog">
-      <div class="modal-cab"><h3>${esc(titulo)}</h3><button class="icon-btn" value="__x" aria-label="Cerrar">${svg('x')}</button></div>
+      <div class="modal-cab"><h3>${esc(titulo)}</h3><button class="icon-btn" value="__x" formnovalidate aria-label="Cerrar" title="Cerrar">${svg('x')}</button></div>
       <div class="modal-cuerpo">${contenido}</div>
       <div class="modal-pie">${[{ id: '__x', texto: cancelar }, ...botones].map(b =>
-        `<button class="btn ${b.pri ? 'pri' : ''} ${b.peligro ? 'peligro' : ''}" value="${b.id}">${esc(b.texto)}</button>`).join('')}</div>
+        `<button class="btn ${b.pri ? 'pri' : ''} ${b.peligro ? 'peligro' : ''}" value="${b.id}" ${b.id === '__x' || b.id === 'del' ? 'formnovalidate' : ''}>${esc(b.texto)}</button>`).join('')}</div>
     </form>`;
     document.body.appendChild(d);
     const form = d.querySelector('form');
