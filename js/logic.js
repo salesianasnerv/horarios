@@ -124,8 +124,21 @@ export function necesidades(db, fecha) {
     const e = estadoOcupacion(db, o, fecha, cobs);
     if (e.estado === 'cubierta' || e.estado === 'sin_cubrir') out.push({ oc: o, ...e });
   }
+  // Otras necesidades: alguien de otra etapa (no está en el listado) o un evento (p. ej. semana de evaluación).
+  for (const c of cobs) {
+    if (!c.extra) continue;
+    out.push({ oc: ocExtra(c), extra: c.extra, cobertura: c, ausencia: null, ausente_id: null,
+      estado: c.sustituto_id ? 'cubierta' : 'sin_cubrir', docente_id: c.sustituto_id || null });
+  }
   return out;
 }
+// Hora de una «otra necesidad» con forma de ocupación (para pintarla igual que una clase).
+export function ocExtra(c) {
+  const x = c.extra || {};
+  return { id: c.id, tramo_id: c.tramo_id, dia: diaSemana(c.fecha), tipo: 'clase', docente_id: null,
+    materia: x.materia || '', grupos: x.grupos || [], lugar: x.lugar || '', aula: x.aula || '', extra: true };
+}
+export const TIPOS_EXTRA = { externo: 'Otra etapa', evento: 'Evento' };
 
 /* ---------- Candidatos para sustituir ---------- */
 export function contarCoberturas(db, hasta = null) {
@@ -175,10 +188,9 @@ export function autoasignar(db, fecha) {
     const c = candidatos(tmp, fecha, n.oc.tramo_id).find(x => !x.ya && x.categoria !== 'fuera' && x.categoria !== 'libre');
     if (!c) continue;
     const cob = {
-      id: uid('c'), fecha, tramo_id: n.oc.tramo_id, ocupacion_id: n.oc.id, ausente_id: n.ausente_id,
-      sustituto_id: c.docente.id, ausencia_id: n.ausencia.id, nota: ''
+      id: uid('c'), fecha, tramo_id: n.oc.tramo_id, ocupacion_id: n.oc.id, nota: '', ...(n.cobertura || {}),
+      ausente_id: n.ausente_id, sustituto_id: c.docente.id, ausencia_id: n.ausencia?.id || null
     };
-    if (n.cobertura) cob.id = n.cobertura.id;
     tmp.coberturas = tmp.coberturas.filter(x => x.id !== cob.id).concat(cob);
     nuevas.push(cob);
   }

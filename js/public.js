@@ -2,9 +2,9 @@
 import * as D from './data.js';
 import {
   DIAS, TIPOS, LECTIVAS, CATEGORIAS, indices, hoyISO, diaSemana, sumarDias, fechaLarga, tramoActual,
-  estadoOcupacion, ocupacionesDe, ausenteEn, ausenciasDelDia, sustitutoLargo, avisosDelDia
+  estadoOcupacion, ocupacionesDe, ausenteEn, ausenciasDelDia, sustitutoLargo, avisosDelDia, ocExtra, TIPOS_EXTRA
 } from './logic.js';
-import { $, $$, esc, svg, activarImpresion, horarioSemanal, bloqueOcupacion, nombreGrupos, corto, nombre, nombreMateria, opcionesDocentes, opcionesGrupos, modal, tablaSustituciones } from './ui.js';
+import { $, $$, esc, svg, activarImpresion, horarioSemanal, bloqueOcupacion, nombreGrupos, corto, nombre, nombreMateria, opcionesDocentes, opcionesGrupos, modal, tablaSustituciones, lugarDe, quienFaltaCob } from './ui.js';
 
 let db, ix;
 const estado = { vista: 'hoy', fecha: hoyISO(), tramo: '', tipo: 'docente', id: '', sabDia: 0, sabModo: 'docentes', susFecha: hoyISO() };
@@ -60,7 +60,9 @@ function vHoy() {
   const fecha = estado.fecha, dia = diaSemana(fecha);
   const esHoy = fecha === hoyISO();
   const avisos = avisosDelDia(db, fecha);
-  const nAus = new Set(ausenciasDelDia(db, fecha).filter(a => !sustitutoLargo(a, fecha)).map(a => a.docente_id)).size;
+  // Ausencias del listado + otras necesidades (otra etapa o evento)
+  const nAus = new Set([...ausenciasDelDia(db, fecha).filter(a => !sustitutoLargo(a, fecha)).map(a => a.docente_id),
+    ...(dia ? db.coberturas.filter(c => c.fecha === fecha && c.extra).map(c => 'x:' + quienFaltaCob(ix, c)) : [])]).size;
   const nLargas = ausenciasDelDia(db, fecha).filter(a => sustitutoLargo(a, fecha)).length;
 
   let html = `<div class="panel hoy-cab">
@@ -153,7 +155,7 @@ function contarPendientes(fecha) {
   const dia = diaSemana(fecha); let n = 0;
   const cobs = db.coberturas.filter(c => c.fecha === fecha);
   for (const o of db.ocupaciones) if (o.dia === dia && LECTIVAS.has(o.tipo) && estadoOcupacion(db, o, fecha, cobs).estado === 'sin_cubrir') n++;
-  return n;
+  return n + cobs.filter(c => c.extra && !c.sustituto_id).length;
 }
 
 /* ---------- Ahora: clases, dónde está y profesorado fuera de aula ---------- */
@@ -193,16 +195,21 @@ function seccionAhora(fecha, dia) {
     const tarjetas = ix.grupos.map(g => {
       const enGrupo = db.ocupaciones.filter(o => o.dia === dia && o.tramo_id === tramo.id && (o.grupos || []).includes(g.id));
       const ocs = enGrupo.filter(o => LECTIVAS.has(o.tipo));
+      // Otras necesidades (otra etapa o evento) en este grupo y tramo
+      const extras = cobs.filter(c => c.extra && c.tramo_id === tramo.id && (c.extra.grupos || []).includes(g.id));
+      if (extras.length && !ocs.length) ocs.push(...extras.map(c => ({ ...ocExtra(c), materia: c.extra.materia || TIPOS_EXTRA[c.extra.tipo], cob: c })));
       const apoyos = enGrupo.filter(o => o.tipo === 'apoyo' && !ausenteEn(db, o.docente_id, fecha, tramo.id) &&
         !cobs.some(c => c.tramo_id === tramo.id && c.sustituto_id === o.docente_id));
       if (!ocs.length) return `<div class="tarjeta-g"><h4>${esc(g.nombre)}</h4><span class="muted small">Sin clase</span></div>`;
       let alerta = false;
       const filas = ocs.map(o => {
-        const e = estadoOcupacion(db, o, fecha, cobs);
+        const e = o.cob ? { estado: o.cob.sustituto_id ? 'cubierta' : 'sin_cubrir', docente_id: o.cob.sustituto_id }
+          : estadoOcupacion(db, o, fecha, cobs);
+        const falta = o.cob ? quienFaltaCob(ix, o.cob) : `falta ${corto(ix, e.ausente_id)}`;
         let extra = '', quien = corto(ix, o.docente_id);
         if (e.estado === 'sustituto_largo') { quien = corto(ix, e.docente_id); extra = `<span class="d">sustituye a ${esc(corto(ix, o.docente_id))}</span>`; }
-        else if (e.estado === 'cubierta') { extra = `<span class="sus ok">Sustituye: ${esc(corto(ix, e.docente_id))}</span><span class="d">falta ${esc(corto(ix, e.ausente_id))}</span>`; quien = ''; }
-        else if (e.estado === 'sin_cubrir') { alerta = true; extra = `<span class="sus">Sin cubrir · falta ${esc(corto(ix, e.ausente_id))}</span>`; quien = ''; }
+        else if (e.estado === 'cubierta') { extra = `<span class="sus ok">Sustituye: ${esc(corto(ix, e.docente_id))}</span><span class="d">${esc(falta)}</span>`; quien = ''; }
+        else if (e.estado === 'sin_cubrir') { alerta = true; extra = `<span class="sus">Sin cubrir · ${esc(falta)}</span>`; quien = ''; }
         const aula = aulaDe(o);
         return `<div class="oc t-clase mat" style="--h:${hue(o.materia)}"><span class="m" title="${esc(nombreMateria(ix, o.materia, o.grupos))}">${esc(o.materia)}</span>
           <div class="g">${[quien, o.subgrupo, aula ? 'Aula ' + aula : ''].filter(Boolean).map(esc).join(' · ')}</div>${extra}</div>`;
@@ -273,9 +280,11 @@ function dondeEsta(id) {
   }
   const cob = db.coberturas.find(c => c.fecha === fecha && c.tramo_id === tramo.id && c.sustituto_id === id);
   if (cob) {
-    const o = ix.oc[cob.ocupacion_id];
-    const aula = o ? aulaDe(o) : '';
-    return `<div class="aviso info">Sustituyendo en <b>${esc(nombreGrupos(ix, o?.grupos))}</b>${aula ? ` (aula ${esc(aula)})` : ''} · ${esc(nombreMateria(ix, o?.materia, o?.grupos))}, a ${esc(corto(ix, cob.ausente_id))}.</div>`;
+    const o = cob.extra ? ocExtra(cob) : ix.oc[cob.ocupacion_id];
+    const aula = o ? aulaDe(o) : '', lugar = lugarDe(ix, o);
+    const mat = o?.materia ? ' · ' + esc(nombreMateria(ix, o.materia, o.grupos)) : '';
+    const quien = cob.extra?.tipo === 'evento' ? ` (${esc(quienFaltaCob(ix, cob))})` : `, a ${esc(quienFaltaCob(ix, cob))}`;
+    return `<div class="aviso info">Sustituyendo${lugar ? ` en <b>${esc(lugar)}</b>` : ''}${aula ? ` (aula ${esc(aula)})` : ''}${mat}${quien}.</div>`;
   }
   const aqui = ocupacionesDe(db, id, fecha, dia).filter(o => o.tramo_id === tramo.id);
   if (aqui.length) return aqui.map(o => bloqueOcupacion(ix, o, { vista: 'docente', extra: aulaDe(o) ? `<div class="g">Aula ${esc(aulaDe(o))}</div>` : '' })).join('') +

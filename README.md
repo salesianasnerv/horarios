@@ -25,6 +25,10 @@ Es una web estática (HTML + JavaScript, sin compilación) que se publica en **V
 **Administración** (`/admin.html`): menús desplegables.
 
 - **Ausencias**: Sustituciones del día · Ausencias y bajas · Contador · Prioridad para sustituir.
+  En *Sustituciones del día*, **Otra etapa o evento** añade horas que cubrir sin que falte nadie del listado: un
+  compañero/a de otra etapa o un evento (semana de evaluación, salida…), con fechas, tramos, grupo (o lugar escrito a mano),
+  materia o tarea y aula. Salen en el parte y en Teams como una columna más y cuentan en el contador de quien las cubre.
+  Necesita [`supabase/otra-etapa-o-evento.sql`](supabase/otra-etapa-o-evento.sql) (una vez).
 - **Avisos**: Para una sustitución (texto y archivos para una hora concreta) · Avisos generales.
 - **Horarios**: Profesorado · Grupos · Recreos · Apoyos, coordinación y NL (todo editable).
 - **Datos**: Profesorado · Grupos (tutoría y aula) · Materias (nombre oficial por curso y quién la da en cada grupo, sacado
@@ -168,6 +172,7 @@ js/admin.js       Vistas de administración
 js/asc.js         Importador del XML de aSc Horarios
 data/seed.json    Datos iniciales del curso 2026-2027
 supabase/schema.sql  Tablas y reglas de seguridad
+supabase/otra-etapa-o-evento.sql  Columna para las sustituciones de otra etapa o por un evento
 supabase/teams.sql   Envío del parte a un canal de Teams a las 7:30 (dirección del flujo en secreto)
 supabase/functions/hor-teams/index.ts  Función que se identifica ante Microsoft y manda el parte al flujo
 ```

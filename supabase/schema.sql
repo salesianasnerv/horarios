@@ -127,8 +127,10 @@ create table if not exists hor_coberturas (
   ausencia_id text,
   nota text,                    -- aviso para esa hora (lo que manda el profesor/a ausente)
   adjuntos jsonb not null default '[]',  -- archivos adjuntos [{nombre, url, tipo, ruta}]
+  extra jsonb,                  -- otra etapa o evento: {serie, tipo, quien, grupos, lugar, materia, aula, nota} (sin ausencia del listado)
   primary key (curso_id, id)
 );
+alter table hor_coberturas add column if not exists extra jsonb;
 create index if not exists hor_coberturas_fecha on hor_coberturas (curso_id, fecha);
 
 -- Avisos que publica jefatura en la pestaña «Hoy».

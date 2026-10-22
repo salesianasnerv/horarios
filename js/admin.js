@@ -2,7 +2,7 @@
 import * as D from './data.js';
 import {
   DIAS, TIPOS, LECTIVAS, CATEGORIAS, PRIORIDAD_DEFECTO, indices, hoyISO, diaSemana, sumarDias, fechaLarga, fechaCorta,
-  necesidades, candidatos, autoasignar, cortoAuto, ausenciasDelDia, sustitutoLargo, estadisticas, uid, ausenciaActiva
+  necesidades, candidatos, autoasignar, cortoAuto, ausenciasDelDia, sustitutoLargo, estadisticas, uid, ausenciaActiva, TIPOS_EXTRA, ocExtra, diasLectivos
 } from './logic.js';
 import { importarAsc } from './asc.js';
 import { nombreMateria } from './ui.js';
@@ -10,7 +10,7 @@ import { importarPdfAsc } from './pdfasc.js';
 import { leerArchivoSeneca } from './seneca.js';
 import {
   $, $$, esc, svg, activarImpresion, toast, modal, confirmar, horarioSemanal, bloqueOcupacion, nombreGrupos, corto, nombre,
-  opcionesDocentes, opcionesGrupos, tablaSustituciones, imagenParte
+  opcionesDocentes, opcionesGrupos, tablaSustituciones, imagenParte, lugarDe, quienFalta, quienFaltaCob
 } from './ui.js';
 
 let db, ix;
@@ -105,7 +105,7 @@ function vSust() {
   const v = $('#vista');
   const fecha = st.fecha, dia = diaSemana(fecha);
   const nec = dia ? necesidades(db, fecha).sort((a, b) => ix.tramo[a.oc.tramo_id].orden - ix.tramo[b.oc.tramo_id].orden ||
-    nombreGrupos(ix, a.oc.grupos).localeCompare(nombreGrupos(ix, b.oc.grupos))) : [];
+    lugarDe(ix, a.oc).localeCompare(lugarDe(ix, b.oc))) : [];
   const aus = ausenciasDelDia(db, fecha);
   const pendientes = nec.filter(n => n.estado === 'sin_cubrir').length;
 
@@ -116,6 +116,15 @@ function vSust() {
       ${sl ? `<br><span class="chip verde">Sustituto: ${esc(nombre(ix, sl))}</span>` : ''}
       ${db.motivos[a.id] ? `<br><span class="d">Motivo: ${esc(db.motivos[a.id])}</span>` : ''}</span>
       <button class="btn mini" data-edaus="${a.id}">${svg('lapiz')} Editar</button></li>`;
+  }).join('');
+  // Otras necesidades del día (otra etapa o evento), una por serie
+  const series = [...new Map(db.coberturas.filter(c => c.fecha === fecha && c.extra).map(c => [c.extra.serie, c])).values()];
+  const filasExtra = series.map(c => {
+    const horas = db.coberturas.filter(x => x.fecha === fecha && x.extra?.serie === c.extra.serie)
+      .sort((a, b) => ix.tramo[a.tramo_id].orden - ix.tramo[b.tramo_id].orden).map(x => ix.tramo[x.tramo_id]?.etiqueta).join(', ');
+    return `<li><span><b>${esc(quienFaltaCob(ix, c, true))}</b> <span class="chip">${esc(TIPOS_EXTRA[c.extra.tipo] || '')}</span>
+      <br><span class="d">${esc(horas)}${lugarDe(ix, ocExtra(c)) ? ' · ' + esc(lugarDe(ix, ocExtra(c))) : ''}</span></span>
+      <button class="btn mini" data-edextra="${esc(c.extra.serie)}">${svg('lapiz')} Editar</button></li>`;
   }).join('');
 
   const porTramo = {};
@@ -133,8 +142,8 @@ function vSust() {
         `<option value="${c.docente.id}" ${c.docente.id === sel ? 'selected' : ''} ${c.ya && c.docente.id !== sel ? 'disabled' : ''}>${esc(c.docente.nombre)} · ${c.cuenta} sust.${c.detalle ? ' · ' + esc(c.detalle) : ''}${c.ya && c.docente.id !== sel ? ' (ya asignado)' : ''}</option>`).join('')}</optgroup>`).join('');
       const extra = sel && !cands.some(c => c.docente.id === sel) ? `<option value="${sel}" selected>${esc(nombre(ix, sel))}</option>` : '';
       return `<div class="sust-fila ${n.estado === 'cubierta' ? 'cubierta' : 'pendiente'}">
-        <div><b>${esc(nombreGrupos(ix, n.oc.grupos))}</b>${n.oc.subgrupo ? `<div class="muted small">${esc(n.oc.subgrupo)}</div>` : ''}</div>
-        <div>${esc(n.oc.materia)} <span class="muted small">· falta ${esc(corto(ix, n.ausente_id))}</span></div>
+        <div><b>${esc(lugarDe(ix, n.oc) || 'Sin indicar')}</b>${n.oc.subgrupo ? `<div class="muted small">${esc(n.oc.subgrupo)}</div>` : ''}</div>
+        <div>${esc(n.oc.materia)} <span class="muted small">${n.oc.materia ? '· ' : ''}${n.extra ? '' : 'falta '}${esc(quienFalta(ix, n))}</span></div>
         <select data-cubrir="${n.oc.id}" data-tramo="${tid}" aria-label="Sustituto"><option value="">— Sin cubrir —</option>${extra}${opts}</select>
         <button class="btn mini" data-nota="${n.oc.id}" data-tramo="${tid}" title="Aviso para esta hora (sale en «Hoy»)">${n.cobertura?.nota || n.cobertura?.adjuntos?.length ? 'Aviso ✓' : 'Aviso'}</button>
       </div>`;
@@ -149,6 +158,7 @@ function vSust() {
       <button class="btn" id="s-hoy">Hoy</button>
       <span class="sep"></span>
       <button class="btn pri" id="s-nueva">${svg('mas')} Añadir ausencia</button>
+      <button class="btn" id="s-extra" title="Alguien de otra etapa (no está en el listado) o un evento, como la semana de evaluación">${svg('mas')} Otra etapa o evento</button>
       <button class="btn" id="s-auto" ${pendientes ? '' : 'disabled'}>${svg('rayo')} Autoasignar</button>
       <button class="btn" data-imprimir data-titulo="Parte de sustituciones" data-sub="${esc(fechaLarga(fecha))}">${svg('imprimir')} Imprimir parte</button>
       <button class="btn" id="s-teams" title="Parte en el canal de Teams (se manda solo a las 7:30)">${svg('enviar')} Teams</button>
@@ -161,7 +171,8 @@ function vSust() {
         ${bloques || '<p class="muted">No hay clases sin profesor/a. Añade una ausencia para empezar.</p>'}
         <p class="small muted no-imprimir">Las opciones salen ordenadas por prioridad (configurable en «Curso y datos») y, dentro de cada bloque, por quien menos sustituciones lleva.</p>
       </div>
-      <div><h3>Ausencias del día</h3>${aus.length ? `<ul class="lista">${filasAus}</ul>` : '<p class="muted small">Ninguna.</p>'}</div>
+      <div><h3>Ausencias del día</h3>${aus.length ? `<ul class="lista">${filasAus}</ul>` : '<p class="muted small">Ninguna.</p>'}
+        ${series.length ? `<h3>Otra etapa o evento</h3><ul class="lista">${filasExtra}</ul>` : ''}</div>
     </div>`}
   </div>`;
 
@@ -171,6 +182,7 @@ function vSust() {
   $('#s-sig').onclick = () => ir(sumarDias(fecha, 1));
   $('#s-hoy').onclick = () => ir(hoyISO());
   $('#s-nueva').onclick = () => editarAusencia(null, { desde: fecha, hasta: fecha });
+  $('#s-extra').onclick = () => editarExtra(null, { desde: fecha });
   $('#s-teams').onclick = () => verTeams(fecha);
   pintarEstadoTeams(fecha);
   const auto = $('#s-auto');
@@ -181,14 +193,15 @@ function vSust() {
     vSust();
   };
   $$('[data-edaus]', v).forEach(b => b.onclick = () => editarAusencia(db.ausencias.find(a => a.id === b.dataset.edaus)));
+  $$('[data-edextra]', v).forEach(b => b.onclick = () => editarExtra(b.dataset.edextra));
   $$('[data-cubrir]', v).forEach(s => s.onchange = async () => {
     const n = nec.find(x => x.oc.id === s.dataset.cubrir && x.oc.tramo_id === s.dataset.tramo);
     const sus = s.value;
-    if (!sus && n.cobertura && !n.cobertura.nota && !(n.cobertura.adjuntos || []).length) {
+    if (!sus && n.cobertura && !n.extra && !n.cobertura.nota && !(n.cobertura.adjuntos || []).length) {
       await seguro(() => borrarFilas('coberturas', n.cobertura.id));
     } else {
       const c = { ...(n.cobertura || { id: uid('c'), fecha, tramo_id: n.oc.tramo_id, ocupacion_id: n.oc.id, nota: '' }),
-        ausente_id: n.ausente_id, ausencia_id: n.ausencia.id, sustituto_id: sus || null };
+        ausente_id: n.ausente_id, ausencia_id: n.ausencia?.id || null, sustituto_id: sus || null };
       await seguro(() => guardarFilas('coberturas', c));
     }
     vSust();
@@ -241,7 +254,7 @@ async function prepararParte(fecha) {
   const imagen = await imagenParte(tablaSustituciones(db, ix, fecha, { columnas: 3 }),
     { titulo: 'Parte de sustituciones', subtitulo: fechaLarga(fecha), curso: `Curso ${db.curso.nombre}` });
   const pend = nec.filter(n => n.estado === 'sin_cubrir').length;
-  const nAus = new Set(nec.map(n => n.ausente_id)).size;
+  const nAus = new Set(nec.map(n => n.ausente_id || 'x:' + quienFalta(ix, n))).size;
   const resumen = `${nAus} ${nAus === 1 ? 'ausencia' : 'ausencias'} · ${nec.length - pend} ${nec.length - pend === 1 ? 'hora cubierta' : 'horas cubiertas'}` +
     (pend ? ` · ${pend} ${pend === 1 ? 'pendiente' : 'pendientes'}` : '');
   const web = new URL(`./#/sustituciones/${fecha}`, location.href).href;
@@ -421,6 +434,94 @@ async function editarAusencia(a, defecto = {}) {
   pintar();
 }
 
+/* ---------- Otra etapa o evento ---------- */
+// Horas que hay que cubrir sin que falte nadie del listado: un compañero/a de otra etapa o un evento
+// (p. ej. la semana de evaluación). Cada hora es una sustitución con «extra»; las de un mismo formulario comparten «serie».
+async function editarExtra(serie, defecto = {}) {
+  const filas = serie ? db.coberturas.filter(c => c.extra?.serie === serie) : [];
+  const nueva = !filas.length;
+  const fechas = filas.map(c => c.fecha).sort();
+  const x = filas[0]?.extra || { tipo: 'externo', quien: '', grupos: [], lugar: '', materia: '', aula: '', nota: '' };
+  const tramos = new Set(filas.map(c => c.tramo_id));
+  const desde = fechas[0] || defecto.desde || hoyISO(), hasta = fechas.at(-1) || desde;
+  const grupo = x.grupos?.[0] || (x.lugar ? '__otro' : '');
+  const r = await modal({
+    titulo: nueva ? 'Otra etapa o evento' : 'Editar · ' + (x.quien || TIPOS_EXTRA[x.tipo]),
+    botones: nueva ? [{ id: 'ok', texto: 'Guardar', pri: true }] : [{ id: 'del', texto: 'Borrar', peligro: true }, { id: 'ok', texto: 'Guardar', pri: true }],
+    contenido: `<div class="form-grid">
+      <div class="campo ancho">Qué hay que cubrir
+        <label class="campo fila" style="font-weight:500;color:var(--texto)"><input type="radio" name="tipo" value="externo" ${x.tipo !== 'evento' ? 'checked' : ''}> Falta alguien de otra etapa (no está en el listado)</label>
+        <label class="campo fila" style="font-weight:500;color:var(--texto)"><input type="radio" name="tipo" value="evento" ${x.tipo === 'evento' ? 'checked' : ''}> Un evento (semana de evaluación, salida, reunión…)</label>
+      </div>
+      <label class="campo ancho"><span id="f-quien">${x.tipo === 'evento' ? 'Evento' : 'Quién falta'}</span><input type="text" name="quien" value="${esc(x.quien)}" placeholder="${x.tipo === 'evento' ? 'Ej.: Semana de evaluación' : 'Ej.: Lucía Pérez (Primaria)'}" required></label>
+      <label class="campo">Desde<input type="date" name="desde" value="${desde}" required></label>
+      <label class="campo">Hasta<input type="date" name="hasta" value="${hasta}" required></label>
+      <div class="campo ancho">Tramos <span class="muted" style="font-weight:400">(los mismos todos los días)</span>
+        <div class="checks">${ix.lectivos.map(t => `<label><input type="checkbox" name="tramo" value="${t.id}" ${tramos.has(t.id) ? 'checked' : ''}>${esc(t.etiqueta)} ${esc(t.inicio)}</label>`).join('')}</div>
+      </div>
+      <label class="campo">Grupo<select name="grupo"><option value="">Sin indicar</option>${opcionesGrupos(ix, grupo)}<option value="__otro" ${grupo === '__otro' ? 'selected' : ''}>Otro grupo o lugar…</option></select></label>
+      <label class="campo" id="f-lugar" ${grupo === '__otro' ? '' : 'hidden'}>Grupo o lugar<input type="text" name="lugar" value="${esc(x.lugar || '')}" placeholder="Ej.: 6º Primaria A, Salón de actos"></label>
+      <label class="campo">Materia o tarea<input type="text" name="materia" value="${esc(x.materia || '')}" placeholder="Ej.: Vigilancia de examen"></label>
+      <label class="campo">Aula <span class="muted" style="font-weight:400">(si no es la del grupo)</span><input type="text" name="aula" value="${esc(x.aula || '')}"></label>
+      <label class="campo ancho">Nota pública <span class="muted" style="font-weight:400">(la ve todo el claustro)</span><input type="text" name="nota" value="${esc(x.nota || '')}"></label>
+      <p class="small muted ancho" style="margin:0">Cada hora sale en «Clases que hay que cubrir» y en el parte, como una ausencia más, y cuenta en el contador de quien la cubra.</p>
+    </div>`,
+    alAbrir: d => {
+      const q = n => d.querySelector(`[name=${n}]`);
+      d.querySelectorAll('[name=tipo]').forEach(r => r.onchange = () => {
+        const ev = d.querySelector('[name=tipo]:checked').value === 'evento';
+        d.querySelector('#f-quien').textContent = ev ? 'Evento' : 'Quién falta';
+        q('quien').placeholder = ev ? 'Ej.: Semana de evaluación' : 'Ej.: Lucía Pérez (Primaria)';
+      });
+      q('grupo').onchange = () => { d.querySelector('#f-lugar').hidden = q('grupo').value !== '__otro'; };
+    },
+    validar: (b, d) => {
+      if (b === 'del') return null;
+      const q = n => d.querySelector(`[name=${n}]`);
+      if (!q('quien').value.trim()) return d.querySelector('[name=tipo]:checked').value === 'evento' ? 'Escribe el nombre del evento.' : 'Escribe quién falta.';
+      if (!q('desde').value || !q('hasta').value) return 'Indica las fechas.';
+      if (q('hasta').value < q('desde').value) return 'La fecha de fin es anterior a la de inicio.';
+      if (diasLectivos(q('desde').value, q('hasta').value) > 40) return 'Como mucho, ocho semanas seguidas.';
+      if (!d.querySelectorAll('[name=tramo]:checked').length) return 'Marca algún tramo.';
+      return null;
+    }
+  });
+  if (!r) return;
+  if (r.boton === 'del') {
+    const n = filas.filter(c => c.sustituto_id).length;
+    if (!await confirmar(`¿Borrar «${x.quien}»${n ? ` y sus ${n} horas cubiertas` : ''}? Se descontarán del contador.`, 'Borrar', true)) return;
+    await seguro(() => borrarFilas('coberturas', filas.map(c => c.id)), 'Borrado');
+    return pintar();
+  }
+  const f = r.form; const q = n => f.querySelector(`[name=${n}]`);
+  const g = q('grupo').value;
+  const extra = {
+    serie: serie || uid('s'), tipo: f.querySelector('[name=tipo]:checked').value, quien: q('quien').value.trim(),
+    grupos: g && g !== '__otro' ? [g] : [], lugar: g === '__otro' ? q('lugar').value.trim() : '',
+    materia: q('materia').value.trim(), aula: q('aula').value.trim(), nota: q('nota').value.trim()
+  };
+  const marcados = $$('[name=tramo]:checked', f).map(x => x.value);
+  // Se conservan las horas que ya existían (con su sustituto/a y su aviso); se crean las nuevas y se quitan las que sobran.
+  const nuevas = [];
+  for (let d = q('desde').value; d <= q('hasta').value; d = sumarDias(d, 1)) {
+    if (!diaSemana(d)) continue;
+    for (const t of marcados) {
+      const ya = filas.find(c => c.fecha === d && c.tramo_id === t);
+      const id = ya?.id || uid('c');
+      nuevas.push({ nota: '', adjuntos: [], sustituto_id: null, ...ya, id, fecha: d, tramo_id: t, ocupacion_id: id, ausente_id: null, ausencia_id: null, extra });
+    }
+  }
+  const sobran = filas.filter(c => !nuevas.some(n => n.id === c.id));
+  if (!nuevas.length) return toast('En esas fechas no hay ningún día lectivo.', true);
+  const conSust = sobran.filter(c => c.sustituto_id).length;
+  if (conSust && !await confirmar(`Se quitarán ${conSust} horas que ya tenían sustituto/a asignado. ¿Seguir?`, 'Seguir', true)) return;
+  await seguro(async () => {
+    if (sobran.length) await borrarFilas('coberturas', sobran.map(c => c.id));
+    await guardarFilas('coberturas', nuevas);
+  }, 'Guardado');
+  pintar();
+}
+
 function vAusencias() {
   const v = $('#vista'); const hoy = hoyISO();
   let lista = [...db.ausencias].sort((a, b) => b.desde.localeCompare(a.desde));
@@ -472,8 +573,8 @@ async function editarAvisoHora(n, fecha) {
   };
   const t = ix.tramo[n.oc.tramo_id];
   const r = await modal({
-    titulo: `Aviso · ${nombreGrupos(ix, n.oc.grupos)} · ${t?.etiqueta} (${fechaCorta(fecha)})`,
-    contenido: `<p class="small muted" style="margin:0">${esc(nombreMateria(ix, n.oc.materia, n.oc.grupos))} · falta ${esc(nombre(ix, n.ausente_id))}${n.docente_id ? ` · sustituye ${esc(nombre(ix, n.docente_id))}` : ''}</p>
+    titulo: `Aviso · ${lugarDe(ix, n.oc) || quienFalta(ix, n)} · ${t?.etiqueta} (${fechaCorta(fecha)})`,
+    contenido: `<p class="small muted" style="margin:0">${n.oc.materia ? esc(nombreMateria(ix, n.oc.materia, n.oc.grupos)) + ' · ' : ''}${n.extra ? '' : 'falta '}${esc(quienFalta(ix, n, true))}${n.docente_id ? ` · sustituye ${esc(nombre(ix, n.docente_id))}` : ''}</p>
       <label class="campo">Aviso (se ve en «Hoy» y en el parte)<textarea name="nota" placeholder="Lo que haya enviado el profesor/a: «Tienen que hacer la ficha 12», «Examen: vigilar»…">${esc(c0.nota || '')}</textarea></label>
       <div class="campo">Archivos adjuntos <span class="muted" style="font-weight:400">(fichas, imágenes, PDF… hasta ${MAX_MB} MB cada uno)</span>
         <ul class="lista" id="f-adj"></ul>
@@ -497,7 +598,7 @@ async function editarAvisoHora(n, fecha) {
     for (const f of nuevos) adjuntos.push(await D.subirAdjunto(f, cid()));
     for (const x of quitados) await D.borrarAdjunto(x);
     const c = { ...(n.cobertura || { id: uid('c'), fecha, tramo_id: n.oc.tramo_id, ocupacion_id: n.oc.id, sustituto_id: null }),
-      ausente_id: n.ausente_id, ausencia_id: n.ausencia.id, nota, adjuntos };
+      ausente_id: n.ausente_id, ausencia_id: n.ausencia?.id || null, nota, adjuntos };
     await guardarFilas('coberturas', c);
     return true;
   }, 'Aviso guardado');
@@ -509,7 +610,7 @@ function vAvisosSust() {
   const fecha = st.fecha, dia = diaSemana(fecha);
   const nec = dia ? necesidades(db, fecha).sort((a, b) => ix.tramo[a.oc.tramo_id].orden - ix.tramo[b.oc.tramo_id].orden) : [];
   const porAusente = {};
-  for (const n of nec) (porAusente[n.ausente_id] = porAusente[n.ausente_id] || []).push(n);
+  for (const n of nec) { const k = quienFalta(ix, n, true); (porAusente[k] = porAusente[k] || []).push(n); }
   const hoy = hoyISO();
   const proximos = db.coberturas.filter(c => c.fecha >= hoy && (c.nota || (c.adjuntos || []).length)).sort((a, b) => a.fecha.localeCompare(b.fecha) || (ix.tramo[a.tramo_id]?.orden || 0) - (ix.tramo[b.tramo_id]?.orden || 0));
   const adj = c => (c?.adjuntos || []).map(x => `<a class="chip azul" href="${esc(x.url)}" target="_blank" rel="noopener">📎 ${esc(x.nombre)}</a>`).join(' ');
@@ -525,20 +626,20 @@ function vAvisosSust() {
     <h2>Avisos para las sustituciones · ${esc(fechaLarga(fecha))}</h2>
     <p class="sub">Si un profesor/a manda tarea o indicaciones para una hora concreta, añádelas aquí (con archivos si hace falta). Aparecen en «Hoy», en su casilla de la tabla de sustituciones.</p>
     ${!dia ? '<p class="vacio">Fin de semana.</p>' : !nec.length ? '<p class="vacio">Ese día no hay clases que cubrir. Añade antes la ausencia.</p>' :
-      Object.entries(porAusente).map(([id, lista]) => `<h3>${esc(nombre(ix, id))}</h3>${lista.map(n => {
+      Object.entries(porAusente).map(([quien, lista]) => `<h3>${esc(quien)}</h3>${lista.map(n => {
         const t = ix.tramo[n.oc.tramo_id]; const c = n.cobertura;
         const tiene = c?.nota || (c?.adjuntos || []).length;
         return `<div class="sust-fila ${tiene ? 'cubierta' : ''}" style="grid-template-columns:90px minmax(0,1fr) minmax(0,1.6fr) auto">
           <div><b>${esc(t.etiqueta)}</b> <span class="muted small">${esc(t.inicio)}</span></div>
-          <div><b>${esc(nombreGrupos(ix, n.oc.grupos))}</b><div class="muted small">${esc(nombreMateria(ix, n.oc.materia, n.oc.grupos))}${n.docente_id ? ' · sustituye ' + esc(corto(ix, n.docente_id)) : ''}</div></div>
+          <div><b>${esc(lugarDe(ix, n.oc) || 'Sin indicar')}</b><div class="muted small">${esc(nombreMateria(ix, n.oc.materia, n.oc.grupos))}${n.docente_id ? ' · sustituye ' + esc(corto(ix, n.docente_id)) : ''}</div></div>
           <div class="small">${c?.nota ? esc(c.nota) : '<span class="muted">Sin aviso</span>'} ${adj(c)}</div>
           <button class="btn mini" data-av="${n.oc.id}|${n.oc.tramo_id}">${svg('lapiz')} ${tiene ? 'Editar' : 'Añadir'}</button></div>`;
       }).join('')}`).join('')}
   </div>
   <div class="panel"><h2 class="naranja">Próximos avisos de sustituciones</h2>
     ${proximos.length ? `<div class="tabla-wrap"><table class="datos"><thead><tr><th>Fecha</th><th>Tramo</th><th>Grupo</th><th>Ausente</th><th>Aviso</th></tr></thead><tbody>${proximos.map(c => {
-      const o = ix.oc[c.ocupacion_id];
-      return `<tr><td>${esc(fechaCorta(c.fecha))}</td><td>${esc(ix.tramo[c.tramo_id]?.etiqueta || '')}</td><td>${esc(nombreGrupos(ix, o?.grupos))}</td><td>${esc(corto(ix, c.ausente_id))}</td><td class="small">${esc(c.nota || '')} ${adj(c)}</td></tr>`;
+      const o = c.extra ? ocExtra(c) : ix.oc[c.ocupacion_id];
+      return `<tr><td>${esc(fechaCorta(c.fecha))}</td><td>${esc(ix.tramo[c.tramo_id]?.etiqueta || '')}</td><td>${esc(lugarDe(ix, o))}</td><td>${esc(quienFaltaCob(ix, c))}</td><td class="small">${esc(c.nota || '')} ${adj(c)}</td></tr>`;
     }).join('')}</tbody></table></div>` : '<p class="muted small">No hay avisos pendientes.</p>'}</div>`;
   const ir = f => { st.fecha = f; vAvisosSust(); };
   $('#v-fecha').onchange = e => ir(e.target.value || hoyISO());
@@ -629,8 +730,8 @@ function vContador() {
     const filasCsv = [['Fecha', 'Tramo', 'Grupo', 'Materia', 'Ausente', 'Sustituto', 'Nota']];
     for (const c of [...db.coberturas].sort((a, b) => a.fecha.localeCompare(b.fecha))) {
       if ((desde && c.fecha < desde) || (hasta && c.fecha > hasta)) continue;
-      const o = ix.oc[c.ocupacion_id];
-      filasCsv.push([c.fecha, ix.tramo[c.tramo_id]?.etiqueta || '', nombreGrupos(ix, o?.grupos), o?.materia || '', nombre(ix, c.ausente_id), c.sustituto_id ? nombre(ix, c.sustituto_id) : 'Sin cubrir', c.nota || '']);
+      const o = c.extra ? ocExtra(c) : ix.oc[c.ocupacion_id];
+      filasCsv.push([c.fecha, ix.tramo[c.tramo_id]?.etiqueta || '', lugarDe(ix, o), o?.materia || '', quienFaltaCob(ix, c, true), c.sustituto_id ? nombre(ix, c.sustituto_id) : 'Sin cubrir', c.nota || '']);
     }
     descargar(`sustituciones_${desde}_${hasta}.csv`, '﻿' + filasCsv.map(r => r.map(x => `"${String(x).replace(/"/g, '""')}"`).join(';')).join('\r\n'), 'text/csv');
   };

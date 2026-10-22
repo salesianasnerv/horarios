@@ -1,5 +1,5 @@
 // Utilidades de interfaz compartidas por la parte pública y la de administración.
-import { DIAS, DIAS_CORTOS, TIPOS, LECTIVAS, hueMateria, ocupacionesDe, sustitutoLargo, diaSemana, hoyISO, ausenteEn, ausenciasDelDia, fechaLarga } from './logic.js';
+import { DIAS, DIAS_CORTOS, TIPOS, LECTIVAS, hueMateria, ocupacionesDe, sustitutoLargo, diaSemana, hoyISO, ausenteEn, ausenciasDelDia, fechaLarga, TIPOS_EXTRA, ocExtra } from './logic.js';
 
 export const $ = (sel, root = document) => root.querySelector(sel);
 export const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -93,6 +93,11 @@ export function nombreGrupos(ix, ids) {
 }
 export const corto = (ix, id) => ix.doc[id]?.corto || ix.doc[id]?.nombre || '—';
 export const nombre = (ix, id) => ix.doc[id]?.nombre || '—';
+// Grupo (o lugar escrito a mano, en las otras necesidades) de una ocupación.
+export const lugarDe = (ix, o) => (o?.grupos || []).length ? nombreGrupos(ix, o.grupos) : (o?.lugar || '');
+// A quién se sustituye: la persona del listado o, en las otras necesidades, lo que se haya escrito.
+export const quienFalta = (ix, n, largo = false) => n.extra ? (n.extra.quien || TIPOS_EXTRA[n.extra.tipo] || '—') : (largo ? nombre : corto)(ix, n.ausente_id);
+export const quienFaltaCob = (ix, c, largo = false) => quienFalta(ix, { extra: c.extra, ausente_id: c.ausente_id }, largo);
 // Nivel de un grupo: «1º ESO A» → «1º ESO», «2º Bach. B» → «2º Bach.».
 export const nivelGrupo = nombreGrupo => (nombreGrupo || '').replace(/\s+[A-Z]$/, '');
 // Nombre completo de una materia según el curso del grupo (la misma sigla puede variar de un curso a otro).
@@ -186,9 +191,27 @@ export function tablaSustituciones(db, ix, fecha, { columnas = 0 } = {}) {
   const bajas = conSustituto.length ? `<h3>Ausencias con profesor/a sustituto</h3><ul class="lista">${conSustituto.map(a =>
     `<li><span><b>${esc(nombre(ix, a.docente_id))}</b>${a.hasta ? ` <span class="d">hasta el ${esc(fechaLarga(a.hasta).replace(/^\S+ /, ''))}</span>` : ''}</span>
       <span class="chip morado">Le sustituye ${esc(nombre(ix, sustitutoLargo(a, fecha)))}</span></li>`).join('')}</ul>` : '';
-  if (!ids.length) return '<p class="muted small" style="margin:0">Hoy no hay ausencias que cubrir.</p>' + bajas;
   const cobs = db.coberturas.filter(c => c.fecha === fecha);
+  // Otras necesidades (otra etapa o evento): una columna por cada una, después de las ausencias del listado.
+  const extras = dia ? cobs.filter(c => c.extra) : [];
+  const claveExtra = c => 'x:' + (c.extra.quien || TIPOS_EXTRA[c.extra.tipo] || '');
+  const cols = [...ids, ...new Set(extras.map(claveExtra))];
+  if (!cols.length) return '<p class="muted small" style="margin:0">Hoy no hay ausencias que cubrir.</p>' + bajas;
+  const celdaCob = (c, datos) => `<div class="sust-celda ${c?.sustituto_id ? 'ok' : 'pend'}">${datos}
+          ${c?.sustituto_id ? `<span class="chip verde">Sustituye: ${esc(corto(ix, c.sustituto_id))}</span>` : '<span class="chip naranja">Pendiente</span>'}
+          ${c?.nota ? `<div class="nota-hora">${esc(c.nota)}</div>` : ''}
+          ${(c?.adjuntos || []).map(x => `<a class="adjunto" href="${esc(x.url)}" target="_blank" rel="noopener" download="${esc(x.nombre)}">📎 ${esc(x.nombre)}</a>`).join('')}</div>`;
+  const celdaExtra = (k, t) => {
+    const aqui = extras.filter(c => claveExtra(c) === k && c.tramo_id === t.id);
+    if (!aqui.length) return '<td><span class="muted small">—</span></td>';
+    return '<td>' + aqui.map(c => {
+      const o = ocExtra(c), aula = aulaDe(o), lugar = lugarDe(ix, o);
+      return celdaCob(c, `${o.materia ? `<div class="mat-n">${esc(nombreMateria(ix, o.materia, o.grupos))}</div>` : ''}
+          <div class="small">${esc(lugar || 'Sin indicar')}${aula ? ` · <b>Aula ${esc(aula)}</b>` : ''}</div>`);
+    }).join('') + '</td>';
+  };
   const celda = (id, t) => {
+    if (id.startsWith('x:')) return celdaExtra(id, t);
     const l = largo(id);
     if (!ausenteEn(db, id, fecha, t.id)) return '<td><span class="muted small">Presente</span></td>';
     const ocs = ocupacionesDe(db, id, fecha, dia).filter(o => o.tramo_id === t.id);
@@ -199,17 +222,19 @@ export function tablaSustituciones(db, ix, fecha, { columnas = 0 } = {}) {
       const datos = `<div class="mat-n">${esc(nombreMateria(ix, o.materia, o.grupos))}</div>
           <div class="small">${esc(nombreGrupos(ix, o.grupos))}${o.subgrupo ? ' · ' + esc(o.subgrupo) : ''}${aula ? ` · <b>Aula ${esc(aula)}</b>` : ''}</div>`;
       if (l) return `<div class="sust-celda larga">${datos}<span class="chip morado">${esc(corto(ix, sustitutoLargo(l, fecha)))} (baja)</span></div>`;
-      const c = cobs.find(x => x.ocupacion_id === o.id && x.tramo_id === t.id);
-      return `<div class="sust-celda ${c?.sustituto_id ? 'ok' : 'pend'}">${datos}
-          ${c?.sustituto_id ? `<span class="chip verde">Sustituye: ${esc(corto(ix, c.sustituto_id))}</span>` : '<span class="chip naranja">Pendiente</span>'}
-          ${c?.nota ? `<div class="nota-hora">${esc(c.nota)}</div>` : ''}
-          ${(c?.adjuntos || []).map(x => `<a class="adjunto" href="${esc(x.url)}" target="_blank" rel="noopener" download="${esc(x.nombre)}">📎 ${esc(x.nombre)}</a>`).join('')}</div>`;
+      return celdaCob(cobs.find(x => x.ocupacion_id === o.id && x.tramo_id === t.id), datos);
     }).join('') + '</td>';
   };
-  const notasDe = id => aus.filter(a => a.docente_id === id).map(a => a.nota).filter(Boolean);
+  const notasDe = id => id.startsWith('x:')
+    ? [...new Set(extras.filter(c => claveExtra(c) === id).map(c => c.extra.nota).filter(Boolean))]
+    : aus.filter(a => a.docente_id === id).map(a => a.nota).filter(Boolean);
   // Una tabla para un grupo de ausentes: nombres (todos a la misma altura), anotaciones en su propia fila y una fila por tramo.
   const tabla = grupo => {
     const cab = grupo.map(id => {
+      if (id.startsWith('x:')) {
+        const x = extras.find(c => claveExtra(c) === id).extra;
+        return `<th><span class="aus-nombre">${esc(id.slice(2))}</span><span class="muted small">${esc(TIPOS_EXTRA[x.tipo] || '')}</span></th>`;
+      }
       const parcial = aus.filter(a => a.docente_id === id).every(a => a.tramos && a.tramos.length);
       return `<th><span class="aus-nombre">${esc(nombre(ix, id))}</span><span class="muted small">${parcial ? 'Algunas horas' : 'Todo el día'}</span></th>`;
     }).join('');
@@ -222,7 +247,7 @@ export function tablaSustituciones(db, ix, fecha, { columnas = 0 } = {}) {
   };
   // columnas: como mucho tantos ausentes por tabla (en la imagen para Teams, para que no salga demasiado ancha)
   const grupos = [];
-  for (let k = 0; k < ids.length; k += columnas || ids.length) grupos.push(ids.slice(k, k + (columnas || ids.length)));
+  for (let k = 0; k < cols.length; k += columnas || cols.length) grupos.push(cols.slice(k, k + (columnas || cols.length)));
   return grupos.map(tabla).join('<div class="sep-tablas"></div>') + bajas;
 }
 
