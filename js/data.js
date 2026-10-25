@@ -206,8 +206,20 @@ export async function subirAdjunto(archivo, cursoId) {
   const ruta = `${cursoId}/${crypto.randomUUID()}-${limpio}`;
   const { error } = await sb.storage.from(BUCKET).upload(ruta, archivo, { contentType: archivo.type || 'application/octet-stream' });
   if (error) throw error;
-  return { nombre: archivo.name, url: sb.storage.from(BUCKET).getPublicUrl(ruta).data.publicUrl, tipo: archivo.type, ruta };
+  return { nombre: archivo.name, url: '', tipo: archivo.type, ruta };
 }
+// La carpeta de adjuntos es privada: cada enlace con data-adj pide al abrirlo un enlace temporal (10 minutos)
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-adj]');
+  if (!a || modo === 'demo' || !sb) return;
+  e.preventDefault();
+  const ventana = window.open('', '_blank');
+  const opciones = a.hasAttribute('download') ? { download: a.getAttribute('download') || true } : undefined;
+  sb.storage.from(BUCKET).createSignedUrl(a.dataset.adj, 600, opciones).then(({ data, error }) => {
+    if (error || !data?.signedUrl) { ventana?.close(); alert('No se ha podido abrir el archivo: ' + (error?.message || 'sin permiso')); return; }
+    if (ventana) ventana.location = data.signedUrl; else location.href = data.signedUrl;
+  });
+});
 export async function borrarAdjunto(adj) {
   if (modo === 'demo' || !adj?.ruta) return;
   await sb.storage.from(BUCKET).remove([adj.ruta]);
@@ -248,7 +260,10 @@ export async function guardarParteTeams(fecha, imagen, mensajeDe, cursoId) {
   const ruta = `${cursoId}/teams/parte-${fecha}-${Date.now()}.png`;
   const { error: e1 } = await sb.storage.from(BUCKET).upload(ruta, imagen, { contentType: 'image/png' });
   if (e1) throw e1;
-  const url = sb.storage.from(BUCKET).getPublicUrl(ruta).data.publicUrl;
+  // Teams descarga la imagen sin iniciar sesión: enlace temporal de 7 días (después el mensaje queda sin imagen)
+  const { data: firmado, error: eF } = await sb.storage.from(BUCKET).createSignedUrl(ruta, 7 * 24 * 3600);
+  if (eF) throw eF;
+  const url = firmado.signedUrl;
   const { error: e2 } = await sb.from(T('teams_partes')).upsert(
     { curso_id: cursoId, fecha, imagen_ruta: ruta, mensaje: mensajeDe(url), actualizado: new Date().toISOString() },
     { onConflict: 'curso_id,fecha' });

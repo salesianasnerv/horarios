@@ -200,7 +200,7 @@ export function tablaSustituciones(db, ix, fecha, { columnas = 0 } = {}) {
   const celdaCob = (c, datos) => `<div class="sust-celda ${c?.sustituto_id ? 'ok' : 'pend'}">${datos}
           ${c?.sustituto_id ? `<span class="chip verde">Sustituye: ${esc(corto(ix, c.sustituto_id))}</span>` : '<span class="chip naranja">Pendiente</span>'}
           ${c?.nota ? `<div class="nota-hora">${esc(c.nota)}</div>` : ''}
-          ${(c?.adjuntos || []).map(x => `<a class="adjunto" href="${esc(x.url)}" target="_blank" rel="noopener" download="${esc(x.nombre)}">📎 ${esc(x.nombre)}</a>`).join('')}</div>`;
+          ${(c?.adjuntos || []).map(x => `<a class="adjunto" href="${esc(x.url || '#')}"${x.ruta ? ` data-adj="${esc(x.ruta)}"` : ''} target="_blank" rel="noopener" download="${esc(x.nombre)}">📎 ${esc(x.nombre)}</a>`).join('')}</div>`;
   const celdaExtra = (k, t) => {
     const aqui = extras.filter(c => claveExtra(c) === k && c.tramo_id === t.id);
     if (!aqui.length) return '<td><span class="muted small">—</span></td>';

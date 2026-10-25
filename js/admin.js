@@ -567,7 +567,7 @@ async function editarAvisoHora(n, fecha) {
   let adjuntos = [...(c0.adjuntos || [])];
   const quitados = [];
   const pintaAdj = d => {
-    d.querySelector('#f-adj').innerHTML = adjuntos.length ? adjuntos.map((x, i) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a>
+    d.querySelector('#f-adj').innerHTML = adjuntos.length ? adjuntos.map((x, i) => `<li><a href="${esc(x.url || '#')}"${x.ruta ? ` data-adj="${esc(x.ruta)}"` : ''} target="_blank" rel="noopener">${esc(x.nombre)}</a>
       <button type="button" class="btn mini peligro" data-qadj="${i}">Quitar</button></li>`).join('') : '<li class="muted">Sin archivos</li>';
     d.querySelectorAll('[data-qadj]').forEach(b => b.onclick = () => { quitados.push(...adjuntos.splice(+b.dataset.qadj, 1)); pintaAdj(d); });
   };
@@ -613,7 +613,7 @@ function vAvisosSust() {
   for (const n of nec) { const k = quienFalta(ix, n, true); (porAusente[k] = porAusente[k] || []).push(n); }
   const hoy = hoyISO();
   const proximos = db.coberturas.filter(c => c.fecha >= hoy && (c.nota || (c.adjuntos || []).length)).sort((a, b) => a.fecha.localeCompare(b.fecha) || (ix.tramo[a.tramo_id]?.orden || 0) - (ix.tramo[b.tramo_id]?.orden || 0));
-  const adj = c => (c?.adjuntos || []).map(x => `<a class="chip azul" href="${esc(x.url)}" target="_blank" rel="noopener">📎 ${esc(x.nombre)}</a>`).join(' ');
+  const adj = c => (c?.adjuntos || []).map(x => `<a class="chip azul" href="${esc(x.url || '#')}"${x.ruta ? ` data-adj="${esc(x.ruta)}"` : ''} target="_blank" rel="noopener">📎 ${esc(x.nombre)}</a>`).join(' ');
   v.innerHTML = `<div class="panel">
     <div class="barra">
       <button class="btn" id="v-ant" aria-label="Día anterior">‹</button>
