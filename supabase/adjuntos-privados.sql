@@ -6,7 +6,7 @@
 --   · La carpeta «hor-adjuntos» (archivos de los avisos e imagen del parte de Teams) deja de ser pública.
 --   · Los archivos solo los abre quien puede ver Horarios (personal de ESO y Bachillerato o permiso «horarios»),
 --     con un enlace que la web pide al momento y caduca a los 10 minutos.
---   · La imagen del parte de Teams se envía con un enlace de 7 días: pasado ese tiempo, el mensaje de Teams
+--   · La imagen del parte de Teams se envía con un enlace de 30 días: pasado ese tiempo, el mensaje de Teams
 --     se queda sin imagen (el texto sigue). Los partes ya enviados antes de este cambio pierden la imagen ya.
 
 begin;
