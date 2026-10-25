@@ -260,8 +260,10 @@ export async function guardarParteTeams(fecha, imagen, mensajeDe, cursoId) {
   const ruta = `${cursoId}/teams/parte-${fecha}-${Date.now()}.png`;
   const { error: e1 } = await sb.storage.from(BUCKET).upload(ruta, imagen, { contentType: 'image/png' });
   if (e1) throw e1;
-  // Teams descarga la imagen sin iniciar sesión: enlace temporal de 30 días (después el mensaje queda sin imagen)
-  const { data: firmado, error: eF } = await sb.storage.from(BUCKET).createSignedUrl(ruta, 30 * 24 * 3600);
+  // Teams descarga la imagen sin iniciar sesión: enlace temporal hasta el 31 de agosto, fin del curso
+  // (después el mensaje de Teams queda sin imagen; el archivo sigue guardado)
+  const hoy = new Date(), finCurso = new Date(hoy.getMonth() >= 8 ? hoy.getFullYear() + 1 : hoy.getFullYear(), 7, 31, 23, 59);
+  const { data: firmado, error: eF } = await sb.storage.from(BUCKET).createSignedUrl(ruta, Math.max(86400, Math.round((finCurso - hoy) / 1000)));
   if (eF) throw eF;
   const url = firmado.signedUrl;
   const { error: e2 } = await sb.from(T('teams_partes')).upsert(
