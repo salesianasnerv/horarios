@@ -78,7 +78,7 @@ function vHoy() {
         <a href="#s-avisos" class="chip ${avisos.length ? 'rojo' : ''}">Avisos${avisos.length ? ` (${avisos.length})` : ''}</a>
         <a href="#s-sust" class="chip ${nAus ? 'naranja' : ''}">Sustituciones${nAus ? ` (${nAus})` : ''}</a>
         <a href="#s-ahora" class="chip azul">Ahora</a>
-        <a href="#s-donde" class="chip">¿Dónde está…?</a>
+        <a href="#s-donde" class="chip morado">¿Dónde está…?</a>
         <a href="#s-recreos" class="chip verde">Recreos</a>
       </nav>
     </div></div>`;
@@ -109,7 +109,7 @@ function vHoy() {
   html += plegable('s-ahora', 'Ahora', 'azul', fueraDeJornada(fecha) ? '<span class="chip">Fuera del horario lectivo</span>' : `<span class="chip azul">${esc(tr.tramo?.etiqueta || '')}</span>`, true,
     `<div id="s-ahora-cuerpo">${seccionAhora(fecha, dia)}</div>`, 'sin-panel');
 
-  html += plegable('s-donde', '¿Dónde está…?', 'verde', '', false, seccionDonde());
+  html += plegable('s-donde', '¿Dónde está…?', 'morado', '', false, seccionDonde());
 
   html += plegable('s-recreos', `Recreo · ${esc(DIAS[dia - 1].toLowerCase())}`, 'verde', enRecreo ? '<span class="chip verde">Ahora</span>' : '', enRecreo,
     recreosDelDia(dia, fecha));
@@ -250,7 +250,7 @@ function seccionAhora(fecha, dia) {
   return `<div class="cols">
     <div class="panel">${cab}${clases}</div>
     <div>
-      <div class="panel"><h2 class="verde">¿Dónde está…?</h2>
+      <div class="panel"><h2 class="morado">¿Dónde está…?</h2>
         <select id="a-busca" style="width:100%">${opcionesDocentes(ix, '', { vacio: 'Elige a un compañero/a', soloActivos: true })}</select>
         <div id="a-res" style="margin-top:10px"></div></div>
       ${fuera}
