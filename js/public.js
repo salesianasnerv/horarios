@@ -78,6 +78,7 @@ function vHoy() {
         <a href="#s-avisos" class="chip ${avisos.length ? 'rojo' : ''}">Avisos${avisos.length ? ` (${avisos.length})` : ''}</a>
         <a href="#s-sust" class="chip ${nAus ? 'naranja' : ''}">Sustituciones${nAus ? ` (${nAus})` : ''}</a>
         <a href="#s-ahora" class="chip azul">Ahora</a>
+        <a href="#s-donde" class="chip">¿Dónde está…?</a>
         <a href="#s-recreos" class="chip verde">Recreos</a>
       </nav>
     </div></div>`;
@@ -107,6 +108,8 @@ function vHoy() {
 
   html += plegable('s-ahora', 'Ahora', 'azul', fueraDeJornada(fecha) ? '<span class="chip">Fuera del horario lectivo</span>' : `<span class="chip azul">${esc(tr.tramo?.etiqueta || '')}</span>`, true,
     `<div id="s-ahora-cuerpo">${seccionAhora(fecha, dia)}</div>`, 'sin-panel');
+
+  html += plegable('s-donde', '¿Dónde está…?', 'verde', '', false, seccionDonde());
 
   html += plegable('s-recreos', `Recreo · ${esc(DIAS[dia - 1].toLowerCase())}`, 'verde', enRecreo ? '<span class="chip verde">Ahora</span>' : '', enRecreo,
     recreosDelDia(dia, fecha));
@@ -140,6 +143,7 @@ function enlazarHoy() {
   });
   $$('details.plegable').forEach(d => d.addEventListener('toggle', () => { plegados[d.id] = d.open; }));
   enlazarAhora();
+  enlazarDonde();
 }
 
 // Estado abierto/cerrado elegido a mano (se mantiene mientras se navega por la página).
@@ -270,9 +274,25 @@ function enlazarAhora() {
   if (b) b.onchange = e => { const id = e.target.value; $('#a-res').innerHTML = id ? dondeEsta(id) : ''; };
 }
 
-function dondeEsta(id) {
+/* ---------- ¿Dónde está…? como apartado propio, con su propio tramo ---------- */
+// Lo elegido se mantiene al repintar «Hoy» (cambio de tramo, de día…).
+const donde = { id: '', tramo: '' };
+function seccionDonde() {
+  return `<div class="barra" style="margin-bottom:10px">
+      <select id="d-busca" style="flex:1;min-width:200px">${opcionesDocentes(ix, donde.id, { vacio: 'Elige a un compañero/a', soloActivos: true })}</select>
+      <select id="d-tramo" aria-label="Tramo"><option value="">Tramo actual</option>${ix.tramos.map(t =>
+        `<option value="${t.id}" ${t.id === donde.tramo ? 'selected' : ''}>${esc(t.etiqueta)} (${esc(t.inicio)}–${esc(t.fin)})</option>`).join('')}</select></div>
+    <div id="d-res">${donde.id ? dondeEsta(donde.id, donde.tramo) : ''}</div>`;
+}
+function enlazarDonde() {
+  const pinta = () => { $('#d-res').innerHTML = donde.id ? dondeEsta(donde.id, donde.tramo) : ''; };
+  const b = $('#d-busca'); if (b) b.onchange = e => { donde.id = e.target.value; pinta(); };
+  const t = $('#d-tramo'); if (t) t.onchange = e => { donde.tramo = e.target.value; pinta(); };
+}
+
+function dondeEsta(id, tramoId = estado.tramo) {
   const fecha = estado.fecha, dia = diaSemana(fecha);
-  const tramo = estado.tramo ? ix.tramo[estado.tramo] : tramoActual(ix.tramos).tramo;
+  const tramo = tramoId ? ix.tramo[tramoId] : tramoActual(ix.tramos).tramo;
   const aus = ausenteEn(db, id, fecha, tramo.id);
   if (aus) {
     const sl = sustitutoLargo(aus, fecha);
