@@ -276,22 +276,30 @@ function enlazarAhora() {
 
 /* ---------- ¿Dónde está…? como apartado propio, con su propio tramo ---------- */
 // Lo elegido se mantiene al repintar «Hoy» (cambio de tramo, de día…).
-const donde = { id: '', tramo: '' };
+const donde = { id: '', fecha: '', tramo: '' };
 function seccionDonde() {
   return `<div class="barra" style="margin-bottom:10px">
+      <input type="date" id="d-fecha" value="${donde.fecha || estado.fecha}" aria-label="Día">
       <select id="d-busca" style="flex:1;min-width:200px">${opcionesDocentes(ix, donde.id, { vacio: 'Elige a un compañero/a', soloActivos: true })}</select>
       <select id="d-tramo" aria-label="Tramo"><option value="">Tramo actual</option>${ix.tramos.map(t =>
         `<option value="${t.id}" ${t.id === donde.tramo ? 'selected' : ''}>${esc(t.etiqueta)} (${esc(t.inicio)}–${esc(t.fin)})</option>`).join('')}</select></div>
-    <div id="d-res">${donde.id ? dondeEsta(donde.id, donde.tramo) : ''}</div>`;
+    <div id="d-res">${resultadoDonde()}</div>`;
+}
+function resultadoDonde() {
+  if (!donde.id) return '';
+  const fecha = donde.fecha || estado.fecha;
+  if (!diaSemana(fecha)) return '<p class="muted small">Ese día es fin de semana: no hay clases.</p>';
+  return dondeEsta(donde.id, donde.tramo, fecha);
 }
 function enlazarDonde() {
-  const pinta = () => { $('#d-res').innerHTML = donde.id ? dondeEsta(donde.id, donde.tramo) : ''; };
+  const pinta = () => { $('#d-res').innerHTML = resultadoDonde(); };
+  const f = $('#d-fecha'); if (f) f.onchange = e => { donde.fecha = e.target.value; pinta(); };
   const b = $('#d-busca'); if (b) b.onchange = e => { donde.id = e.target.value; pinta(); };
   const t = $('#d-tramo'); if (t) t.onchange = e => { donde.tramo = e.target.value; pinta(); };
 }
 
-function dondeEsta(id, tramoId = estado.tramo) {
-  const fecha = estado.fecha, dia = diaSemana(fecha);
+function dondeEsta(id, tramoId = estado.tramo, fecha = estado.fecha) {
+  const dia = diaSemana(fecha);
   const tramo = tramoId ? ix.tramo[tramoId] : tramoActual(ix.tramos).tramo;
   const aus = ausenteEn(db, id, fecha, tramo.id);
   if (aus) {
