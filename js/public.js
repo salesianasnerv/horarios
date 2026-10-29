@@ -232,14 +232,14 @@ function seccionAhora(fecha, dia) {
       if (aqui.some(o => LECTIVAS.has(o.tipo))) continue;
       if (cobs.some(c => c.tramo_id === tramo.id && c.sustituto_id === d.id)) continue;
       const o = aqui[0];
-      if (!o) continue; // los huecos libres son tiempo personal: no se muestran
+      if (!o) { if (delDia.length) (grupos.libre = grupos.libre || []).push({ d, det: '' }); continue; } // hora libre: tiene clase otras horas del día
       const cat = o.tipo;
       let det = o?.detalle || '';
       if (o?.tipo === 'apoyo') det = (o.grupos || []).length ? `en ${nombreGrupos(ix, o.grupos)}${aulaDe(o) ? ' · Aula ' + aulaDe(o) : ''}${materiaApoyo(o)}` : (det || 'clase sin indicar');
       (grupos[cat] = grupos[cat] || []).push({ d, det });
     }
-    const orden = ['no_lectiva', 'guardia', 'apoyo', 'coordinacion', 'otro'];
-    fuera = `<div class="panel"><h2 class="naranja">Profesorado fuera de aula</h2>${orden.filter(k => grupos[k]).map(k => `<h3>${esc(CATEGORIAS[k])}</h3><ul class="lista">${grupos[k].map(x =>
+    const orden = ['no_lectiva', 'guardia', 'apoyo', 'coordinacion', 'otro', 'libre'];
+    fuera = `<div class="panel"><h2 class="naranja">Profesorado fuera de aula</h2>${orden.filter(k => grupos[k]).map(k => `<h3>${esc(k === 'libre' ? 'Hora libre' : CATEGORIAS[k])}</h3><ul class="lista">${grupos[k].map(x =>
       `<li><span>${esc(x.d.corto || x.d.nombre)}</span><span class="d">${esc(x.det)}</span></li>`).join('')}</ul>`).join('') || '<p class="muted small">Nadie fuera de aula en este tramo.</p>'}</div>`;
   }
 
